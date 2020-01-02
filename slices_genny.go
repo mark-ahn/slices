@@ -14,6 +14,21 @@ func (__ OfBool) Count() int {
 	return len(__)
 }
 
+func (__ OfBool) Range(f func(i int, d bool) bool) {
+	for i := range __ {
+		if !f(i, __[i]) {
+			break
+		}
+	}
+}
+func (__ OfBool) Map(f func(i int, d bool) bool) OfBool {
+	rval := make([]bool, len(__))
+	for i := range __ {
+		rval[i] = f(i, __[i])
+	}
+	return OfBool(rval)
+}
+
 type OfByte []byte
 
 func (__ OfByte) At(i int) byte {
@@ -22,6 +37,21 @@ func (__ OfByte) At(i int) byte {
 
 func (__ OfByte) Count() int {
 	return len(__)
+}
+
+func (__ OfByte) Range(f func(i int, d byte) bool) {
+	for i := range __ {
+		if !f(i, __[i]) {
+			break
+		}
+	}
+}
+func (__ OfByte) Map(f func(i int, d byte) byte) OfByte {
+	rval := make([]byte, len(__))
+	for i := range __ {
+		rval[i] = f(i, __[i])
+	}
+	return OfByte(rval)
 }
 
 type OfComplex128 []complex128
@@ -34,6 +64,21 @@ func (__ OfComplex128) Count() int {
 	return len(__)
 }
 
+func (__ OfComplex128) Range(f func(i int, d complex128) bool) {
+	for i := range __ {
+		if !f(i, __[i]) {
+			break
+		}
+	}
+}
+func (__ OfComplex128) Map(f func(i int, d complex128) complex128) OfComplex128 {
+	rval := make([]complex128, len(__))
+	for i := range __ {
+		rval[i] = f(i, __[i])
+	}
+	return OfComplex128(rval)
+}
+
 type OfComplex64 []complex64
 
 func (__ OfComplex64) At(i int) complex64 {
@@ -42,6 +87,21 @@ func (__ OfComplex64) At(i int) complex64 {
 
 func (__ OfComplex64) Count() int {
 	return len(__)
+}
+
+func (__ OfComplex64) Range(f func(i int, d complex64) bool) {
+	for i := range __ {
+		if !f(i, __[i]) {
+			break
+		}
+	}
+}
+func (__ OfComplex64) Map(f func(i int, d complex64) complex64) OfComplex64 {
+	rval := make([]complex64, len(__))
+	for i := range __ {
+		rval[i] = f(i, __[i])
+	}
+	return OfComplex64(rval)
 }
 
 type OfError []error
@@ -54,6 +114,21 @@ func (__ OfError) Count() int {
 	return len(__)
 }
 
+func (__ OfError) Range(f func(i int, d error) bool) {
+	for i := range __ {
+		if !f(i, __[i]) {
+			break
+		}
+	}
+}
+func (__ OfError) Map(f func(i int, d error) error) OfError {
+	rval := make([]error, len(__))
+	for i := range __ {
+		rval[i] = f(i, __[i])
+	}
+	return OfError(rval)
+}
+
 type OfFloat32 []float32
 
 func (__ OfFloat32) At(i int) float32 {
@@ -62,6 +137,21 @@ func (__ OfFloat32) At(i int) float32 {
 
 func (__ OfFloat32) Count() int {
 	return len(__)
+}
+
+func (__ OfFloat32) Range(f func(i int, d float32) bool) {
+	for i := range __ {
+		if !f(i, __[i]) {
+			break
+		}
+	}
+}
+func (__ OfFloat32) Map(f func(i int, d float32) float32) OfFloat32 {
+	rval := make([]float32, len(__))
+	for i := range __ {
+		rval[i] = f(i, __[i])
+	}
+	return OfFloat32(rval)
 }
 
 type OfFloat64 []float64
@@ -74,6 +164,21 @@ func (__ OfFloat64) Count() int {
 	return len(__)
 }
 
+func (__ OfFloat64) Range(f func(i int, d float64) bool) {
+	for i := range __ {
+		if !f(i, __[i]) {
+			break
+		}
+	}
+}
+func (__ OfFloat64) Map(f func(i int, d float64) float64) OfFloat64 {
+	rval := make([]float64, len(__))
+	for i := range __ {
+		rval[i] = f(i, __[i])
+	}
+	return OfFloat64(rval)
+}
+
 type OfInt []int
 
 func (__ OfInt) At(i int) int {
@@ -82,6 +187,21 @@ func (__ OfInt) At(i int) int {
 
 func (__ OfInt) Count() int {
 	return len(__)
+}
+
+func (__ OfInt) Range(f func(i int, d int) bool) {
+	for i := range __ {
+		if !f(i, __[i]) {
+			break
+		}
+	}
+}
+func (__ OfInt) Map(f func(i int, d int) int) OfInt {
+	rval := make([]int, len(__))
+	for i := range __ {
+		rval[i] = f(i, __[i])
+	}
+	return OfInt(rval)
 }
 
 type OfInt16 []int16
@@ -94,6 +214,21 @@ func (__ OfInt16) Count() int {
 	return len(__)
 }
 
+func (__ OfInt16) Range(f func(i int, d int16) bool) {
+	for i := range __ {
+		if !f(i, __[i]) {
+			break
+		}
+	}
+}
+func (__ OfInt16) Map(f func(i int, d int16) int16) OfInt16 {
+	rval := make([]int16, len(__))
+	for i := range __ {
+		rval[i] = f(i, __[i])
+	}
+	return OfInt16(rval)
+}
+
 type OfInt32 []int32
 
 func (__ OfInt32) At(i int) int32 {
@@ -102,6 +237,21 @@ func (__ OfInt32) At(i int) int32 {
 
 func (__ OfInt32) Count() int {
 	return len(__)
+}
+
+func (__ OfInt32) Range(f func(i int, d int32) bool) {
+	for i := range __ {
+		if !f(i, __[i]) {
+			break
+		}
+	}
+}
+func (__ OfInt32) Map(f func(i int, d int32) int32) OfInt32 {
+	rval := make([]int32, len(__))
+	for i := range __ {
+		rval[i] = f(i, __[i])
+	}
+	return OfInt32(rval)
 }
 
 type OfInt64 []int64
@@ -114,6 +264,21 @@ func (__ OfInt64) Count() int {
 	return len(__)
 }
 
+func (__ OfInt64) Range(f func(i int, d int64) bool) {
+	for i := range __ {
+		if !f(i, __[i]) {
+			break
+		}
+	}
+}
+func (__ OfInt64) Map(f func(i int, d int64) int64) OfInt64 {
+	rval := make([]int64, len(__))
+	for i := range __ {
+		rval[i] = f(i, __[i])
+	}
+	return OfInt64(rval)
+}
+
 type OfInt8 []int8
 
 func (__ OfInt8) At(i int) int8 {
@@ -122,6 +287,21 @@ func (__ OfInt8) At(i int) int8 {
 
 func (__ OfInt8) Count() int {
 	return len(__)
+}
+
+func (__ OfInt8) Range(f func(i int, d int8) bool) {
+	for i := range __ {
+		if !f(i, __[i]) {
+			break
+		}
+	}
+}
+func (__ OfInt8) Map(f func(i int, d int8) int8) OfInt8 {
+	rval := make([]int8, len(__))
+	for i := range __ {
+		rval[i] = f(i, __[i])
+	}
+	return OfInt8(rval)
 }
 
 type OfRune []rune
@@ -134,6 +314,21 @@ func (__ OfRune) Count() int {
 	return len(__)
 }
 
+func (__ OfRune) Range(f func(i int, d rune) bool) {
+	for i := range __ {
+		if !f(i, __[i]) {
+			break
+		}
+	}
+}
+func (__ OfRune) Map(f func(i int, d rune) rune) OfRune {
+	rval := make([]rune, len(__))
+	for i := range __ {
+		rval[i] = f(i, __[i])
+	}
+	return OfRune(rval)
+}
+
 type OfString []string
 
 func (__ OfString) At(i int) string {
@@ -142,6 +337,21 @@ func (__ OfString) At(i int) string {
 
 func (__ OfString) Count() int {
 	return len(__)
+}
+
+func (__ OfString) Range(f func(i int, d string) bool) {
+	for i := range __ {
+		if !f(i, __[i]) {
+			break
+		}
+	}
+}
+func (__ OfString) Map(f func(i int, d string) string) OfString {
+	rval := make([]string, len(__))
+	for i := range __ {
+		rval[i] = f(i, __[i])
+	}
+	return OfString(rval)
 }
 
 type OfUint []uint
@@ -154,6 +364,21 @@ func (__ OfUint) Count() int {
 	return len(__)
 }
 
+func (__ OfUint) Range(f func(i int, d uint) bool) {
+	for i := range __ {
+		if !f(i, __[i]) {
+			break
+		}
+	}
+}
+func (__ OfUint) Map(f func(i int, d uint) uint) OfUint {
+	rval := make([]uint, len(__))
+	for i := range __ {
+		rval[i] = f(i, __[i])
+	}
+	return OfUint(rval)
+}
+
 type OfUint16 []uint16
 
 func (__ OfUint16) At(i int) uint16 {
@@ -162,6 +387,21 @@ func (__ OfUint16) At(i int) uint16 {
 
 func (__ OfUint16) Count() int {
 	return len(__)
+}
+
+func (__ OfUint16) Range(f func(i int, d uint16) bool) {
+	for i := range __ {
+		if !f(i, __[i]) {
+			break
+		}
+	}
+}
+func (__ OfUint16) Map(f func(i int, d uint16) uint16) OfUint16 {
+	rval := make([]uint16, len(__))
+	for i := range __ {
+		rval[i] = f(i, __[i])
+	}
+	return OfUint16(rval)
 }
 
 type OfUint32 []uint32
@@ -174,6 +414,21 @@ func (__ OfUint32) Count() int {
 	return len(__)
 }
 
+func (__ OfUint32) Range(f func(i int, d uint32) bool) {
+	for i := range __ {
+		if !f(i, __[i]) {
+			break
+		}
+	}
+}
+func (__ OfUint32) Map(f func(i int, d uint32) uint32) OfUint32 {
+	rval := make([]uint32, len(__))
+	for i := range __ {
+		rval[i] = f(i, __[i])
+	}
+	return OfUint32(rval)
+}
+
 type OfUint64 []uint64
 
 func (__ OfUint64) At(i int) uint64 {
@@ -182,6 +437,21 @@ func (__ OfUint64) At(i int) uint64 {
 
 func (__ OfUint64) Count() int {
 	return len(__)
+}
+
+func (__ OfUint64) Range(f func(i int, d uint64) bool) {
+	for i := range __ {
+		if !f(i, __[i]) {
+			break
+		}
+	}
+}
+func (__ OfUint64) Map(f func(i int, d uint64) uint64) OfUint64 {
+	rval := make([]uint64, len(__))
+	for i := range __ {
+		rval[i] = f(i, __[i])
+	}
+	return OfUint64(rval)
 }
 
 type OfUint8 []uint8
@@ -194,6 +464,21 @@ func (__ OfUint8) Count() int {
 	return len(__)
 }
 
+func (__ OfUint8) Range(f func(i int, d uint8) bool) {
+	for i := range __ {
+		if !f(i, __[i]) {
+			break
+		}
+	}
+}
+func (__ OfUint8) Map(f func(i int, d uint8) uint8) OfUint8 {
+	rval := make([]uint8, len(__))
+	for i := range __ {
+		rval[i] = f(i, __[i])
+	}
+	return OfUint8(rval)
+}
+
 type OfUintptr []uintptr
 
 func (__ OfUintptr) At(i int) uintptr {
@@ -202,4 +487,19 @@ func (__ OfUintptr) At(i int) uintptr {
 
 func (__ OfUintptr) Count() int {
 	return len(__)
+}
+
+func (__ OfUintptr) Range(f func(i int, d uintptr) bool) {
+	for i := range __ {
+		if !f(i, __[i]) {
+			break
+		}
+	}
+}
+func (__ OfUintptr) Map(f func(i int, d uintptr) uintptr) OfUintptr {
+	rval := make([]uintptr, len(__))
+	for i := range __ {
+		rval[i] = f(i, __[i])
+	}
+	return OfUintptr(rval)
 }
