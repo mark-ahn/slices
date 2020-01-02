@@ -21,6 +21,14 @@ func (__ OfSome) Count() int {
 	return len(__)
 }
 
+func (__ *OfSomeSt) At(i int) Some {
+	return __.OfSome.At(i)
+}
+
+func (__ *OfSomeSt) Count() int {
+	return __.OfSome.Count()
+}
+
 func (__ OfSomeIter) Range(f func(i int, d Some) bool) {
 	for i := range __ {
 		if !f(i, __[i]) {
