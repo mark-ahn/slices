@@ -6,7 +6,13 @@ package slices
 
 type OfBool []bool
 type OfBoolSt struct {
-	in *OfBool
+	in []bool
+}
+
+func NewBoolSt(d []bool) *OfBoolSt {
+	return &OfBoolSt{
+		in: d,
+	}
 }
 
 type OfBoolIter []bool
@@ -20,11 +26,11 @@ func (__ OfBool) Count() int {
 }
 
 func (__ *OfBoolSt) At(i int) bool {
-	return __.in.At(i)
+	return __.in[i]
 }
 
 func (__ *OfBoolSt) Count() int {
-	return __.in.Count()
+	return len(__.in)
 }
 
 func (__ OfBoolIter) Range(f func(i int, d bool) bool) {
@@ -44,7 +50,13 @@ func (__ OfBoolIter) Map(f func(i int, d bool) bool) OfBoolIter {
 
 type OfByte []byte
 type OfByteSt struct {
-	in *OfByte
+	in []byte
+}
+
+func NewByteSt(d []byte) *OfByteSt {
+	return &OfByteSt{
+		in: d,
+	}
 }
 
 type OfByteIter []byte
@@ -58,11 +70,11 @@ func (__ OfByte) Count() int {
 }
 
 func (__ *OfByteSt) At(i int) byte {
-	return __.in.At(i)
+	return __.in[i]
 }
 
 func (__ *OfByteSt) Count() int {
-	return __.in.Count()
+	return len(__.in)
 }
 
 func (__ OfByteIter) Range(f func(i int, d byte) bool) {
@@ -82,7 +94,13 @@ func (__ OfByteIter) Map(f func(i int, d byte) byte) OfByteIter {
 
 type OfComplex128 []complex128
 type OfComplex128St struct {
-	in *OfComplex128
+	in []complex128
+}
+
+func NewComplex128St(d []complex128) *OfComplex128St {
+	return &OfComplex128St{
+		in: d,
+	}
 }
 
 type OfComplex128Iter []complex128
@@ -96,11 +114,11 @@ func (__ OfComplex128) Count() int {
 }
 
 func (__ *OfComplex128St) At(i int) complex128 {
-	return __.in.At(i)
+	return __.in[i]
 }
 
 func (__ *OfComplex128St) Count() int {
-	return __.in.Count()
+	return len(__.in)
 }
 
 func (__ OfComplex128Iter) Range(f func(i int, d complex128) bool) {
@@ -120,7 +138,13 @@ func (__ OfComplex128Iter) Map(f func(i int, d complex128) complex128) OfComplex
 
 type OfComplex64 []complex64
 type OfComplex64St struct {
-	in *OfComplex64
+	in []complex64
+}
+
+func NewComplex64St(d []complex64) *OfComplex64St {
+	return &OfComplex64St{
+		in: d,
+	}
 }
 
 type OfComplex64Iter []complex64
@@ -134,11 +158,11 @@ func (__ OfComplex64) Count() int {
 }
 
 func (__ *OfComplex64St) At(i int) complex64 {
-	return __.in.At(i)
+	return __.in[i]
 }
 
 func (__ *OfComplex64St) Count() int {
-	return __.in.Count()
+	return len(__.in)
 }
 
 func (__ OfComplex64Iter) Range(f func(i int, d complex64) bool) {
@@ -158,7 +182,13 @@ func (__ OfComplex64Iter) Map(f func(i int, d complex64) complex64) OfComplex64I
 
 type OfError []error
 type OfErrorSt struct {
-	in *OfError
+	in []error
+}
+
+func NewErrorSt(d []error) *OfErrorSt {
+	return &OfErrorSt{
+		in: d,
+	}
 }
 
 type OfErrorIter []error
@@ -172,11 +202,11 @@ func (__ OfError) Count() int {
 }
 
 func (__ *OfErrorSt) At(i int) error {
-	return __.in.At(i)
+	return __.in[i]
 }
 
 func (__ *OfErrorSt) Count() int {
-	return __.in.Count()
+	return len(__.in)
 }
 
 func (__ OfErrorIter) Range(f func(i int, d error) bool) {
@@ -196,7 +226,13 @@ func (__ OfErrorIter) Map(f func(i int, d error) error) OfErrorIter {
 
 type OfFloat32 []float32
 type OfFloat32St struct {
-	in *OfFloat32
+	in []float32
+}
+
+func NewFloat32St(d []float32) *OfFloat32St {
+	return &OfFloat32St{
+		in: d,
+	}
 }
 
 type OfFloat32Iter []float32
@@ -210,11 +246,11 @@ func (__ OfFloat32) Count() int {
 }
 
 func (__ *OfFloat32St) At(i int) float32 {
-	return __.in.At(i)
+	return __.in[i]
 }
 
 func (__ *OfFloat32St) Count() int {
-	return __.in.Count()
+	return len(__.in)
 }
 
 func (__ OfFloat32Iter) Range(f func(i int, d float32) bool) {
@@ -234,7 +270,13 @@ func (__ OfFloat32Iter) Map(f func(i int, d float32) float32) OfFloat32Iter {
 
 type OfFloat64 []float64
 type OfFloat64St struct {
-	in *OfFloat64
+	in []float64
+}
+
+func NewFloat64St(d []float64) *OfFloat64St {
+	return &OfFloat64St{
+		in: d,
+	}
 }
 
 type OfFloat64Iter []float64
@@ -248,11 +290,11 @@ func (__ OfFloat64) Count() int {
 }
 
 func (__ *OfFloat64St) At(i int) float64 {
-	return __.in.At(i)
+	return __.in[i]
 }
 
 func (__ *OfFloat64St) Count() int {
-	return __.in.Count()
+	return len(__.in)
 }
 
 func (__ OfFloat64Iter) Range(f func(i int, d float64) bool) {
@@ -272,7 +314,13 @@ func (__ OfFloat64Iter) Map(f func(i int, d float64) float64) OfFloat64Iter {
 
 type OfInt []int
 type OfIntSt struct {
-	in *OfInt
+	in []int
+}
+
+func NewIntSt(d []int) *OfIntSt {
+	return &OfIntSt{
+		in: d,
+	}
 }
 
 type OfIntIter []int
@@ -286,11 +334,11 @@ func (__ OfInt) Count() int {
 }
 
 func (__ *OfIntSt) At(i int) int {
-	return __.in.At(i)
+	return __.in[i]
 }
 
 func (__ *OfIntSt) Count() int {
-	return __.in.Count()
+	return len(__.in)
 }
 
 func (__ OfIntIter) Range(f func(i int, d int) bool) {
@@ -310,7 +358,13 @@ func (__ OfIntIter) Map(f func(i int, d int) int) OfIntIter {
 
 type OfInt16 []int16
 type OfInt16St struct {
-	in *OfInt16
+	in []int16
+}
+
+func NewInt16St(d []int16) *OfInt16St {
+	return &OfInt16St{
+		in: d,
+	}
 }
 
 type OfInt16Iter []int16
@@ -324,11 +378,11 @@ func (__ OfInt16) Count() int {
 }
 
 func (__ *OfInt16St) At(i int) int16 {
-	return __.in.At(i)
+	return __.in[i]
 }
 
 func (__ *OfInt16St) Count() int {
-	return __.in.Count()
+	return len(__.in)
 }
 
 func (__ OfInt16Iter) Range(f func(i int, d int16) bool) {
@@ -348,7 +402,13 @@ func (__ OfInt16Iter) Map(f func(i int, d int16) int16) OfInt16Iter {
 
 type OfInt32 []int32
 type OfInt32St struct {
-	in *OfInt32
+	in []int32
+}
+
+func NewInt32St(d []int32) *OfInt32St {
+	return &OfInt32St{
+		in: d,
+	}
 }
 
 type OfInt32Iter []int32
@@ -362,11 +422,11 @@ func (__ OfInt32) Count() int {
 }
 
 func (__ *OfInt32St) At(i int) int32 {
-	return __.in.At(i)
+	return __.in[i]
 }
 
 func (__ *OfInt32St) Count() int {
-	return __.in.Count()
+	return len(__.in)
 }
 
 func (__ OfInt32Iter) Range(f func(i int, d int32) bool) {
@@ -386,7 +446,13 @@ func (__ OfInt32Iter) Map(f func(i int, d int32) int32) OfInt32Iter {
 
 type OfInt64 []int64
 type OfInt64St struct {
-	in *OfInt64
+	in []int64
+}
+
+func NewInt64St(d []int64) *OfInt64St {
+	return &OfInt64St{
+		in: d,
+	}
 }
 
 type OfInt64Iter []int64
@@ -400,11 +466,11 @@ func (__ OfInt64) Count() int {
 }
 
 func (__ *OfInt64St) At(i int) int64 {
-	return __.in.At(i)
+	return __.in[i]
 }
 
 func (__ *OfInt64St) Count() int {
-	return __.in.Count()
+	return len(__.in)
 }
 
 func (__ OfInt64Iter) Range(f func(i int, d int64) bool) {
@@ -424,7 +490,13 @@ func (__ OfInt64Iter) Map(f func(i int, d int64) int64) OfInt64Iter {
 
 type OfInt8 []int8
 type OfInt8St struct {
-	in *OfInt8
+	in []int8
+}
+
+func NewInt8St(d []int8) *OfInt8St {
+	return &OfInt8St{
+		in: d,
+	}
 }
 
 type OfInt8Iter []int8
@@ -438,11 +510,11 @@ func (__ OfInt8) Count() int {
 }
 
 func (__ *OfInt8St) At(i int) int8 {
-	return __.in.At(i)
+	return __.in[i]
 }
 
 func (__ *OfInt8St) Count() int {
-	return __.in.Count()
+	return len(__.in)
 }
 
 func (__ OfInt8Iter) Range(f func(i int, d int8) bool) {
@@ -462,7 +534,13 @@ func (__ OfInt8Iter) Map(f func(i int, d int8) int8) OfInt8Iter {
 
 type OfRune []rune
 type OfRuneSt struct {
-	in *OfRune
+	in []rune
+}
+
+func NewRuneSt(d []rune) *OfRuneSt {
+	return &OfRuneSt{
+		in: d,
+	}
 }
 
 type OfRuneIter []rune
@@ -476,11 +554,11 @@ func (__ OfRune) Count() int {
 }
 
 func (__ *OfRuneSt) At(i int) rune {
-	return __.in.At(i)
+	return __.in[i]
 }
 
 func (__ *OfRuneSt) Count() int {
-	return __.in.Count()
+	return len(__.in)
 }
 
 func (__ OfRuneIter) Range(f func(i int, d rune) bool) {
@@ -500,7 +578,13 @@ func (__ OfRuneIter) Map(f func(i int, d rune) rune) OfRuneIter {
 
 type OfString []string
 type OfStringSt struct {
-	in *OfString
+	in []string
+}
+
+func NewStringSt(d []string) *OfStringSt {
+	return &OfStringSt{
+		in: d,
+	}
 }
 
 type OfStringIter []string
@@ -514,11 +598,11 @@ func (__ OfString) Count() int {
 }
 
 func (__ *OfStringSt) At(i int) string {
-	return __.in.At(i)
+	return __.in[i]
 }
 
 func (__ *OfStringSt) Count() int {
-	return __.in.Count()
+	return len(__.in)
 }
 
 func (__ OfStringIter) Range(f func(i int, d string) bool) {
@@ -538,7 +622,13 @@ func (__ OfStringIter) Map(f func(i int, d string) string) OfStringIter {
 
 type OfUint []uint
 type OfUintSt struct {
-	in *OfUint
+	in []uint
+}
+
+func NewUintSt(d []uint) *OfUintSt {
+	return &OfUintSt{
+		in: d,
+	}
 }
 
 type OfUintIter []uint
@@ -552,11 +642,11 @@ func (__ OfUint) Count() int {
 }
 
 func (__ *OfUintSt) At(i int) uint {
-	return __.in.At(i)
+	return __.in[i]
 }
 
 func (__ *OfUintSt) Count() int {
-	return __.in.Count()
+	return len(__.in)
 }
 
 func (__ OfUintIter) Range(f func(i int, d uint) bool) {
@@ -576,7 +666,13 @@ func (__ OfUintIter) Map(f func(i int, d uint) uint) OfUintIter {
 
 type OfUint16 []uint16
 type OfUint16St struct {
-	in *OfUint16
+	in []uint16
+}
+
+func NewUint16St(d []uint16) *OfUint16St {
+	return &OfUint16St{
+		in: d,
+	}
 }
 
 type OfUint16Iter []uint16
@@ -590,11 +686,11 @@ func (__ OfUint16) Count() int {
 }
 
 func (__ *OfUint16St) At(i int) uint16 {
-	return __.in.At(i)
+	return __.in[i]
 }
 
 func (__ *OfUint16St) Count() int {
-	return __.in.Count()
+	return len(__.in)
 }
 
 func (__ OfUint16Iter) Range(f func(i int, d uint16) bool) {
@@ -614,7 +710,13 @@ func (__ OfUint16Iter) Map(f func(i int, d uint16) uint16) OfUint16Iter {
 
 type OfUint32 []uint32
 type OfUint32St struct {
-	in *OfUint32
+	in []uint32
+}
+
+func NewUint32St(d []uint32) *OfUint32St {
+	return &OfUint32St{
+		in: d,
+	}
 }
 
 type OfUint32Iter []uint32
@@ -628,11 +730,11 @@ func (__ OfUint32) Count() int {
 }
 
 func (__ *OfUint32St) At(i int) uint32 {
-	return __.in.At(i)
+	return __.in[i]
 }
 
 func (__ *OfUint32St) Count() int {
-	return __.in.Count()
+	return len(__.in)
 }
 
 func (__ OfUint32Iter) Range(f func(i int, d uint32) bool) {
@@ -652,7 +754,13 @@ func (__ OfUint32Iter) Map(f func(i int, d uint32) uint32) OfUint32Iter {
 
 type OfUint64 []uint64
 type OfUint64St struct {
-	in *OfUint64
+	in []uint64
+}
+
+func NewUint64St(d []uint64) *OfUint64St {
+	return &OfUint64St{
+		in: d,
+	}
 }
 
 type OfUint64Iter []uint64
@@ -666,11 +774,11 @@ func (__ OfUint64) Count() int {
 }
 
 func (__ *OfUint64St) At(i int) uint64 {
-	return __.in.At(i)
+	return __.in[i]
 }
 
 func (__ *OfUint64St) Count() int {
-	return __.in.Count()
+	return len(__.in)
 }
 
 func (__ OfUint64Iter) Range(f func(i int, d uint64) bool) {
@@ -690,7 +798,13 @@ func (__ OfUint64Iter) Map(f func(i int, d uint64) uint64) OfUint64Iter {
 
 type OfUint8 []uint8
 type OfUint8St struct {
-	in *OfUint8
+	in []uint8
+}
+
+func NewUint8St(d []uint8) *OfUint8St {
+	return &OfUint8St{
+		in: d,
+	}
 }
 
 type OfUint8Iter []uint8
@@ -704,11 +818,11 @@ func (__ OfUint8) Count() int {
 }
 
 func (__ *OfUint8St) At(i int) uint8 {
-	return __.in.At(i)
+	return __.in[i]
 }
 
 func (__ *OfUint8St) Count() int {
-	return __.in.Count()
+	return len(__.in)
 }
 
 func (__ OfUint8Iter) Range(f func(i int, d uint8) bool) {
@@ -728,7 +842,13 @@ func (__ OfUint8Iter) Map(f func(i int, d uint8) uint8) OfUint8Iter {
 
 type OfUintptr []uintptr
 type OfUintptrSt struct {
-	in *OfUintptr
+	in []uintptr
+}
+
+func NewUintptrSt(d []uintptr) *OfUintptrSt {
+	return &OfUintptrSt{
+		in: d,
+	}
 }
 
 type OfUintptrIter []uintptr
@@ -742,11 +862,11 @@ func (__ OfUintptr) Count() int {
 }
 
 func (__ *OfUintptrSt) At(i int) uintptr {
-	return __.in.At(i)
+	return __.in[i]
 }
 
 func (__ *OfUintptrSt) Count() int {
-	return __.in.Count()
+	return len(__.in)
 }
 
 func (__ OfUintptrIter) Range(f func(i int, d uintptr) bool) {
