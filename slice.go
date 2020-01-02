@@ -8,7 +8,7 @@ type Some generic.Type
 
 type OfSome []Some
 type OfSomeSt struct {
-	*OfSome
+	in *OfSome
 }
 
 type OfSomeIter []Some
@@ -22,11 +22,11 @@ func (__ OfSome) Count() int {
 }
 
 func (__ *OfSomeSt) At(i int) Some {
-	return __.OfSome.At(i)
+	return __.in.At(i)
 }
 
 func (__ *OfSomeSt) Count() int {
-	return __.OfSome.Count()
+	return __.in.Count()
 }
 
 func (__ OfSomeIter) Range(f func(i int, d Some) bool) {
