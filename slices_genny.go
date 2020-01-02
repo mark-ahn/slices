@@ -4,6 +4,11 @@
 
 package slices
 
+type OfBoolInf interface {
+	At(int) bool
+	Count() int
+}
+
 type OfBool []bool
 type OfBoolSt struct {
 	in []bool
@@ -46,6 +51,11 @@ func (__ OfBoolIter) Map(f func(i int, d bool) bool) OfBoolIter {
 		rval[i] = f(i, __[i])
 	}
 	return OfBoolIter(rval)
+}
+
+type OfByteInf interface {
+	At(int) byte
+	Count() int
 }
 
 type OfByte []byte
@@ -92,6 +102,11 @@ func (__ OfByteIter) Map(f func(i int, d byte) byte) OfByteIter {
 	return OfByteIter(rval)
 }
 
+type OfComplex128Inf interface {
+	At(int) complex128
+	Count() int
+}
+
 type OfComplex128 []complex128
 type OfComplex128St struct {
 	in []complex128
@@ -134,6 +149,11 @@ func (__ OfComplex128Iter) Map(f func(i int, d complex128) complex128) OfComplex
 		rval[i] = f(i, __[i])
 	}
 	return OfComplex128Iter(rval)
+}
+
+type OfComplex64Inf interface {
+	At(int) complex64
+	Count() int
 }
 
 type OfComplex64 []complex64
@@ -180,6 +200,11 @@ func (__ OfComplex64Iter) Map(f func(i int, d complex64) complex64) OfComplex64I
 	return OfComplex64Iter(rval)
 }
 
+type OfErrorInf interface {
+	At(int) error
+	Count() int
+}
+
 type OfError []error
 type OfErrorSt struct {
 	in []error
@@ -222,6 +247,11 @@ func (__ OfErrorIter) Map(f func(i int, d error) error) OfErrorIter {
 		rval[i] = f(i, __[i])
 	}
 	return OfErrorIter(rval)
+}
+
+type OfFloat32Inf interface {
+	At(int) float32
+	Count() int
 }
 
 type OfFloat32 []float32
@@ -268,6 +298,11 @@ func (__ OfFloat32Iter) Map(f func(i int, d float32) float32) OfFloat32Iter {
 	return OfFloat32Iter(rval)
 }
 
+type OfFloat64Inf interface {
+	At(int) float64
+	Count() int
+}
+
 type OfFloat64 []float64
 type OfFloat64St struct {
 	in []float64
@@ -310,6 +345,11 @@ func (__ OfFloat64Iter) Map(f func(i int, d float64) float64) OfFloat64Iter {
 		rval[i] = f(i, __[i])
 	}
 	return OfFloat64Iter(rval)
+}
+
+type OfIntInf interface {
+	At(int) int
+	Count() int
 }
 
 type OfInt []int
@@ -356,6 +396,11 @@ func (__ OfIntIter) Map(f func(i int, d int) int) OfIntIter {
 	return OfIntIter(rval)
 }
 
+type OfInt16Inf interface {
+	At(int) int16
+	Count() int
+}
+
 type OfInt16 []int16
 type OfInt16St struct {
 	in []int16
@@ -398,6 +443,11 @@ func (__ OfInt16Iter) Map(f func(i int, d int16) int16) OfInt16Iter {
 		rval[i] = f(i, __[i])
 	}
 	return OfInt16Iter(rval)
+}
+
+type OfInt32Inf interface {
+	At(int) int32
+	Count() int
 }
 
 type OfInt32 []int32
@@ -444,6 +494,11 @@ func (__ OfInt32Iter) Map(f func(i int, d int32) int32) OfInt32Iter {
 	return OfInt32Iter(rval)
 }
 
+type OfInt64Inf interface {
+	At(int) int64
+	Count() int
+}
+
 type OfInt64 []int64
 type OfInt64St struct {
 	in []int64
@@ -486,6 +541,11 @@ func (__ OfInt64Iter) Map(f func(i int, d int64) int64) OfInt64Iter {
 		rval[i] = f(i, __[i])
 	}
 	return OfInt64Iter(rval)
+}
+
+type OfInt8Inf interface {
+	At(int) int8
+	Count() int
 }
 
 type OfInt8 []int8
@@ -532,6 +592,11 @@ func (__ OfInt8Iter) Map(f func(i int, d int8) int8) OfInt8Iter {
 	return OfInt8Iter(rval)
 }
 
+type OfRuneInf interface {
+	At(int) rune
+	Count() int
+}
+
 type OfRune []rune
 type OfRuneSt struct {
 	in []rune
@@ -574,6 +639,11 @@ func (__ OfRuneIter) Map(f func(i int, d rune) rune) OfRuneIter {
 		rval[i] = f(i, __[i])
 	}
 	return OfRuneIter(rval)
+}
+
+type OfStringInf interface {
+	At(int) string
+	Count() int
 }
 
 type OfString []string
@@ -620,6 +690,11 @@ func (__ OfStringIter) Map(f func(i int, d string) string) OfStringIter {
 	return OfStringIter(rval)
 }
 
+type OfUintInf interface {
+	At(int) uint
+	Count() int
+}
+
 type OfUint []uint
 type OfUintSt struct {
 	in []uint
@@ -662,6 +737,11 @@ func (__ OfUintIter) Map(f func(i int, d uint) uint) OfUintIter {
 		rval[i] = f(i, __[i])
 	}
 	return OfUintIter(rval)
+}
+
+type OfUint16Inf interface {
+	At(int) uint16
+	Count() int
 }
 
 type OfUint16 []uint16
@@ -708,6 +788,11 @@ func (__ OfUint16Iter) Map(f func(i int, d uint16) uint16) OfUint16Iter {
 	return OfUint16Iter(rval)
 }
 
+type OfUint32Inf interface {
+	At(int) uint32
+	Count() int
+}
+
 type OfUint32 []uint32
 type OfUint32St struct {
 	in []uint32
@@ -750,6 +835,11 @@ func (__ OfUint32Iter) Map(f func(i int, d uint32) uint32) OfUint32Iter {
 		rval[i] = f(i, __[i])
 	}
 	return OfUint32Iter(rval)
+}
+
+type OfUint64Inf interface {
+	At(int) uint64
+	Count() int
 }
 
 type OfUint64 []uint64
@@ -796,6 +886,11 @@ func (__ OfUint64Iter) Map(f func(i int, d uint64) uint64) OfUint64Iter {
 	return OfUint64Iter(rval)
 }
 
+type OfUint8Inf interface {
+	At(int) uint8
+	Count() int
+}
+
 type OfUint8 []uint8
 type OfUint8St struct {
 	in []uint8
@@ -838,6 +933,11 @@ func (__ OfUint8Iter) Map(f func(i int, d uint8) uint8) OfUint8Iter {
 		rval[i] = f(i, __[i])
 	}
 	return OfUint8Iter(rval)
+}
+
+type OfUintptrInf interface {
+	At(int) uintptr
+	Count() int
 }
 
 type OfUintptr []uintptr

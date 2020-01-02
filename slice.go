@@ -6,6 +6,11 @@ import "github.com/cheekybits/genny/generic"
 
 type Some generic.Type
 
+type OfSomeInf interface {
+	At(int) Some
+	Count() int
+}
+
 type OfSome []Some
 type OfSomeSt struct {
 	in []Some
