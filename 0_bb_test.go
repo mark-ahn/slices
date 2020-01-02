@@ -18,7 +18,7 @@ func TestT(t *testing.T) {
 }
 
 func TestTSt(t *testing.T) {
-	ss := slices.OfStringSt{[]string{
+	ss := &slices.OfStringSt{[]string{
 		"0", "1", "2", "3",
 	}}
 

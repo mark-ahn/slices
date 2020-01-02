@@ -8,7 +8,7 @@ type Some generic.Type
 
 type OfSome []Some
 type OfSomeSt struct {
-	OfSome
+	*OfSome
 }
 
 type OfSomeIter []Some
