@@ -7,6 +7,7 @@ import "github.com/cheekybits/genny/generic"
 type Some generic.Type
 
 type OfSome []Some
+type OfSomeIter []Some
 
 func (__ OfSome) At(i int) Some {
 	return __[i]
@@ -16,17 +17,17 @@ func (__ OfSome) Count() int {
 	return len(__)
 }
 
-func (__ OfSome) Range(f func(i int, d Some) bool) {
+func (__ OfSomeIter) Range(f func(i int, d Some) bool) {
 	for i := range __ {
 		if !f(i, __[i]) {
 			break
 		}
 	}
 }
-func (__ OfSome) Map(f func(i int, d Some) Some) OfSome {
+func (__ OfSomeIter) Map(f func(i int, d Some) Some) OfSomeIter {
 	rval := make([]Some, len(__))
 	for i := range __ {
 		rval[i] = f(i, __[i])
 	}
-	return OfSome(rval)
+	return OfSomeIter(rval)
 }

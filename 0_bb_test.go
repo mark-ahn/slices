@@ -18,7 +18,7 @@ func TestT(t *testing.T) {
 }
 
 func TestSum(t *testing.T) {
-	is := slices.OfInt([]int{
+	is := slices.OfIntIter([]int{
 		1, 2, 3, 4, 5,
 	})
 
@@ -32,7 +32,7 @@ func TestSum(t *testing.T) {
 	}
 
 	res := is.Map(func(_ int, d int) int { return d * 2 })
-	expect := slices.OfInt([]int{2, 4, 6, 8, 10})
+	expect := slices.OfIntIter([]int{2, 4, 6, 8, 10})
 	if !reflect.DeepEqual(expect, res) {
 		t.Errorf("expect %v:%T, got %v:%T", expect, expect, res, res)
 	}
