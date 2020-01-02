@@ -7,6 +7,10 @@ import "github.com/cheekybits/genny/generic"
 type Some generic.Type
 
 type OfSome []Some
+type OfSomeSt struct {
+	OfSome
+}
+
 type OfSomeIter []Some
 
 func (__ OfSome) At(i int) Some {

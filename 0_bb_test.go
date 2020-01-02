@@ -17,6 +17,16 @@ func TestT(t *testing.T) {
 	}
 }
 
+func TestTSt(t *testing.T) {
+	ss := slices.OfStringSt{[]string{
+		"0", "1", "2", "3",
+	}}
+
+	if "3" != ss.At(3) {
+		t.Errorf("expect %v, got %v", "3", ss.At(3))
+	}
+}
+
 func TestSum(t *testing.T) {
 	is := slices.OfIntIter([]int{
 		1, 2, 3, 4, 5,

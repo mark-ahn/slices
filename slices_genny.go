@@ -5,6 +5,10 @@
 package slices
 
 type OfBool []bool
+type OfBoolSt struct {
+	OfBool
+}
+
 type OfBoolIter []bool
 
 func (__ OfBool) At(i int) bool {
@@ -31,6 +35,10 @@ func (__ OfBoolIter) Map(f func(i int, d bool) bool) OfBoolIter {
 }
 
 type OfByte []byte
+type OfByteSt struct {
+	OfByte
+}
+
 type OfByteIter []byte
 
 func (__ OfByte) At(i int) byte {
@@ -57,6 +65,10 @@ func (__ OfByteIter) Map(f func(i int, d byte) byte) OfByteIter {
 }
 
 type OfComplex128 []complex128
+type OfComplex128St struct {
+	OfComplex128
+}
+
 type OfComplex128Iter []complex128
 
 func (__ OfComplex128) At(i int) complex128 {
@@ -83,6 +95,10 @@ func (__ OfComplex128Iter) Map(f func(i int, d complex128) complex128) OfComplex
 }
 
 type OfComplex64 []complex64
+type OfComplex64St struct {
+	OfComplex64
+}
+
 type OfComplex64Iter []complex64
 
 func (__ OfComplex64) At(i int) complex64 {
@@ -109,6 +125,10 @@ func (__ OfComplex64Iter) Map(f func(i int, d complex64) complex64) OfComplex64I
 }
 
 type OfError []error
+type OfErrorSt struct {
+	OfError
+}
+
 type OfErrorIter []error
 
 func (__ OfError) At(i int) error {
@@ -135,6 +155,10 @@ func (__ OfErrorIter) Map(f func(i int, d error) error) OfErrorIter {
 }
 
 type OfFloat32 []float32
+type OfFloat32St struct {
+	OfFloat32
+}
+
 type OfFloat32Iter []float32
 
 func (__ OfFloat32) At(i int) float32 {
@@ -161,6 +185,10 @@ func (__ OfFloat32Iter) Map(f func(i int, d float32) float32) OfFloat32Iter {
 }
 
 type OfFloat64 []float64
+type OfFloat64St struct {
+	OfFloat64
+}
+
 type OfFloat64Iter []float64
 
 func (__ OfFloat64) At(i int) float64 {
@@ -187,6 +215,10 @@ func (__ OfFloat64Iter) Map(f func(i int, d float64) float64) OfFloat64Iter {
 }
 
 type OfInt []int
+type OfIntSt struct {
+	OfInt
+}
+
 type OfIntIter []int
 
 func (__ OfInt) At(i int) int {
@@ -213,6 +245,10 @@ func (__ OfIntIter) Map(f func(i int, d int) int) OfIntIter {
 }
 
 type OfInt16 []int16
+type OfInt16St struct {
+	OfInt16
+}
+
 type OfInt16Iter []int16
 
 func (__ OfInt16) At(i int) int16 {
@@ -239,6 +275,10 @@ func (__ OfInt16Iter) Map(f func(i int, d int16) int16) OfInt16Iter {
 }
 
 type OfInt32 []int32
+type OfInt32St struct {
+	OfInt32
+}
+
 type OfInt32Iter []int32
 
 func (__ OfInt32) At(i int) int32 {
@@ -265,6 +305,10 @@ func (__ OfInt32Iter) Map(f func(i int, d int32) int32) OfInt32Iter {
 }
 
 type OfInt64 []int64
+type OfInt64St struct {
+	OfInt64
+}
+
 type OfInt64Iter []int64
 
 func (__ OfInt64) At(i int) int64 {
@@ -291,6 +335,10 @@ func (__ OfInt64Iter) Map(f func(i int, d int64) int64) OfInt64Iter {
 }
 
 type OfInt8 []int8
+type OfInt8St struct {
+	OfInt8
+}
+
 type OfInt8Iter []int8
 
 func (__ OfInt8) At(i int) int8 {
@@ -317,6 +365,10 @@ func (__ OfInt8Iter) Map(f func(i int, d int8) int8) OfInt8Iter {
 }
 
 type OfRune []rune
+type OfRuneSt struct {
+	OfRune
+}
+
 type OfRuneIter []rune
 
 func (__ OfRune) At(i int) rune {
@@ -343,6 +395,10 @@ func (__ OfRuneIter) Map(f func(i int, d rune) rune) OfRuneIter {
 }
 
 type OfString []string
+type OfStringSt struct {
+	OfString
+}
+
 type OfStringIter []string
 
 func (__ OfString) At(i int) string {
@@ -369,6 +425,10 @@ func (__ OfStringIter) Map(f func(i int, d string) string) OfStringIter {
 }
 
 type OfUint []uint
+type OfUintSt struct {
+	OfUint
+}
+
 type OfUintIter []uint
 
 func (__ OfUint) At(i int) uint {
@@ -395,6 +455,10 @@ func (__ OfUintIter) Map(f func(i int, d uint) uint) OfUintIter {
 }
 
 type OfUint16 []uint16
+type OfUint16St struct {
+	OfUint16
+}
+
 type OfUint16Iter []uint16
 
 func (__ OfUint16) At(i int) uint16 {
@@ -421,6 +485,10 @@ func (__ OfUint16Iter) Map(f func(i int, d uint16) uint16) OfUint16Iter {
 }
 
 type OfUint32 []uint32
+type OfUint32St struct {
+	OfUint32
+}
+
 type OfUint32Iter []uint32
 
 func (__ OfUint32) At(i int) uint32 {
@@ -447,6 +515,10 @@ func (__ OfUint32Iter) Map(f func(i int, d uint32) uint32) OfUint32Iter {
 }
 
 type OfUint64 []uint64
+type OfUint64St struct {
+	OfUint64
+}
+
 type OfUint64Iter []uint64
 
 func (__ OfUint64) At(i int) uint64 {
@@ -473,6 +545,10 @@ func (__ OfUint64Iter) Map(f func(i int, d uint64) uint64) OfUint64Iter {
 }
 
 type OfUint8 []uint8
+type OfUint8St struct {
+	OfUint8
+}
+
 type OfUint8Iter []uint8
 
 func (__ OfUint8) At(i int) uint8 {
@@ -499,6 +575,10 @@ func (__ OfUint8Iter) Map(f func(i int, d uint8) uint8) OfUint8Iter {
 }
 
 type OfUintptr []uintptr
+type OfUintptrSt struct {
+	OfUintptr
+}
+
 type OfUintptrIter []uintptr
 
 func (__ OfUintptr) At(i int) uintptr {
