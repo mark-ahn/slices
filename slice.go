@@ -11,16 +11,13 @@ type OfSomeInf interface {
 	Count() int
 }
 
-type OfSome []Some
-type OfSomeSt struct {
-	in []Some
+type OfSomeInf32 interface {
+	At(int32) Some
+	Count() int32
 }
 
-func NewSomeSt(d []Some) *OfSomeSt {
-	return &OfSomeSt{
-		in: d,
-	}
-}
+type OfSome []Some
+type OfSomeI32 []Some
 
 type OfSomeIter []Some
 
@@ -32,12 +29,12 @@ func (__ OfSome) Count() int {
 	return len(__)
 }
 
-func (__ *OfSomeSt) At(i int) Some {
-	return __.in[i]
+func (__ OfSomeI32) At(i int32) Some {
+	return __[int(i)]
 }
 
-func (__ *OfSomeSt) Count() int {
-	return len(__.in)
+func (__ OfSomeI32) Count() int32 {
+	return int32(len(__))
 }
 
 func (__ OfSomeIter) Range(f func(i int, d Some) bool) {

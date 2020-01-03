@@ -9,16 +9,13 @@ type OfBoolInf interface {
 	Count() int
 }
 
-type OfBool []bool
-type OfBoolSt struct {
-	in []bool
+type OfBoolInf32 interface {
+	At(int32) bool
+	Count() int32
 }
 
-func NewBoolSt(d []bool) *OfBoolSt {
-	return &OfBoolSt{
-		in: d,
-	}
-}
+type OfBool []bool
+type OfBoolI32 []bool
 
 type OfBoolIter []bool
 
@@ -30,12 +27,12 @@ func (__ OfBool) Count() int {
 	return len(__)
 }
 
-func (__ *OfBoolSt) At(i int) bool {
-	return __.in[i]
+func (__ OfBoolI32) At(i int32) bool {
+	return __[int(i)]
 }
 
-func (__ *OfBoolSt) Count() int {
-	return len(__.in)
+func (__ OfBoolI32) Count() int32 {
+	return int32(len(__))
 }
 
 func (__ OfBoolIter) Range(f func(i int, d bool) bool) {
@@ -58,16 +55,13 @@ type OfByteInf interface {
 	Count() int
 }
 
-type OfByte []byte
-type OfByteSt struct {
-	in []byte
+type OfByteInf32 interface {
+	At(int32) byte
+	Count() int32
 }
 
-func NewByteSt(d []byte) *OfByteSt {
-	return &OfByteSt{
-		in: d,
-	}
-}
+type OfByte []byte
+type OfByteI32 []byte
 
 type OfByteIter []byte
 
@@ -79,12 +73,12 @@ func (__ OfByte) Count() int {
 	return len(__)
 }
 
-func (__ *OfByteSt) At(i int) byte {
-	return __.in[i]
+func (__ OfByteI32) At(i int32) byte {
+	return __[int(i)]
 }
 
-func (__ *OfByteSt) Count() int {
-	return len(__.in)
+func (__ OfByteI32) Count() int32 {
+	return int32(len(__))
 }
 
 func (__ OfByteIter) Range(f func(i int, d byte) bool) {
@@ -107,16 +101,13 @@ type OfComplex128Inf interface {
 	Count() int
 }
 
-type OfComplex128 []complex128
-type OfComplex128St struct {
-	in []complex128
+type OfComplex128Inf32 interface {
+	At(int32) complex128
+	Count() int32
 }
 
-func NewComplex128St(d []complex128) *OfComplex128St {
-	return &OfComplex128St{
-		in: d,
-	}
-}
+type OfComplex128 []complex128
+type OfComplex128I32 []complex128
 
 type OfComplex128Iter []complex128
 
@@ -128,12 +119,12 @@ func (__ OfComplex128) Count() int {
 	return len(__)
 }
 
-func (__ *OfComplex128St) At(i int) complex128 {
-	return __.in[i]
+func (__ OfComplex128I32) At(i int32) complex128 {
+	return __[int(i)]
 }
 
-func (__ *OfComplex128St) Count() int {
-	return len(__.in)
+func (__ OfComplex128I32) Count() int32 {
+	return int32(len(__))
 }
 
 func (__ OfComplex128Iter) Range(f func(i int, d complex128) bool) {
@@ -156,16 +147,13 @@ type OfComplex64Inf interface {
 	Count() int
 }
 
-type OfComplex64 []complex64
-type OfComplex64St struct {
-	in []complex64
+type OfComplex64Inf32 interface {
+	At(int32) complex64
+	Count() int32
 }
 
-func NewComplex64St(d []complex64) *OfComplex64St {
-	return &OfComplex64St{
-		in: d,
-	}
-}
+type OfComplex64 []complex64
+type OfComplex64I32 []complex64
 
 type OfComplex64Iter []complex64
 
@@ -177,12 +165,12 @@ func (__ OfComplex64) Count() int {
 	return len(__)
 }
 
-func (__ *OfComplex64St) At(i int) complex64 {
-	return __.in[i]
+func (__ OfComplex64I32) At(i int32) complex64 {
+	return __[int(i)]
 }
 
-func (__ *OfComplex64St) Count() int {
-	return len(__.in)
+func (__ OfComplex64I32) Count() int32 {
+	return int32(len(__))
 }
 
 func (__ OfComplex64Iter) Range(f func(i int, d complex64) bool) {
@@ -205,16 +193,13 @@ type OfErrorInf interface {
 	Count() int
 }
 
-type OfError []error
-type OfErrorSt struct {
-	in []error
+type OfErrorInf32 interface {
+	At(int32) error
+	Count() int32
 }
 
-func NewErrorSt(d []error) *OfErrorSt {
-	return &OfErrorSt{
-		in: d,
-	}
-}
+type OfError []error
+type OfErrorI32 []error
 
 type OfErrorIter []error
 
@@ -226,12 +211,12 @@ func (__ OfError) Count() int {
 	return len(__)
 }
 
-func (__ *OfErrorSt) At(i int) error {
-	return __.in[i]
+func (__ OfErrorI32) At(i int32) error {
+	return __[int(i)]
 }
 
-func (__ *OfErrorSt) Count() int {
-	return len(__.in)
+func (__ OfErrorI32) Count() int32 {
+	return int32(len(__))
 }
 
 func (__ OfErrorIter) Range(f func(i int, d error) bool) {
@@ -254,16 +239,13 @@ type OfFloat32Inf interface {
 	Count() int
 }
 
-type OfFloat32 []float32
-type OfFloat32St struct {
-	in []float32
+type OfFloat32Inf32 interface {
+	At(int32) float32
+	Count() int32
 }
 
-func NewFloat32St(d []float32) *OfFloat32St {
-	return &OfFloat32St{
-		in: d,
-	}
-}
+type OfFloat32 []float32
+type OfFloat32I32 []float32
 
 type OfFloat32Iter []float32
 
@@ -275,12 +257,12 @@ func (__ OfFloat32) Count() int {
 	return len(__)
 }
 
-func (__ *OfFloat32St) At(i int) float32 {
-	return __.in[i]
+func (__ OfFloat32I32) At(i int32) float32 {
+	return __[int(i)]
 }
 
-func (__ *OfFloat32St) Count() int {
-	return len(__.in)
+func (__ OfFloat32I32) Count() int32 {
+	return int32(len(__))
 }
 
 func (__ OfFloat32Iter) Range(f func(i int, d float32) bool) {
@@ -303,16 +285,13 @@ type OfFloat64Inf interface {
 	Count() int
 }
 
-type OfFloat64 []float64
-type OfFloat64St struct {
-	in []float64
+type OfFloat64Inf32 interface {
+	At(int32) float64
+	Count() int32
 }
 
-func NewFloat64St(d []float64) *OfFloat64St {
-	return &OfFloat64St{
-		in: d,
-	}
-}
+type OfFloat64 []float64
+type OfFloat64I32 []float64
 
 type OfFloat64Iter []float64
 
@@ -324,12 +303,12 @@ func (__ OfFloat64) Count() int {
 	return len(__)
 }
 
-func (__ *OfFloat64St) At(i int) float64 {
-	return __.in[i]
+func (__ OfFloat64I32) At(i int32) float64 {
+	return __[int(i)]
 }
 
-func (__ *OfFloat64St) Count() int {
-	return len(__.in)
+func (__ OfFloat64I32) Count() int32 {
+	return int32(len(__))
 }
 
 func (__ OfFloat64Iter) Range(f func(i int, d float64) bool) {
@@ -352,16 +331,13 @@ type OfIntInf interface {
 	Count() int
 }
 
-type OfInt []int
-type OfIntSt struct {
-	in []int
+type OfIntInf32 interface {
+	At(int32) int
+	Count() int32
 }
 
-func NewIntSt(d []int) *OfIntSt {
-	return &OfIntSt{
-		in: d,
-	}
-}
+type OfInt []int
+type OfIntI32 []int
 
 type OfIntIter []int
 
@@ -373,12 +349,12 @@ func (__ OfInt) Count() int {
 	return len(__)
 }
 
-func (__ *OfIntSt) At(i int) int {
-	return __.in[i]
+func (__ OfIntI32) At(i int32) int {
+	return __[int(i)]
 }
 
-func (__ *OfIntSt) Count() int {
-	return len(__.in)
+func (__ OfIntI32) Count() int32 {
+	return int32(len(__))
 }
 
 func (__ OfIntIter) Range(f func(i int, d int) bool) {
@@ -401,16 +377,13 @@ type OfInt16Inf interface {
 	Count() int
 }
 
-type OfInt16 []int16
-type OfInt16St struct {
-	in []int16
+type OfInt16Inf32 interface {
+	At(int32) int16
+	Count() int32
 }
 
-func NewInt16St(d []int16) *OfInt16St {
-	return &OfInt16St{
-		in: d,
-	}
-}
+type OfInt16 []int16
+type OfInt16I32 []int16
 
 type OfInt16Iter []int16
 
@@ -422,12 +395,12 @@ func (__ OfInt16) Count() int {
 	return len(__)
 }
 
-func (__ *OfInt16St) At(i int) int16 {
-	return __.in[i]
+func (__ OfInt16I32) At(i int32) int16 {
+	return __[int(i)]
 }
 
-func (__ *OfInt16St) Count() int {
-	return len(__.in)
+func (__ OfInt16I32) Count() int32 {
+	return int32(len(__))
 }
 
 func (__ OfInt16Iter) Range(f func(i int, d int16) bool) {
@@ -450,16 +423,13 @@ type OfInt32Inf interface {
 	Count() int
 }
 
-type OfInt32 []int32
-type OfInt32St struct {
-	in []int32
+type OfInt32Inf32 interface {
+	At(int32) int32
+	Count() int32
 }
 
-func NewInt32St(d []int32) *OfInt32St {
-	return &OfInt32St{
-		in: d,
-	}
-}
+type OfInt32 []int32
+type OfInt32I32 []int32
 
 type OfInt32Iter []int32
 
@@ -471,12 +441,12 @@ func (__ OfInt32) Count() int {
 	return len(__)
 }
 
-func (__ *OfInt32St) At(i int) int32 {
-	return __.in[i]
+func (__ OfInt32I32) At(i int32) int32 {
+	return __[int(i)]
 }
 
-func (__ *OfInt32St) Count() int {
-	return len(__.in)
+func (__ OfInt32I32) Count() int32 {
+	return int32(len(__))
 }
 
 func (__ OfInt32Iter) Range(f func(i int, d int32) bool) {
@@ -499,16 +469,13 @@ type OfInt64Inf interface {
 	Count() int
 }
 
-type OfInt64 []int64
-type OfInt64St struct {
-	in []int64
+type OfInt64Inf32 interface {
+	At(int32) int64
+	Count() int32
 }
 
-func NewInt64St(d []int64) *OfInt64St {
-	return &OfInt64St{
-		in: d,
-	}
-}
+type OfInt64 []int64
+type OfInt64I32 []int64
 
 type OfInt64Iter []int64
 
@@ -520,12 +487,12 @@ func (__ OfInt64) Count() int {
 	return len(__)
 }
 
-func (__ *OfInt64St) At(i int) int64 {
-	return __.in[i]
+func (__ OfInt64I32) At(i int32) int64 {
+	return __[int(i)]
 }
 
-func (__ *OfInt64St) Count() int {
-	return len(__.in)
+func (__ OfInt64I32) Count() int32 {
+	return int32(len(__))
 }
 
 func (__ OfInt64Iter) Range(f func(i int, d int64) bool) {
@@ -548,16 +515,13 @@ type OfInt8Inf interface {
 	Count() int
 }
 
-type OfInt8 []int8
-type OfInt8St struct {
-	in []int8
+type OfInt8Inf32 interface {
+	At(int32) int8
+	Count() int32
 }
 
-func NewInt8St(d []int8) *OfInt8St {
-	return &OfInt8St{
-		in: d,
-	}
-}
+type OfInt8 []int8
+type OfInt8I32 []int8
 
 type OfInt8Iter []int8
 
@@ -569,12 +533,12 @@ func (__ OfInt8) Count() int {
 	return len(__)
 }
 
-func (__ *OfInt8St) At(i int) int8 {
-	return __.in[i]
+func (__ OfInt8I32) At(i int32) int8 {
+	return __[int(i)]
 }
 
-func (__ *OfInt8St) Count() int {
-	return len(__.in)
+func (__ OfInt8I32) Count() int32 {
+	return int32(len(__))
 }
 
 func (__ OfInt8Iter) Range(f func(i int, d int8) bool) {
@@ -597,16 +561,13 @@ type OfRuneInf interface {
 	Count() int
 }
 
-type OfRune []rune
-type OfRuneSt struct {
-	in []rune
+type OfRuneInf32 interface {
+	At(int32) rune
+	Count() int32
 }
 
-func NewRuneSt(d []rune) *OfRuneSt {
-	return &OfRuneSt{
-		in: d,
-	}
-}
+type OfRune []rune
+type OfRuneI32 []rune
 
 type OfRuneIter []rune
 
@@ -618,12 +579,12 @@ func (__ OfRune) Count() int {
 	return len(__)
 }
 
-func (__ *OfRuneSt) At(i int) rune {
-	return __.in[i]
+func (__ OfRuneI32) At(i int32) rune {
+	return __[int(i)]
 }
 
-func (__ *OfRuneSt) Count() int {
-	return len(__.in)
+func (__ OfRuneI32) Count() int32 {
+	return int32(len(__))
 }
 
 func (__ OfRuneIter) Range(f func(i int, d rune) bool) {
@@ -646,16 +607,13 @@ type OfStringInf interface {
 	Count() int
 }
 
-type OfString []string
-type OfStringSt struct {
-	in []string
+type OfStringInf32 interface {
+	At(int32) string
+	Count() int32
 }
 
-func NewStringSt(d []string) *OfStringSt {
-	return &OfStringSt{
-		in: d,
-	}
-}
+type OfString []string
+type OfStringI32 []string
 
 type OfStringIter []string
 
@@ -667,12 +625,12 @@ func (__ OfString) Count() int {
 	return len(__)
 }
 
-func (__ *OfStringSt) At(i int) string {
-	return __.in[i]
+func (__ OfStringI32) At(i int32) string {
+	return __[int(i)]
 }
 
-func (__ *OfStringSt) Count() int {
-	return len(__.in)
+func (__ OfStringI32) Count() int32 {
+	return int32(len(__))
 }
 
 func (__ OfStringIter) Range(f func(i int, d string) bool) {
@@ -695,16 +653,13 @@ type OfUintInf interface {
 	Count() int
 }
 
-type OfUint []uint
-type OfUintSt struct {
-	in []uint
+type OfUintInf32 interface {
+	At(int32) uint
+	Count() int32
 }
 
-func NewUintSt(d []uint) *OfUintSt {
-	return &OfUintSt{
-		in: d,
-	}
-}
+type OfUint []uint
+type OfUintI32 []uint
 
 type OfUintIter []uint
 
@@ -716,12 +671,12 @@ func (__ OfUint) Count() int {
 	return len(__)
 }
 
-func (__ *OfUintSt) At(i int) uint {
-	return __.in[i]
+func (__ OfUintI32) At(i int32) uint {
+	return __[int(i)]
 }
 
-func (__ *OfUintSt) Count() int {
-	return len(__.in)
+func (__ OfUintI32) Count() int32 {
+	return int32(len(__))
 }
 
 func (__ OfUintIter) Range(f func(i int, d uint) bool) {
@@ -744,16 +699,13 @@ type OfUint16Inf interface {
 	Count() int
 }
 
-type OfUint16 []uint16
-type OfUint16St struct {
-	in []uint16
+type OfUint16Inf32 interface {
+	At(int32) uint16
+	Count() int32
 }
 
-func NewUint16St(d []uint16) *OfUint16St {
-	return &OfUint16St{
-		in: d,
-	}
-}
+type OfUint16 []uint16
+type OfUint16I32 []uint16
 
 type OfUint16Iter []uint16
 
@@ -765,12 +717,12 @@ func (__ OfUint16) Count() int {
 	return len(__)
 }
 
-func (__ *OfUint16St) At(i int) uint16 {
-	return __.in[i]
+func (__ OfUint16I32) At(i int32) uint16 {
+	return __[int(i)]
 }
 
-func (__ *OfUint16St) Count() int {
-	return len(__.in)
+func (__ OfUint16I32) Count() int32 {
+	return int32(len(__))
 }
 
 func (__ OfUint16Iter) Range(f func(i int, d uint16) bool) {
@@ -793,16 +745,13 @@ type OfUint32Inf interface {
 	Count() int
 }
 
-type OfUint32 []uint32
-type OfUint32St struct {
-	in []uint32
+type OfUint32Inf32 interface {
+	At(int32) uint32
+	Count() int32
 }
 
-func NewUint32St(d []uint32) *OfUint32St {
-	return &OfUint32St{
-		in: d,
-	}
-}
+type OfUint32 []uint32
+type OfUint32I32 []uint32
 
 type OfUint32Iter []uint32
 
@@ -814,12 +763,12 @@ func (__ OfUint32) Count() int {
 	return len(__)
 }
 
-func (__ *OfUint32St) At(i int) uint32 {
-	return __.in[i]
+func (__ OfUint32I32) At(i int32) uint32 {
+	return __[int(i)]
 }
 
-func (__ *OfUint32St) Count() int {
-	return len(__.in)
+func (__ OfUint32I32) Count() int32 {
+	return int32(len(__))
 }
 
 func (__ OfUint32Iter) Range(f func(i int, d uint32) bool) {
@@ -842,16 +791,13 @@ type OfUint64Inf interface {
 	Count() int
 }
 
-type OfUint64 []uint64
-type OfUint64St struct {
-	in []uint64
+type OfUint64Inf32 interface {
+	At(int32) uint64
+	Count() int32
 }
 
-func NewUint64St(d []uint64) *OfUint64St {
-	return &OfUint64St{
-		in: d,
-	}
-}
+type OfUint64 []uint64
+type OfUint64I32 []uint64
 
 type OfUint64Iter []uint64
 
@@ -863,12 +809,12 @@ func (__ OfUint64) Count() int {
 	return len(__)
 }
 
-func (__ *OfUint64St) At(i int) uint64 {
-	return __.in[i]
+func (__ OfUint64I32) At(i int32) uint64 {
+	return __[int(i)]
 }
 
-func (__ *OfUint64St) Count() int {
-	return len(__.in)
+func (__ OfUint64I32) Count() int32 {
+	return int32(len(__))
 }
 
 func (__ OfUint64Iter) Range(f func(i int, d uint64) bool) {
@@ -891,16 +837,13 @@ type OfUint8Inf interface {
 	Count() int
 }
 
-type OfUint8 []uint8
-type OfUint8St struct {
-	in []uint8
+type OfUint8Inf32 interface {
+	At(int32) uint8
+	Count() int32
 }
 
-func NewUint8St(d []uint8) *OfUint8St {
-	return &OfUint8St{
-		in: d,
-	}
-}
+type OfUint8 []uint8
+type OfUint8I32 []uint8
 
 type OfUint8Iter []uint8
 
@@ -912,12 +855,12 @@ func (__ OfUint8) Count() int {
 	return len(__)
 }
 
-func (__ *OfUint8St) At(i int) uint8 {
-	return __.in[i]
+func (__ OfUint8I32) At(i int32) uint8 {
+	return __[int(i)]
 }
 
-func (__ *OfUint8St) Count() int {
-	return len(__.in)
+func (__ OfUint8I32) Count() int32 {
+	return int32(len(__))
 }
 
 func (__ OfUint8Iter) Range(f func(i int, d uint8) bool) {
@@ -940,16 +883,13 @@ type OfUintptrInf interface {
 	Count() int
 }
 
-type OfUintptr []uintptr
-type OfUintptrSt struct {
-	in []uintptr
+type OfUintptrInf32 interface {
+	At(int32) uintptr
+	Count() int32
 }
 
-func NewUintptrSt(d []uintptr) *OfUintptrSt {
-	return &OfUintptrSt{
-		in: d,
-	}
-}
+type OfUintptr []uintptr
+type OfUintptrI32 []uintptr
 
 type OfUintptrIter []uintptr
 
@@ -961,12 +901,12 @@ func (__ OfUintptr) Count() int {
 	return len(__)
 }
 
-func (__ *OfUintptrSt) At(i int) uintptr {
-	return __.in[i]
+func (__ OfUintptrI32) At(i int32) uintptr {
+	return __[int(i)]
 }
 
-func (__ *OfUintptrSt) Count() int {
-	return len(__.in)
+func (__ OfUintptrI32) Count() int32 {
+	return int32(len(__))
 }
 
 func (__ OfUintptrIter) Range(f func(i int, d uintptr) bool) {
