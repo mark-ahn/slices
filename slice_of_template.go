@@ -22,12 +22,12 @@ type SliceOfSomeAsIterIf interface {
 	AsIter() SliceOfSomeIterIf
 }
 
-type SliceOfSomeIf32 interface {
+type SliceOfSomeI32If interface {
 	Get(int32) Some
 	Len() int32
 }
-type SliceOfSomeIfMut32 interface {
-	SliceOfSomeIf32
+type SliceOfSomeI32MutIf interface {
+	SliceOfSomeI32If
 	Set(int32, Some) Some
 }
 
@@ -65,6 +65,23 @@ func (__ SliceOfSome) Len() int {
 
 func (__ SliceOfSome) AsIter() SliceOfSomeIterIf {
 	return SliceOfSomeIter(__)
+}
+
+func SliceOfSomeI32Into(__ SliceOfSomeI32If) []Some {
+	switch d := __.(type) {
+	case SliceOfSomeI32:
+		return []Some(d)
+	case *SliceOfSomeStI32:
+		return []Some(d.somes)
+	case nil:
+		return nil
+	default:
+		res := make([]Some, __.Len())
+		for i := int32(0); i < int32(len(res)); i += 1 {
+			res[i] = __.Get(i)
+		}
+		return res
+	}
 }
 
 type SliceOfSomeI32 []Some
@@ -107,6 +124,29 @@ func (__ *SliceOfSomeSt) Len() int {
 }
 
 func (__ *SliceOfSomeSt) AsIter() SliceOfSomeIterIf {
+	return __.somes.AsIter()
+}
+
+type SliceOfSomeStI32 struct {
+	somes SliceOfSomeI32
+}
+
+func NewSliceOfSomeStI32(i int32) *SliceOfSomeSt {
+	return &SliceOfSomeSt{somes: SliceOfSome(make([]Some, i))}
+}
+
+func (__ *SliceOfSomeStI32) Get(i int32) Some {
+	return __.somes.Get(i)
+}
+func (__ *SliceOfSomeStI32) Set(i int32, d Some) Some {
+	return __.somes.Set(i, d)
+}
+
+func (__ *SliceOfSomeStI32) Len() int32 {
+	return __.somes.Len()
+}
+
+func (__ *SliceOfSomeStI32) AsIter() SliceOfSomeIterIf {
 	return __.somes.AsIter()
 }
 

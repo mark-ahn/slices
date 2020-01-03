@@ -21,12 +21,12 @@ type OfBoolAsIterIf interface {
 	AsIter() OfBoolIterIf
 }
 
-type OfBoolIf32 interface {
+type OfBoolI32If interface {
 	Get(int32) bool
 	Len() int32
 }
-type OfBoolIfMut32 interface {
-	OfBoolIf32
+type OfBoolI32MutIf interface {
+	OfBoolI32If
 	Set(int32, bool) bool
 }
 
@@ -64,6 +64,23 @@ func (__ OfBool) Len() int {
 
 func (__ OfBool) AsIter() OfBoolIterIf {
 	return OfBoolIter(__)
+}
+
+func OfBoolI32Into(__ OfBoolI32If) []bool {
+	switch d := __.(type) {
+	case OfBoolI32:
+		return []bool(d)
+	case *OfBoolStI32:
+		return []bool(d.somes)
+	case nil:
+		return nil
+	default:
+		res := make([]bool, __.Len())
+		for i := int32(0); i < int32(len(res)); i += 1 {
+			res[i] = __.Get(i)
+		}
+		return res
+	}
 }
 
 type OfBoolI32 []bool
@@ -109,6 +126,29 @@ func (__ *OfBoolSt) AsIter() OfBoolIterIf {
 	return __.somes.AsIter()
 }
 
+type OfBoolStI32 struct {
+	somes OfBoolI32
+}
+
+func NewOfBoolStI32(i int32) *OfBoolSt {
+	return &OfBoolSt{somes: OfBool(make([]bool, i))}
+}
+
+func (__ *OfBoolStI32) Get(i int32) bool {
+	return __.somes.Get(i)
+}
+func (__ *OfBoolStI32) Set(i int32, d bool) bool {
+	return __.somes.Set(i, d)
+}
+
+func (__ *OfBoolStI32) Len() int32 {
+	return __.somes.Len()
+}
+
+func (__ *OfBoolStI32) AsIter() OfBoolIterIf {
+	return __.somes.AsIter()
+}
+
 type OfBoolIter []bool
 
 func (__ OfBoolIter) Range(f func(i int, d bool) bool) {
@@ -143,12 +183,12 @@ type OfByteAsIterIf interface {
 	AsIter() OfByteIterIf
 }
 
-type OfByteIf32 interface {
+type OfByteI32If interface {
 	Get(int32) byte
 	Len() int32
 }
-type OfByteIfMut32 interface {
-	OfByteIf32
+type OfByteI32MutIf interface {
+	OfByteI32If
 	Set(int32, byte) byte
 }
 
@@ -186,6 +226,23 @@ func (__ OfByte) Len() int {
 
 func (__ OfByte) AsIter() OfByteIterIf {
 	return OfByteIter(__)
+}
+
+func OfByteI32Into(__ OfByteI32If) []byte {
+	switch d := __.(type) {
+	case OfByteI32:
+		return []byte(d)
+	case *OfByteStI32:
+		return []byte(d.somes)
+	case nil:
+		return nil
+	default:
+		res := make([]byte, __.Len())
+		for i := int32(0); i < int32(len(res)); i += 1 {
+			res[i] = __.Get(i)
+		}
+		return res
+	}
 }
 
 type OfByteI32 []byte
@@ -231,6 +288,29 @@ func (__ *OfByteSt) AsIter() OfByteIterIf {
 	return __.somes.AsIter()
 }
 
+type OfByteStI32 struct {
+	somes OfByteI32
+}
+
+func NewOfByteStI32(i int32) *OfByteSt {
+	return &OfByteSt{somes: OfByte(make([]byte, i))}
+}
+
+func (__ *OfByteStI32) Get(i int32) byte {
+	return __.somes.Get(i)
+}
+func (__ *OfByteStI32) Set(i int32, d byte) byte {
+	return __.somes.Set(i, d)
+}
+
+func (__ *OfByteStI32) Len() int32 {
+	return __.somes.Len()
+}
+
+func (__ *OfByteStI32) AsIter() OfByteIterIf {
+	return __.somes.AsIter()
+}
+
 type OfByteIter []byte
 
 func (__ OfByteIter) Range(f func(i int, d byte) bool) {
@@ -265,12 +345,12 @@ type OfComplex128AsIterIf interface {
 	AsIter() OfComplex128IterIf
 }
 
-type OfComplex128If32 interface {
+type OfComplex128I32If interface {
 	Get(int32) complex128
 	Len() int32
 }
-type OfComplex128IfMut32 interface {
-	OfComplex128If32
+type OfComplex128I32MutIf interface {
+	OfComplex128I32If
 	Set(int32, complex128) complex128
 }
 
@@ -308,6 +388,23 @@ func (__ OfComplex128) Len() int {
 
 func (__ OfComplex128) AsIter() OfComplex128IterIf {
 	return OfComplex128Iter(__)
+}
+
+func OfComplex128I32Into(__ OfComplex128I32If) []complex128 {
+	switch d := __.(type) {
+	case OfComplex128I32:
+		return []complex128(d)
+	case *OfComplex128StI32:
+		return []complex128(d.somes)
+	case nil:
+		return nil
+	default:
+		res := make([]complex128, __.Len())
+		for i := int32(0); i < int32(len(res)); i += 1 {
+			res[i] = __.Get(i)
+		}
+		return res
+	}
 }
 
 type OfComplex128I32 []complex128
@@ -353,6 +450,29 @@ func (__ *OfComplex128St) AsIter() OfComplex128IterIf {
 	return __.somes.AsIter()
 }
 
+type OfComplex128StI32 struct {
+	somes OfComplex128I32
+}
+
+func NewOfComplex128StI32(i int32) *OfComplex128St {
+	return &OfComplex128St{somes: OfComplex128(make([]complex128, i))}
+}
+
+func (__ *OfComplex128StI32) Get(i int32) complex128 {
+	return __.somes.Get(i)
+}
+func (__ *OfComplex128StI32) Set(i int32, d complex128) complex128 {
+	return __.somes.Set(i, d)
+}
+
+func (__ *OfComplex128StI32) Len() int32 {
+	return __.somes.Len()
+}
+
+func (__ *OfComplex128StI32) AsIter() OfComplex128IterIf {
+	return __.somes.AsIter()
+}
+
 type OfComplex128Iter []complex128
 
 func (__ OfComplex128Iter) Range(f func(i int, d complex128) bool) {
@@ -387,12 +507,12 @@ type OfComplex64AsIterIf interface {
 	AsIter() OfComplex64IterIf
 }
 
-type OfComplex64If32 interface {
+type OfComplex64I32If interface {
 	Get(int32) complex64
 	Len() int32
 }
-type OfComplex64IfMut32 interface {
-	OfComplex64If32
+type OfComplex64I32MutIf interface {
+	OfComplex64I32If
 	Set(int32, complex64) complex64
 }
 
@@ -430,6 +550,23 @@ func (__ OfComplex64) Len() int {
 
 func (__ OfComplex64) AsIter() OfComplex64IterIf {
 	return OfComplex64Iter(__)
+}
+
+func OfComplex64I32Into(__ OfComplex64I32If) []complex64 {
+	switch d := __.(type) {
+	case OfComplex64I32:
+		return []complex64(d)
+	case *OfComplex64StI32:
+		return []complex64(d.somes)
+	case nil:
+		return nil
+	default:
+		res := make([]complex64, __.Len())
+		for i := int32(0); i < int32(len(res)); i += 1 {
+			res[i] = __.Get(i)
+		}
+		return res
+	}
 }
 
 type OfComplex64I32 []complex64
@@ -475,6 +612,29 @@ func (__ *OfComplex64St) AsIter() OfComplex64IterIf {
 	return __.somes.AsIter()
 }
 
+type OfComplex64StI32 struct {
+	somes OfComplex64I32
+}
+
+func NewOfComplex64StI32(i int32) *OfComplex64St {
+	return &OfComplex64St{somes: OfComplex64(make([]complex64, i))}
+}
+
+func (__ *OfComplex64StI32) Get(i int32) complex64 {
+	return __.somes.Get(i)
+}
+func (__ *OfComplex64StI32) Set(i int32, d complex64) complex64 {
+	return __.somes.Set(i, d)
+}
+
+func (__ *OfComplex64StI32) Len() int32 {
+	return __.somes.Len()
+}
+
+func (__ *OfComplex64StI32) AsIter() OfComplex64IterIf {
+	return __.somes.AsIter()
+}
+
 type OfComplex64Iter []complex64
 
 func (__ OfComplex64Iter) Range(f func(i int, d complex64) bool) {
@@ -509,12 +669,12 @@ type OfErrorAsIterIf interface {
 	AsIter() OfErrorIterIf
 }
 
-type OfErrorIf32 interface {
+type OfErrorI32If interface {
 	Get(int32) error
 	Len() int32
 }
-type OfErrorIfMut32 interface {
-	OfErrorIf32
+type OfErrorI32MutIf interface {
+	OfErrorI32If
 	Set(int32, error) error
 }
 
@@ -552,6 +712,23 @@ func (__ OfError) Len() int {
 
 func (__ OfError) AsIter() OfErrorIterIf {
 	return OfErrorIter(__)
+}
+
+func OfErrorI32Into(__ OfErrorI32If) []error {
+	switch d := __.(type) {
+	case OfErrorI32:
+		return []error(d)
+	case *OfErrorStI32:
+		return []error(d.somes)
+	case nil:
+		return nil
+	default:
+		res := make([]error, __.Len())
+		for i := int32(0); i < int32(len(res)); i += 1 {
+			res[i] = __.Get(i)
+		}
+		return res
+	}
 }
 
 type OfErrorI32 []error
@@ -597,6 +774,29 @@ func (__ *OfErrorSt) AsIter() OfErrorIterIf {
 	return __.somes.AsIter()
 }
 
+type OfErrorStI32 struct {
+	somes OfErrorI32
+}
+
+func NewOfErrorStI32(i int32) *OfErrorSt {
+	return &OfErrorSt{somes: OfError(make([]error, i))}
+}
+
+func (__ *OfErrorStI32) Get(i int32) error {
+	return __.somes.Get(i)
+}
+func (__ *OfErrorStI32) Set(i int32, d error) error {
+	return __.somes.Set(i, d)
+}
+
+func (__ *OfErrorStI32) Len() int32 {
+	return __.somes.Len()
+}
+
+func (__ *OfErrorStI32) AsIter() OfErrorIterIf {
+	return __.somes.AsIter()
+}
+
 type OfErrorIter []error
 
 func (__ OfErrorIter) Range(f func(i int, d error) bool) {
@@ -631,12 +831,12 @@ type OfFloat32AsIterIf interface {
 	AsIter() OfFloat32IterIf
 }
 
-type OfFloat32If32 interface {
+type OfFloat32I32If interface {
 	Get(int32) float32
 	Len() int32
 }
-type OfFloat32IfMut32 interface {
-	OfFloat32If32
+type OfFloat32I32MutIf interface {
+	OfFloat32I32If
 	Set(int32, float32) float32
 }
 
@@ -674,6 +874,23 @@ func (__ OfFloat32) Len() int {
 
 func (__ OfFloat32) AsIter() OfFloat32IterIf {
 	return OfFloat32Iter(__)
+}
+
+func OfFloat32I32Into(__ OfFloat32I32If) []float32 {
+	switch d := __.(type) {
+	case OfFloat32I32:
+		return []float32(d)
+	case *OfFloat32StI32:
+		return []float32(d.somes)
+	case nil:
+		return nil
+	default:
+		res := make([]float32, __.Len())
+		for i := int32(0); i < int32(len(res)); i += 1 {
+			res[i] = __.Get(i)
+		}
+		return res
+	}
 }
 
 type OfFloat32I32 []float32
@@ -719,6 +936,29 @@ func (__ *OfFloat32St) AsIter() OfFloat32IterIf {
 	return __.somes.AsIter()
 }
 
+type OfFloat32StI32 struct {
+	somes OfFloat32I32
+}
+
+func NewOfFloat32StI32(i int32) *OfFloat32St {
+	return &OfFloat32St{somes: OfFloat32(make([]float32, i))}
+}
+
+func (__ *OfFloat32StI32) Get(i int32) float32 {
+	return __.somes.Get(i)
+}
+func (__ *OfFloat32StI32) Set(i int32, d float32) float32 {
+	return __.somes.Set(i, d)
+}
+
+func (__ *OfFloat32StI32) Len() int32 {
+	return __.somes.Len()
+}
+
+func (__ *OfFloat32StI32) AsIter() OfFloat32IterIf {
+	return __.somes.AsIter()
+}
+
 type OfFloat32Iter []float32
 
 func (__ OfFloat32Iter) Range(f func(i int, d float32) bool) {
@@ -753,12 +993,12 @@ type OfFloat64AsIterIf interface {
 	AsIter() OfFloat64IterIf
 }
 
-type OfFloat64If32 interface {
+type OfFloat64I32If interface {
 	Get(int32) float64
 	Len() int32
 }
-type OfFloat64IfMut32 interface {
-	OfFloat64If32
+type OfFloat64I32MutIf interface {
+	OfFloat64I32If
 	Set(int32, float64) float64
 }
 
@@ -796,6 +1036,23 @@ func (__ OfFloat64) Len() int {
 
 func (__ OfFloat64) AsIter() OfFloat64IterIf {
 	return OfFloat64Iter(__)
+}
+
+func OfFloat64I32Into(__ OfFloat64I32If) []float64 {
+	switch d := __.(type) {
+	case OfFloat64I32:
+		return []float64(d)
+	case *OfFloat64StI32:
+		return []float64(d.somes)
+	case nil:
+		return nil
+	default:
+		res := make([]float64, __.Len())
+		for i := int32(0); i < int32(len(res)); i += 1 {
+			res[i] = __.Get(i)
+		}
+		return res
+	}
 }
 
 type OfFloat64I32 []float64
@@ -841,6 +1098,29 @@ func (__ *OfFloat64St) AsIter() OfFloat64IterIf {
 	return __.somes.AsIter()
 }
 
+type OfFloat64StI32 struct {
+	somes OfFloat64I32
+}
+
+func NewOfFloat64StI32(i int32) *OfFloat64St {
+	return &OfFloat64St{somes: OfFloat64(make([]float64, i))}
+}
+
+func (__ *OfFloat64StI32) Get(i int32) float64 {
+	return __.somes.Get(i)
+}
+func (__ *OfFloat64StI32) Set(i int32, d float64) float64 {
+	return __.somes.Set(i, d)
+}
+
+func (__ *OfFloat64StI32) Len() int32 {
+	return __.somes.Len()
+}
+
+func (__ *OfFloat64StI32) AsIter() OfFloat64IterIf {
+	return __.somes.AsIter()
+}
+
 type OfFloat64Iter []float64
 
 func (__ OfFloat64Iter) Range(f func(i int, d float64) bool) {
@@ -875,12 +1155,12 @@ type OfIntAsIterIf interface {
 	AsIter() OfIntIterIf
 }
 
-type OfIntIf32 interface {
+type OfIntI32If interface {
 	Get(int32) int
 	Len() int32
 }
-type OfIntIfMut32 interface {
-	OfIntIf32
+type OfIntI32MutIf interface {
+	OfIntI32If
 	Set(int32, int) int
 }
 
@@ -918,6 +1198,23 @@ func (__ OfInt) Len() int {
 
 func (__ OfInt) AsIter() OfIntIterIf {
 	return OfIntIter(__)
+}
+
+func OfIntI32Into(__ OfIntI32If) []int {
+	switch d := __.(type) {
+	case OfIntI32:
+		return []int(d)
+	case *OfIntStI32:
+		return []int(d.somes)
+	case nil:
+		return nil
+	default:
+		res := make([]int, __.Len())
+		for i := int32(0); i < int32(len(res)); i += 1 {
+			res[i] = __.Get(i)
+		}
+		return res
+	}
 }
 
 type OfIntI32 []int
@@ -963,6 +1260,29 @@ func (__ *OfIntSt) AsIter() OfIntIterIf {
 	return __.somes.AsIter()
 }
 
+type OfIntStI32 struct {
+	somes OfIntI32
+}
+
+func NewOfIntStI32(i int32) *OfIntSt {
+	return &OfIntSt{somes: OfInt(make([]int, i))}
+}
+
+func (__ *OfIntStI32) Get(i int32) int {
+	return __.somes.Get(i)
+}
+func (__ *OfIntStI32) Set(i int32, d int) int {
+	return __.somes.Set(i, d)
+}
+
+func (__ *OfIntStI32) Len() int32 {
+	return __.somes.Len()
+}
+
+func (__ *OfIntStI32) AsIter() OfIntIterIf {
+	return __.somes.AsIter()
+}
+
 type OfIntIter []int
 
 func (__ OfIntIter) Range(f func(i int, d int) bool) {
@@ -997,12 +1317,12 @@ type OfInt16AsIterIf interface {
 	AsIter() OfInt16IterIf
 }
 
-type OfInt16If32 interface {
+type OfInt16I32If interface {
 	Get(int32) int16
 	Len() int32
 }
-type OfInt16IfMut32 interface {
-	OfInt16If32
+type OfInt16I32MutIf interface {
+	OfInt16I32If
 	Set(int32, int16) int16
 }
 
@@ -1040,6 +1360,23 @@ func (__ OfInt16) Len() int {
 
 func (__ OfInt16) AsIter() OfInt16IterIf {
 	return OfInt16Iter(__)
+}
+
+func OfInt16I32Into(__ OfInt16I32If) []int16 {
+	switch d := __.(type) {
+	case OfInt16I32:
+		return []int16(d)
+	case *OfInt16StI32:
+		return []int16(d.somes)
+	case nil:
+		return nil
+	default:
+		res := make([]int16, __.Len())
+		for i := int32(0); i < int32(len(res)); i += 1 {
+			res[i] = __.Get(i)
+		}
+		return res
+	}
 }
 
 type OfInt16I32 []int16
@@ -1085,6 +1422,29 @@ func (__ *OfInt16St) AsIter() OfInt16IterIf {
 	return __.somes.AsIter()
 }
 
+type OfInt16StI32 struct {
+	somes OfInt16I32
+}
+
+func NewOfInt16StI32(i int32) *OfInt16St {
+	return &OfInt16St{somes: OfInt16(make([]int16, i))}
+}
+
+func (__ *OfInt16StI32) Get(i int32) int16 {
+	return __.somes.Get(i)
+}
+func (__ *OfInt16StI32) Set(i int32, d int16) int16 {
+	return __.somes.Set(i, d)
+}
+
+func (__ *OfInt16StI32) Len() int32 {
+	return __.somes.Len()
+}
+
+func (__ *OfInt16StI32) AsIter() OfInt16IterIf {
+	return __.somes.AsIter()
+}
+
 type OfInt16Iter []int16
 
 func (__ OfInt16Iter) Range(f func(i int, d int16) bool) {
@@ -1119,12 +1479,12 @@ type OfInt32AsIterIf interface {
 	AsIter() OfInt32IterIf
 }
 
-type OfInt32If32 interface {
+type OfInt32I32If interface {
 	Get(int32) int32
 	Len() int32
 }
-type OfInt32IfMut32 interface {
-	OfInt32If32
+type OfInt32I32MutIf interface {
+	OfInt32I32If
 	Set(int32, int32) int32
 }
 
@@ -1162,6 +1522,23 @@ func (__ OfInt32) Len() int {
 
 func (__ OfInt32) AsIter() OfInt32IterIf {
 	return OfInt32Iter(__)
+}
+
+func OfInt32I32Into(__ OfInt32I32If) []int32 {
+	switch d := __.(type) {
+	case OfInt32I32:
+		return []int32(d)
+	case *OfInt32StI32:
+		return []int32(d.somes)
+	case nil:
+		return nil
+	default:
+		res := make([]int32, __.Len())
+		for i := int32(0); i < int32(len(res)); i += 1 {
+			res[i] = __.Get(i)
+		}
+		return res
+	}
 }
 
 type OfInt32I32 []int32
@@ -1207,6 +1584,29 @@ func (__ *OfInt32St) AsIter() OfInt32IterIf {
 	return __.somes.AsIter()
 }
 
+type OfInt32StI32 struct {
+	somes OfInt32I32
+}
+
+func NewOfInt32StI32(i int32) *OfInt32St {
+	return &OfInt32St{somes: OfInt32(make([]int32, i))}
+}
+
+func (__ *OfInt32StI32) Get(i int32) int32 {
+	return __.somes.Get(i)
+}
+func (__ *OfInt32StI32) Set(i int32, d int32) int32 {
+	return __.somes.Set(i, d)
+}
+
+func (__ *OfInt32StI32) Len() int32 {
+	return __.somes.Len()
+}
+
+func (__ *OfInt32StI32) AsIter() OfInt32IterIf {
+	return __.somes.AsIter()
+}
+
 type OfInt32Iter []int32
 
 func (__ OfInt32Iter) Range(f func(i int, d int32) bool) {
@@ -1241,12 +1641,12 @@ type OfInt64AsIterIf interface {
 	AsIter() OfInt64IterIf
 }
 
-type OfInt64If32 interface {
+type OfInt64I32If interface {
 	Get(int32) int64
 	Len() int32
 }
-type OfInt64IfMut32 interface {
-	OfInt64If32
+type OfInt64I32MutIf interface {
+	OfInt64I32If
 	Set(int32, int64) int64
 }
 
@@ -1284,6 +1684,23 @@ func (__ OfInt64) Len() int {
 
 func (__ OfInt64) AsIter() OfInt64IterIf {
 	return OfInt64Iter(__)
+}
+
+func OfInt64I32Into(__ OfInt64I32If) []int64 {
+	switch d := __.(type) {
+	case OfInt64I32:
+		return []int64(d)
+	case *OfInt64StI32:
+		return []int64(d.somes)
+	case nil:
+		return nil
+	default:
+		res := make([]int64, __.Len())
+		for i := int32(0); i < int32(len(res)); i += 1 {
+			res[i] = __.Get(i)
+		}
+		return res
+	}
 }
 
 type OfInt64I32 []int64
@@ -1329,6 +1746,29 @@ func (__ *OfInt64St) AsIter() OfInt64IterIf {
 	return __.somes.AsIter()
 }
 
+type OfInt64StI32 struct {
+	somes OfInt64I32
+}
+
+func NewOfInt64StI32(i int32) *OfInt64St {
+	return &OfInt64St{somes: OfInt64(make([]int64, i))}
+}
+
+func (__ *OfInt64StI32) Get(i int32) int64 {
+	return __.somes.Get(i)
+}
+func (__ *OfInt64StI32) Set(i int32, d int64) int64 {
+	return __.somes.Set(i, d)
+}
+
+func (__ *OfInt64StI32) Len() int32 {
+	return __.somes.Len()
+}
+
+func (__ *OfInt64StI32) AsIter() OfInt64IterIf {
+	return __.somes.AsIter()
+}
+
 type OfInt64Iter []int64
 
 func (__ OfInt64Iter) Range(f func(i int, d int64) bool) {
@@ -1363,12 +1803,12 @@ type OfInt8AsIterIf interface {
 	AsIter() OfInt8IterIf
 }
 
-type OfInt8If32 interface {
+type OfInt8I32If interface {
 	Get(int32) int8
 	Len() int32
 }
-type OfInt8IfMut32 interface {
-	OfInt8If32
+type OfInt8I32MutIf interface {
+	OfInt8I32If
 	Set(int32, int8) int8
 }
 
@@ -1406,6 +1846,23 @@ func (__ OfInt8) Len() int {
 
 func (__ OfInt8) AsIter() OfInt8IterIf {
 	return OfInt8Iter(__)
+}
+
+func OfInt8I32Into(__ OfInt8I32If) []int8 {
+	switch d := __.(type) {
+	case OfInt8I32:
+		return []int8(d)
+	case *OfInt8StI32:
+		return []int8(d.somes)
+	case nil:
+		return nil
+	default:
+		res := make([]int8, __.Len())
+		for i := int32(0); i < int32(len(res)); i += 1 {
+			res[i] = __.Get(i)
+		}
+		return res
+	}
 }
 
 type OfInt8I32 []int8
@@ -1451,6 +1908,29 @@ func (__ *OfInt8St) AsIter() OfInt8IterIf {
 	return __.somes.AsIter()
 }
 
+type OfInt8StI32 struct {
+	somes OfInt8I32
+}
+
+func NewOfInt8StI32(i int32) *OfInt8St {
+	return &OfInt8St{somes: OfInt8(make([]int8, i))}
+}
+
+func (__ *OfInt8StI32) Get(i int32) int8 {
+	return __.somes.Get(i)
+}
+func (__ *OfInt8StI32) Set(i int32, d int8) int8 {
+	return __.somes.Set(i, d)
+}
+
+func (__ *OfInt8StI32) Len() int32 {
+	return __.somes.Len()
+}
+
+func (__ *OfInt8StI32) AsIter() OfInt8IterIf {
+	return __.somes.AsIter()
+}
+
 type OfInt8Iter []int8
 
 func (__ OfInt8Iter) Range(f func(i int, d int8) bool) {
@@ -1485,12 +1965,12 @@ type OfRuneAsIterIf interface {
 	AsIter() OfRuneIterIf
 }
 
-type OfRuneIf32 interface {
+type OfRuneI32If interface {
 	Get(int32) rune
 	Len() int32
 }
-type OfRuneIfMut32 interface {
-	OfRuneIf32
+type OfRuneI32MutIf interface {
+	OfRuneI32If
 	Set(int32, rune) rune
 }
 
@@ -1528,6 +2008,23 @@ func (__ OfRune) Len() int {
 
 func (__ OfRune) AsIter() OfRuneIterIf {
 	return OfRuneIter(__)
+}
+
+func OfRuneI32Into(__ OfRuneI32If) []rune {
+	switch d := __.(type) {
+	case OfRuneI32:
+		return []rune(d)
+	case *OfRuneStI32:
+		return []rune(d.somes)
+	case nil:
+		return nil
+	default:
+		res := make([]rune, __.Len())
+		for i := int32(0); i < int32(len(res)); i += 1 {
+			res[i] = __.Get(i)
+		}
+		return res
+	}
 }
 
 type OfRuneI32 []rune
@@ -1573,6 +2070,29 @@ func (__ *OfRuneSt) AsIter() OfRuneIterIf {
 	return __.somes.AsIter()
 }
 
+type OfRuneStI32 struct {
+	somes OfRuneI32
+}
+
+func NewOfRuneStI32(i int32) *OfRuneSt {
+	return &OfRuneSt{somes: OfRune(make([]rune, i))}
+}
+
+func (__ *OfRuneStI32) Get(i int32) rune {
+	return __.somes.Get(i)
+}
+func (__ *OfRuneStI32) Set(i int32, d rune) rune {
+	return __.somes.Set(i, d)
+}
+
+func (__ *OfRuneStI32) Len() int32 {
+	return __.somes.Len()
+}
+
+func (__ *OfRuneStI32) AsIter() OfRuneIterIf {
+	return __.somes.AsIter()
+}
+
 type OfRuneIter []rune
 
 func (__ OfRuneIter) Range(f func(i int, d rune) bool) {
@@ -1607,12 +2127,12 @@ type OfStringAsIterIf interface {
 	AsIter() OfStringIterIf
 }
 
-type OfStringIf32 interface {
+type OfStringI32If interface {
 	Get(int32) string
 	Len() int32
 }
-type OfStringIfMut32 interface {
-	OfStringIf32
+type OfStringI32MutIf interface {
+	OfStringI32If
 	Set(int32, string) string
 }
 
@@ -1650,6 +2170,23 @@ func (__ OfString) Len() int {
 
 func (__ OfString) AsIter() OfStringIterIf {
 	return OfStringIter(__)
+}
+
+func OfStringI32Into(__ OfStringI32If) []string {
+	switch d := __.(type) {
+	case OfStringI32:
+		return []string(d)
+	case *OfStringStI32:
+		return []string(d.somes)
+	case nil:
+		return nil
+	default:
+		res := make([]string, __.Len())
+		for i := int32(0); i < int32(len(res)); i += 1 {
+			res[i] = __.Get(i)
+		}
+		return res
+	}
 }
 
 type OfStringI32 []string
@@ -1695,6 +2232,29 @@ func (__ *OfStringSt) AsIter() OfStringIterIf {
 	return __.somes.AsIter()
 }
 
+type OfStringStI32 struct {
+	somes OfStringI32
+}
+
+func NewOfStringStI32(i int32) *OfStringSt {
+	return &OfStringSt{somes: OfString(make([]string, i))}
+}
+
+func (__ *OfStringStI32) Get(i int32) string {
+	return __.somes.Get(i)
+}
+func (__ *OfStringStI32) Set(i int32, d string) string {
+	return __.somes.Set(i, d)
+}
+
+func (__ *OfStringStI32) Len() int32 {
+	return __.somes.Len()
+}
+
+func (__ *OfStringStI32) AsIter() OfStringIterIf {
+	return __.somes.AsIter()
+}
+
 type OfStringIter []string
 
 func (__ OfStringIter) Range(f func(i int, d string) bool) {
@@ -1729,12 +2289,12 @@ type OfUintAsIterIf interface {
 	AsIter() OfUintIterIf
 }
 
-type OfUintIf32 interface {
+type OfUintI32If interface {
 	Get(int32) uint
 	Len() int32
 }
-type OfUintIfMut32 interface {
-	OfUintIf32
+type OfUintI32MutIf interface {
+	OfUintI32If
 	Set(int32, uint) uint
 }
 
@@ -1772,6 +2332,23 @@ func (__ OfUint) Len() int {
 
 func (__ OfUint) AsIter() OfUintIterIf {
 	return OfUintIter(__)
+}
+
+func OfUintI32Into(__ OfUintI32If) []uint {
+	switch d := __.(type) {
+	case OfUintI32:
+		return []uint(d)
+	case *OfUintStI32:
+		return []uint(d.somes)
+	case nil:
+		return nil
+	default:
+		res := make([]uint, __.Len())
+		for i := int32(0); i < int32(len(res)); i += 1 {
+			res[i] = __.Get(i)
+		}
+		return res
+	}
 }
 
 type OfUintI32 []uint
@@ -1817,6 +2394,29 @@ func (__ *OfUintSt) AsIter() OfUintIterIf {
 	return __.somes.AsIter()
 }
 
+type OfUintStI32 struct {
+	somes OfUintI32
+}
+
+func NewOfUintStI32(i int32) *OfUintSt {
+	return &OfUintSt{somes: OfUint(make([]uint, i))}
+}
+
+func (__ *OfUintStI32) Get(i int32) uint {
+	return __.somes.Get(i)
+}
+func (__ *OfUintStI32) Set(i int32, d uint) uint {
+	return __.somes.Set(i, d)
+}
+
+func (__ *OfUintStI32) Len() int32 {
+	return __.somes.Len()
+}
+
+func (__ *OfUintStI32) AsIter() OfUintIterIf {
+	return __.somes.AsIter()
+}
+
 type OfUintIter []uint
 
 func (__ OfUintIter) Range(f func(i int, d uint) bool) {
@@ -1851,12 +2451,12 @@ type OfUint16AsIterIf interface {
 	AsIter() OfUint16IterIf
 }
 
-type OfUint16If32 interface {
+type OfUint16I32If interface {
 	Get(int32) uint16
 	Len() int32
 }
-type OfUint16IfMut32 interface {
-	OfUint16If32
+type OfUint16I32MutIf interface {
+	OfUint16I32If
 	Set(int32, uint16) uint16
 }
 
@@ -1894,6 +2494,23 @@ func (__ OfUint16) Len() int {
 
 func (__ OfUint16) AsIter() OfUint16IterIf {
 	return OfUint16Iter(__)
+}
+
+func OfUint16I32Into(__ OfUint16I32If) []uint16 {
+	switch d := __.(type) {
+	case OfUint16I32:
+		return []uint16(d)
+	case *OfUint16StI32:
+		return []uint16(d.somes)
+	case nil:
+		return nil
+	default:
+		res := make([]uint16, __.Len())
+		for i := int32(0); i < int32(len(res)); i += 1 {
+			res[i] = __.Get(i)
+		}
+		return res
+	}
 }
 
 type OfUint16I32 []uint16
@@ -1939,6 +2556,29 @@ func (__ *OfUint16St) AsIter() OfUint16IterIf {
 	return __.somes.AsIter()
 }
 
+type OfUint16StI32 struct {
+	somes OfUint16I32
+}
+
+func NewOfUint16StI32(i int32) *OfUint16St {
+	return &OfUint16St{somes: OfUint16(make([]uint16, i))}
+}
+
+func (__ *OfUint16StI32) Get(i int32) uint16 {
+	return __.somes.Get(i)
+}
+func (__ *OfUint16StI32) Set(i int32, d uint16) uint16 {
+	return __.somes.Set(i, d)
+}
+
+func (__ *OfUint16StI32) Len() int32 {
+	return __.somes.Len()
+}
+
+func (__ *OfUint16StI32) AsIter() OfUint16IterIf {
+	return __.somes.AsIter()
+}
+
 type OfUint16Iter []uint16
 
 func (__ OfUint16Iter) Range(f func(i int, d uint16) bool) {
@@ -1973,12 +2613,12 @@ type OfUint32AsIterIf interface {
 	AsIter() OfUint32IterIf
 }
 
-type OfUint32If32 interface {
+type OfUint32I32If interface {
 	Get(int32) uint32
 	Len() int32
 }
-type OfUint32IfMut32 interface {
-	OfUint32If32
+type OfUint32I32MutIf interface {
+	OfUint32I32If
 	Set(int32, uint32) uint32
 }
 
@@ -2016,6 +2656,23 @@ func (__ OfUint32) Len() int {
 
 func (__ OfUint32) AsIter() OfUint32IterIf {
 	return OfUint32Iter(__)
+}
+
+func OfUint32I32Into(__ OfUint32I32If) []uint32 {
+	switch d := __.(type) {
+	case OfUint32I32:
+		return []uint32(d)
+	case *OfUint32StI32:
+		return []uint32(d.somes)
+	case nil:
+		return nil
+	default:
+		res := make([]uint32, __.Len())
+		for i := int32(0); i < int32(len(res)); i += 1 {
+			res[i] = __.Get(i)
+		}
+		return res
+	}
 }
 
 type OfUint32I32 []uint32
@@ -2061,6 +2718,29 @@ func (__ *OfUint32St) AsIter() OfUint32IterIf {
 	return __.somes.AsIter()
 }
 
+type OfUint32StI32 struct {
+	somes OfUint32I32
+}
+
+func NewOfUint32StI32(i int32) *OfUint32St {
+	return &OfUint32St{somes: OfUint32(make([]uint32, i))}
+}
+
+func (__ *OfUint32StI32) Get(i int32) uint32 {
+	return __.somes.Get(i)
+}
+func (__ *OfUint32StI32) Set(i int32, d uint32) uint32 {
+	return __.somes.Set(i, d)
+}
+
+func (__ *OfUint32StI32) Len() int32 {
+	return __.somes.Len()
+}
+
+func (__ *OfUint32StI32) AsIter() OfUint32IterIf {
+	return __.somes.AsIter()
+}
+
 type OfUint32Iter []uint32
 
 func (__ OfUint32Iter) Range(f func(i int, d uint32) bool) {
@@ -2095,12 +2775,12 @@ type OfUint64AsIterIf interface {
 	AsIter() OfUint64IterIf
 }
 
-type OfUint64If32 interface {
+type OfUint64I32If interface {
 	Get(int32) uint64
 	Len() int32
 }
-type OfUint64IfMut32 interface {
-	OfUint64If32
+type OfUint64I32MutIf interface {
+	OfUint64I32If
 	Set(int32, uint64) uint64
 }
 
@@ -2138,6 +2818,23 @@ func (__ OfUint64) Len() int {
 
 func (__ OfUint64) AsIter() OfUint64IterIf {
 	return OfUint64Iter(__)
+}
+
+func OfUint64I32Into(__ OfUint64I32If) []uint64 {
+	switch d := __.(type) {
+	case OfUint64I32:
+		return []uint64(d)
+	case *OfUint64StI32:
+		return []uint64(d.somes)
+	case nil:
+		return nil
+	default:
+		res := make([]uint64, __.Len())
+		for i := int32(0); i < int32(len(res)); i += 1 {
+			res[i] = __.Get(i)
+		}
+		return res
+	}
 }
 
 type OfUint64I32 []uint64
@@ -2183,6 +2880,29 @@ func (__ *OfUint64St) AsIter() OfUint64IterIf {
 	return __.somes.AsIter()
 }
 
+type OfUint64StI32 struct {
+	somes OfUint64I32
+}
+
+func NewOfUint64StI32(i int32) *OfUint64St {
+	return &OfUint64St{somes: OfUint64(make([]uint64, i))}
+}
+
+func (__ *OfUint64StI32) Get(i int32) uint64 {
+	return __.somes.Get(i)
+}
+func (__ *OfUint64StI32) Set(i int32, d uint64) uint64 {
+	return __.somes.Set(i, d)
+}
+
+func (__ *OfUint64StI32) Len() int32 {
+	return __.somes.Len()
+}
+
+func (__ *OfUint64StI32) AsIter() OfUint64IterIf {
+	return __.somes.AsIter()
+}
+
 type OfUint64Iter []uint64
 
 func (__ OfUint64Iter) Range(f func(i int, d uint64) bool) {
@@ -2217,12 +2937,12 @@ type OfUint8AsIterIf interface {
 	AsIter() OfUint8IterIf
 }
 
-type OfUint8If32 interface {
+type OfUint8I32If interface {
 	Get(int32) uint8
 	Len() int32
 }
-type OfUint8IfMut32 interface {
-	OfUint8If32
+type OfUint8I32MutIf interface {
+	OfUint8I32If
 	Set(int32, uint8) uint8
 }
 
@@ -2260,6 +2980,23 @@ func (__ OfUint8) Len() int {
 
 func (__ OfUint8) AsIter() OfUint8IterIf {
 	return OfUint8Iter(__)
+}
+
+func OfUint8I32Into(__ OfUint8I32If) []uint8 {
+	switch d := __.(type) {
+	case OfUint8I32:
+		return []uint8(d)
+	case *OfUint8StI32:
+		return []uint8(d.somes)
+	case nil:
+		return nil
+	default:
+		res := make([]uint8, __.Len())
+		for i := int32(0); i < int32(len(res)); i += 1 {
+			res[i] = __.Get(i)
+		}
+		return res
+	}
 }
 
 type OfUint8I32 []uint8
@@ -2305,6 +3042,29 @@ func (__ *OfUint8St) AsIter() OfUint8IterIf {
 	return __.somes.AsIter()
 }
 
+type OfUint8StI32 struct {
+	somes OfUint8I32
+}
+
+func NewOfUint8StI32(i int32) *OfUint8St {
+	return &OfUint8St{somes: OfUint8(make([]uint8, i))}
+}
+
+func (__ *OfUint8StI32) Get(i int32) uint8 {
+	return __.somes.Get(i)
+}
+func (__ *OfUint8StI32) Set(i int32, d uint8) uint8 {
+	return __.somes.Set(i, d)
+}
+
+func (__ *OfUint8StI32) Len() int32 {
+	return __.somes.Len()
+}
+
+func (__ *OfUint8StI32) AsIter() OfUint8IterIf {
+	return __.somes.AsIter()
+}
+
 type OfUint8Iter []uint8
 
 func (__ OfUint8Iter) Range(f func(i int, d uint8) bool) {
@@ -2339,12 +3099,12 @@ type OfUintptrAsIterIf interface {
 	AsIter() OfUintptrIterIf
 }
 
-type OfUintptrIf32 interface {
+type OfUintptrI32If interface {
 	Get(int32) uintptr
 	Len() int32
 }
-type OfUintptrIfMut32 interface {
-	OfUintptrIf32
+type OfUintptrI32MutIf interface {
+	OfUintptrI32If
 	Set(int32, uintptr) uintptr
 }
 
@@ -2382,6 +3142,23 @@ func (__ OfUintptr) Len() int {
 
 func (__ OfUintptr) AsIter() OfUintptrIterIf {
 	return OfUintptrIter(__)
+}
+
+func OfUintptrI32Into(__ OfUintptrI32If) []uintptr {
+	switch d := __.(type) {
+	case OfUintptrI32:
+		return []uintptr(d)
+	case *OfUintptrStI32:
+		return []uintptr(d.somes)
+	case nil:
+		return nil
+	default:
+		res := make([]uintptr, __.Len())
+		for i := int32(0); i < int32(len(res)); i += 1 {
+			res[i] = __.Get(i)
+		}
+		return res
+	}
 }
 
 type OfUintptrI32 []uintptr
@@ -2424,6 +3201,29 @@ func (__ *OfUintptrSt) Len() int {
 }
 
 func (__ *OfUintptrSt) AsIter() OfUintptrIterIf {
+	return __.somes.AsIter()
+}
+
+type OfUintptrStI32 struct {
+	somes OfUintptrI32
+}
+
+func NewOfUintptrStI32(i int32) *OfUintptrSt {
+	return &OfUintptrSt{somes: OfUintptr(make([]uintptr, i))}
+}
+
+func (__ *OfUintptrStI32) Get(i int32) uintptr {
+	return __.somes.Get(i)
+}
+func (__ *OfUintptrStI32) Set(i int32, d uintptr) uintptr {
+	return __.somes.Set(i, d)
+}
+
+func (__ *OfUintptrStI32) Len() int32 {
+	return __.somes.Len()
+}
+
+func (__ *OfUintptrStI32) AsIter() OfUintptrIterIf {
 	return __.somes.AsIter()
 }
 
