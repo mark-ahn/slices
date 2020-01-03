@@ -1,6 +1,7 @@
 package slices_test
 
 import (
+	"fmt"
 	"reflect"
 	"testing"
 
@@ -18,7 +19,10 @@ func TestT(t *testing.T) {
 }
 
 func TestTSt(t *testing.T) {
-	var ss slices.OfStringIf
+	var ss interface {
+		slices.OfStringIf
+		slices.OfStringAsIterIf
+	}
 	// ss = slices.OfString([]string{
 	// 	"0", "1", "2", "3",
 	// })
@@ -29,6 +33,11 @@ func TestTSt(t *testing.T) {
 	ss.Set(3, "3")
 
 	ss.Set(3, "30")
+
+	ss.AsIter().Range(func(_ int, d string) bool {
+		fmt.Println(d)
+		return true
+	})
 
 	if "30" != ss.Get(3) {
 		t.Errorf("expect %v, got %v", "30", ss.Get(3))
@@ -50,7 +59,7 @@ func TestSum(t *testing.T) {
 	}
 
 	res := is.Map(func(_ int, d int) int { return d * 2 })
-	expect := slices.OfIntIter([]int{2, 4, 6, 8, 10})
+	expect := slices.OfIntIter([]int{2, 4, 6, 8, 10}).Map(func(_ int, d int) int { return d })
 	if !reflect.DeepEqual(expect, res) {
 		t.Errorf("expect %v:%T, got %v:%T", expect, expect, res, res)
 	}

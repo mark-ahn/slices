@@ -6,10 +6,17 @@ import "github.com/cheekybits/genny/generic"
 
 type Some generic.Type
 
+type OfSomeIterIf interface {
+	Range(f func(i int, d Some) bool)
+	Map(f func(i int, d Some) Some) OfSomeIf
+}
 type OfSomeIf interface {
 	Get(int) Some
 	Set(int, Some) Some
 	Len() int
+}
+type OfSomeAsIterIf interface {
+	AsIter() OfSomeIterIf
 }
 
 type OfSomeIf32 interface {
@@ -33,6 +40,10 @@ func (__ OfSome) Len() int {
 	return len(__)
 }
 
+func (__ OfSome) AsIter() OfSomeIterIf {
+	return OfSomeIter(__)
+}
+
 type OfSomeI32 []Some
 
 func (__ OfSomeI32) Get(i int32) Some {
@@ -47,6 +58,10 @@ func (__ OfSomeI32) Set(i int32, d Some) Some {
 
 func (__ OfSomeI32) Len() int32 {
 	return int32(len(__))
+}
+
+func (__ OfSomeI32) AsIter() OfSomeIterIf {
+	return OfSomeIter(__)
 }
 
 type OfSomeSt struct {
@@ -68,6 +83,10 @@ func (__ *OfSomeSt) Len() int {
 	return __.somes.Len()
 }
 
+func (__ *OfSomeSt) AsIter() OfSomeIterIf {
+	return __.somes.AsIter()
+}
+
 type OfSomeIter []Some
 
 func (__ OfSomeIter) Range(f func(i int, d Some) bool) {
@@ -77,10 +96,10 @@ func (__ OfSomeIter) Range(f func(i int, d Some) bool) {
 		}
 	}
 }
-func (__ OfSomeIter) Map(f func(i int, d Some) Some) OfSomeIter {
+func (__ OfSomeIter) Map(f func(i int, d Some) Some) OfSomeIf {
 	rval := make([]Some, len(__))
 	for i := range __ {
 		rval[i] = f(i, __[i])
 	}
-	return OfSomeIter(rval)
+	return OfSome(rval)
 }

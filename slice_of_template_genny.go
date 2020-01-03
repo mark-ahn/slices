@@ -4,10 +4,17 @@
 
 package slices
 
+type SliceOfInterfaceIterIf interface {
+	Range(f func(i int, d interface{}) bool)
+	Map(f func(i int, d interface{}) interface{}) SliceOfInterfaceIf
+}
 type SliceOfInterfaceIf interface {
 	Get(int) interface{}
 	Set(int, interface{}) interface{}
 	Len() int
+}
+type SliceOfInterfaceAsIterIf interface {
+	AsIter() SliceOfInterfaceIterIf
 }
 
 type SliceOfInterfaceIf32 interface {
@@ -31,6 +38,10 @@ func (__ SliceOfInterface) Len() int {
 	return len(__)
 }
 
+func (__ SliceOfInterface) AsIter() SliceOfInterfaceIterIf {
+	return SliceOfInterfaceIter(__)
+}
+
 type SliceOfInterfaceI32 []interface{}
 
 func (__ SliceOfInterfaceI32) Get(i int32) interface{} {
@@ -45,6 +56,10 @@ func (__ SliceOfInterfaceI32) Set(i int32, d interface{}) interface{} {
 
 func (__ SliceOfInterfaceI32) Len() int32 {
 	return int32(len(__))
+}
+
+func (__ SliceOfInterfaceI32) AsIter() SliceOfInterfaceIterIf {
+	return SliceOfInterfaceIter(__)
 }
 
 type SliceOfInterfaceSt struct {
@@ -66,6 +81,10 @@ func (__ *SliceOfInterfaceSt) Len() int {
 	return __.somes.Len()
 }
 
+func (__ *SliceOfInterfaceSt) AsIter() SliceOfInterfaceIterIf {
+	return __.somes.AsIter()
+}
+
 type SliceOfInterfaceIter []interface{}
 
 func (__ SliceOfInterfaceIter) Range(f func(i int, d interface{}) bool) {
@@ -75,10 +94,10 @@ func (__ SliceOfInterfaceIter) Range(f func(i int, d interface{}) bool) {
 		}
 	}
 }
-func (__ SliceOfInterfaceIter) Map(f func(i int, d interface{}) interface{}) SliceOfInterfaceIter {
+func (__ SliceOfInterfaceIter) Map(f func(i int, d interface{}) interface{}) SliceOfInterfaceIf {
 	rval := make([]interface{}, len(__))
 	for i := range __ {
 		rval[i] = f(i, __[i])
 	}
-	return SliceOfInterfaceIter(rval)
+	return SliceOfInterface(rval)
 }

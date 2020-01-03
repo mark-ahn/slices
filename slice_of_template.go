@@ -4,10 +4,17 @@ package slices
 
 // type Some generic.Type
 
+type SliceOfSomeIterIf interface {
+	Range(f func(i int, d Some) bool)
+	Map(f func(i int, d Some) Some) SliceOfSomeIf
+}
 type SliceOfSomeIf interface {
 	Get(int) Some
 	Set(int, Some) Some
 	Len() int
+}
+type SliceOfSomeAsIterIf interface {
+	AsIter() SliceOfSomeIterIf
 }
 
 type SliceOfSomeIf32 interface {
@@ -31,6 +38,10 @@ func (__ SliceOfSome) Len() int {
 	return len(__)
 }
 
+func (__ SliceOfSome) AsIter() SliceOfSomeIterIf {
+	return SliceOfSomeIter(__)
+}
+
 type SliceOfSomeI32 []Some
 
 func (__ SliceOfSomeI32) Get(i int32) Some {
@@ -45,6 +56,10 @@ func (__ SliceOfSomeI32) Set(i int32, d Some) Some {
 
 func (__ SliceOfSomeI32) Len() int32 {
 	return int32(len(__))
+}
+
+func (__ SliceOfSomeI32) AsIter() SliceOfSomeIterIf {
+	return SliceOfSomeIter(__)
 }
 
 type SliceOfSomeSt struct {
@@ -66,6 +81,10 @@ func (__ *SliceOfSomeSt) Len() int {
 	return __.somes.Len()
 }
 
+func (__ *SliceOfSomeSt) AsIter() SliceOfSomeIterIf {
+	return __.somes.AsIter()
+}
+
 type SliceOfSomeIter []Some
 
 func (__ SliceOfSomeIter) Range(f func(i int, d Some) bool) {
@@ -75,10 +94,10 @@ func (__ SliceOfSomeIter) Range(f func(i int, d Some) bool) {
 		}
 	}
 }
-func (__ SliceOfSomeIter) Map(f func(i int, d Some) Some) SliceOfSomeIter {
+func (__ SliceOfSomeIter) Map(f func(i int, d Some) Some) SliceOfSomeIf {
 	rval := make([]Some, len(__))
 	for i := range __ {
 		rval[i] = f(i, __[i])
 	}
-	return SliceOfSomeIter(rval)
+	return SliceOfSome(rval)
 }
