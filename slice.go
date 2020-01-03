@@ -132,8 +132,8 @@ type OfSomeStI32 struct {
 	somes OfSomeI32
 }
 
-func NewOfSomeStI32(i int32) *OfSomeSt {
-	return &OfSomeSt{somes: OfSome(make([]Some, i))}
+func NewOfSomeStI32(i int32) *OfSomeStI32 {
+	return &OfSomeStI32{somes: OfSomeI32(make([]Some, i))}
 }
 
 func (__ *OfSomeStI32) Get(i int32) Some {

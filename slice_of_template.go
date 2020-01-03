@@ -131,8 +131,8 @@ type SliceOfSomeStI32 struct {
 	somes SliceOfSomeI32
 }
 
-func NewSliceOfSomeStI32(i int32) *SliceOfSomeSt {
-	return &SliceOfSomeSt{somes: SliceOfSome(make([]Some, i))}
+func NewSliceOfSomeStI32(i int32) *SliceOfSomeStI32 {
+	return &SliceOfSomeStI32{somes: SliceOfSomeI32(make([]Some, i))}
 }
 
 func (__ *SliceOfSomeStI32) Get(i int32) Some {

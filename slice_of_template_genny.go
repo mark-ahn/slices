@@ -130,8 +130,8 @@ type SliceOfInterfaceStI32 struct {
 	somes SliceOfInterfaceI32
 }
 
-func NewSliceOfInterfaceStI32(i int32) *SliceOfInterfaceSt {
-	return &SliceOfInterfaceSt{somes: SliceOfInterface(make([]interface{}, i))}
+func NewSliceOfInterfaceStI32(i int32) *SliceOfInterfaceStI32 {
+	return &SliceOfInterfaceStI32{somes: SliceOfInterfaceI32(make([]interface{}, i))}
 }
 
 func (__ *SliceOfInterfaceStI32) Get(i int32) interface{} {
