@@ -36,6 +36,8 @@ func SliceOfInterfaceInto(__ SliceOfInterfaceIf) []interface{} {
 		return []interface{}(d)
 	case *SliceOfInterfaceSt:
 		return []interface{}(d.somes)
+	case nil:
+		return nil
 	default:
 		res := make([]interface{}, __.Len())
 		for i := 0; i < len(res); i += 1 {

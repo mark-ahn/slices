@@ -38,6 +38,8 @@ func OfSomeInto(__ OfSomeIf) []Some {
 		return []Some(d)
 	case *OfSomeSt:
 		return []Some(d.somes)
+	case nil:
+		return nil
 	default:
 		res := make([]Some, __.Len())
 		for i := 0; i < len(res); i += 1 {

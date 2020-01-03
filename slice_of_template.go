@@ -37,6 +37,8 @@ func SliceOfSomeInto(__ SliceOfSomeIf) []Some {
 		return []Some(d)
 	case *SliceOfSomeSt:
 		return []Some(d.somes)
+	case nil:
+		return nil
 	default:
 		res := make([]Some, __.Len())
 		for i := 0; i < len(res); i += 1 {

@@ -36,6 +36,8 @@ func OfBoolInto(__ OfBoolIf) []bool {
 		return []bool(d)
 	case *OfBoolSt:
 		return []bool(d.somes)
+	case nil:
+		return nil
 	default:
 		res := make([]bool, __.Len())
 		for i := 0; i < len(res); i += 1 {
@@ -156,6 +158,8 @@ func OfByteInto(__ OfByteIf) []byte {
 		return []byte(d)
 	case *OfByteSt:
 		return []byte(d.somes)
+	case nil:
+		return nil
 	default:
 		res := make([]byte, __.Len())
 		for i := 0; i < len(res); i += 1 {
@@ -276,6 +280,8 @@ func OfComplex128Into(__ OfComplex128If) []complex128 {
 		return []complex128(d)
 	case *OfComplex128St:
 		return []complex128(d.somes)
+	case nil:
+		return nil
 	default:
 		res := make([]complex128, __.Len())
 		for i := 0; i < len(res); i += 1 {
@@ -396,6 +402,8 @@ func OfComplex64Into(__ OfComplex64If) []complex64 {
 		return []complex64(d)
 	case *OfComplex64St:
 		return []complex64(d.somes)
+	case nil:
+		return nil
 	default:
 		res := make([]complex64, __.Len())
 		for i := 0; i < len(res); i += 1 {
@@ -516,6 +524,8 @@ func OfErrorInto(__ OfErrorIf) []error {
 		return []error(d)
 	case *OfErrorSt:
 		return []error(d.somes)
+	case nil:
+		return nil
 	default:
 		res := make([]error, __.Len())
 		for i := 0; i < len(res); i += 1 {
@@ -636,6 +646,8 @@ func OfFloat32Into(__ OfFloat32If) []float32 {
 		return []float32(d)
 	case *OfFloat32St:
 		return []float32(d.somes)
+	case nil:
+		return nil
 	default:
 		res := make([]float32, __.Len())
 		for i := 0; i < len(res); i += 1 {
@@ -756,6 +768,8 @@ func OfFloat64Into(__ OfFloat64If) []float64 {
 		return []float64(d)
 	case *OfFloat64St:
 		return []float64(d.somes)
+	case nil:
+		return nil
 	default:
 		res := make([]float64, __.Len())
 		for i := 0; i < len(res); i += 1 {
@@ -876,6 +890,8 @@ func OfIntInto(__ OfIntIf) []int {
 		return []int(d)
 	case *OfIntSt:
 		return []int(d.somes)
+	case nil:
+		return nil
 	default:
 		res := make([]int, __.Len())
 		for i := 0; i < len(res); i += 1 {
@@ -996,6 +1012,8 @@ func OfInt16Into(__ OfInt16If) []int16 {
 		return []int16(d)
 	case *OfInt16St:
 		return []int16(d.somes)
+	case nil:
+		return nil
 	default:
 		res := make([]int16, __.Len())
 		for i := 0; i < len(res); i += 1 {
@@ -1116,6 +1134,8 @@ func OfInt32Into(__ OfInt32If) []int32 {
 		return []int32(d)
 	case *OfInt32St:
 		return []int32(d.somes)
+	case nil:
+		return nil
 	default:
 		res := make([]int32, __.Len())
 		for i := 0; i < len(res); i += 1 {
@@ -1236,6 +1256,8 @@ func OfInt64Into(__ OfInt64If) []int64 {
 		return []int64(d)
 	case *OfInt64St:
 		return []int64(d.somes)
+	case nil:
+		return nil
 	default:
 		res := make([]int64, __.Len())
 		for i := 0; i < len(res); i += 1 {
@@ -1356,6 +1378,8 @@ func OfInt8Into(__ OfInt8If) []int8 {
 		return []int8(d)
 	case *OfInt8St:
 		return []int8(d.somes)
+	case nil:
+		return nil
 	default:
 		res := make([]int8, __.Len())
 		for i := 0; i < len(res); i += 1 {
@@ -1476,6 +1500,8 @@ func OfRuneInto(__ OfRuneIf) []rune {
 		return []rune(d)
 	case *OfRuneSt:
 		return []rune(d.somes)
+	case nil:
+		return nil
 	default:
 		res := make([]rune, __.Len())
 		for i := 0; i < len(res); i += 1 {
@@ -1596,6 +1622,8 @@ func OfStringInto(__ OfStringIf) []string {
 		return []string(d)
 	case *OfStringSt:
 		return []string(d.somes)
+	case nil:
+		return nil
 	default:
 		res := make([]string, __.Len())
 		for i := 0; i < len(res); i += 1 {
@@ -1716,6 +1744,8 @@ func OfUintInto(__ OfUintIf) []uint {
 		return []uint(d)
 	case *OfUintSt:
 		return []uint(d.somes)
+	case nil:
+		return nil
 	default:
 		res := make([]uint, __.Len())
 		for i := 0; i < len(res); i += 1 {
@@ -1836,6 +1866,8 @@ func OfUint16Into(__ OfUint16If) []uint16 {
 		return []uint16(d)
 	case *OfUint16St:
 		return []uint16(d.somes)
+	case nil:
+		return nil
 	default:
 		res := make([]uint16, __.Len())
 		for i := 0; i < len(res); i += 1 {
@@ -1956,6 +1988,8 @@ func OfUint32Into(__ OfUint32If) []uint32 {
 		return []uint32(d)
 	case *OfUint32St:
 		return []uint32(d.somes)
+	case nil:
+		return nil
 	default:
 		res := make([]uint32, __.Len())
 		for i := 0; i < len(res); i += 1 {
@@ -2076,6 +2110,8 @@ func OfUint64Into(__ OfUint64If) []uint64 {
 		return []uint64(d)
 	case *OfUint64St:
 		return []uint64(d.somes)
+	case nil:
+		return nil
 	default:
 		res := make([]uint64, __.Len())
 		for i := 0; i < len(res); i += 1 {
@@ -2196,6 +2232,8 @@ func OfUint8Into(__ OfUint8If) []uint8 {
 		return []uint8(d)
 	case *OfUint8St:
 		return []uint8(d.somes)
+	case nil:
+		return nil
 	default:
 		res := make([]uint8, __.Len())
 		for i := 0; i < len(res); i += 1 {
@@ -2316,6 +2354,8 @@ func OfUintptrInto(__ OfUintptrIf) []uintptr {
 		return []uintptr(d)
 	case *OfUintptrSt:
 		return []uintptr(d.somes)
+	case nil:
+		return nil
 	default:
 		res := make([]uintptr, __.Len())
 		for i := 0; i < len(res); i += 1 {

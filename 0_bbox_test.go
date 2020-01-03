@@ -8,6 +8,12 @@ import (
 	"github.com/mark-ahn/slices"
 )
 
+func TestNil(t *testing.T) {
+	res := slices.OfStringInto(nil)
+	if res != nil {
+		t.Errorf("expect nil, got %v", res)
+	}
+}
 func TestT(t *testing.T) {
 	ss := slices.OfString([]string{
 		"0", "1", "2", "3",
