@@ -30,6 +30,21 @@ type SliceOfInterfaceIfMut32 interface {
 	Set(int32, interface{}) interface{}
 }
 
+func SliceOfInterfaceInto(__ SliceOfInterfaceIf) []interface{} {
+	switch d := __.(type) {
+	case SliceOfInterface:
+		return []interface{}(d)
+	case *SliceOfInterfaceSt:
+		return []interface{}(d.somes)
+	default:
+		res := make([]interface{}, __.Len())
+		for i := 0; i < len(res); i += 1 {
+			res[i] = __.Get(i)
+		}
+		return res
+	}
+}
+
 type SliceOfInterface []interface{}
 
 func (__ SliceOfInterface) Get(i int) interface{} {

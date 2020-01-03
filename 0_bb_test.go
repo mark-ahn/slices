@@ -18,6 +18,18 @@ func TestT(t *testing.T) {
 	}
 }
 
+func TestInto(t *testing.T) {
+	expect := []string{
+		"0", "1", "2", "3",
+	}
+	ss := slices.OfString(expect)
+
+	got := slices.OfStringInto(ss)
+	if !reflect.DeepEqual(expect, got) {
+		t.Errorf("expect %v:%T, got %v:%T", expect, expect, got, got)
+	}
+}
+
 func TestTSt(t *testing.T) {
 	var ss interface {
 		slices.OfStringMutIf

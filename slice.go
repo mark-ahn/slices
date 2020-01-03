@@ -32,6 +32,21 @@ type OfSomeIfMut32 interface {
 	Set(int32, Some) Some
 }
 
+func OfSomeInto(__ OfSomeIf) []Some {
+	switch d := __.(type) {
+	case OfSome:
+		return []Some(d)
+	case *OfSomeSt:
+		return []Some(d.somes)
+	default:
+		res := make([]Some, __.Len())
+		for i := 0; i < len(res); i += 1 {
+			res[i] = __.Get(i)
+		}
+		return res
+	}
+}
+
 type OfSome []Some
 
 func (__ OfSome) Get(i int) Some {

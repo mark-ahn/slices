@@ -2,6 +2,7 @@ package slices
 
 //go:generate genny -in $GOFILE -out slice_of_template_genny.go gen "Some=interface{}"
 
+// import "github.com/cheekybits/genny/generic"
 // type Some generic.Type
 
 type SliceOfSomeIterIf interface {
@@ -28,6 +29,21 @@ type SliceOfSomeIf32 interface {
 type SliceOfSomeIfMut32 interface {
 	SliceOfSomeIf32
 	Set(int32, Some) Some
+}
+
+func SliceOfSomeInto(__ SliceOfSomeIf) []Some {
+	switch d := __.(type) {
+	case SliceOfSome:
+		return []Some(d)
+	case *SliceOfSomeSt:
+		return []Some(d.somes)
+	default:
+		res := make([]Some, __.Len())
+		for i := 0; i < len(res); i += 1 {
+			res[i] = __.Get(i)
+		}
+		return res
+	}
 }
 
 type SliceOfSome []Some

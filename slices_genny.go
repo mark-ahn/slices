@@ -30,6 +30,21 @@ type OfBoolIfMut32 interface {
 	Set(int32, bool) bool
 }
 
+func OfBoolInto(__ OfBoolIf) []bool {
+	switch d := __.(type) {
+	case OfBool:
+		return []bool(d)
+	case *OfBoolSt:
+		return []bool(d.somes)
+	default:
+		res := make([]bool, __.Len())
+		for i := 0; i < len(res); i += 1 {
+			res[i] = __.Get(i)
+		}
+		return res
+	}
+}
+
 type OfBool []bool
 
 func (__ OfBool) Get(i int) bool {
@@ -133,6 +148,21 @@ type OfByteIf32 interface {
 type OfByteIfMut32 interface {
 	OfByteIf32
 	Set(int32, byte) byte
+}
+
+func OfByteInto(__ OfByteIf) []byte {
+	switch d := __.(type) {
+	case OfByte:
+		return []byte(d)
+	case *OfByteSt:
+		return []byte(d.somes)
+	default:
+		res := make([]byte, __.Len())
+		for i := 0; i < len(res); i += 1 {
+			res[i] = __.Get(i)
+		}
+		return res
+	}
 }
 
 type OfByte []byte
@@ -240,6 +270,21 @@ type OfComplex128IfMut32 interface {
 	Set(int32, complex128) complex128
 }
 
+func OfComplex128Into(__ OfComplex128If) []complex128 {
+	switch d := __.(type) {
+	case OfComplex128:
+		return []complex128(d)
+	case *OfComplex128St:
+		return []complex128(d.somes)
+	default:
+		res := make([]complex128, __.Len())
+		for i := 0; i < len(res); i += 1 {
+			res[i] = __.Get(i)
+		}
+		return res
+	}
+}
+
 type OfComplex128 []complex128
 
 func (__ OfComplex128) Get(i int) complex128 {
@@ -343,6 +388,21 @@ type OfComplex64If32 interface {
 type OfComplex64IfMut32 interface {
 	OfComplex64If32
 	Set(int32, complex64) complex64
+}
+
+func OfComplex64Into(__ OfComplex64If) []complex64 {
+	switch d := __.(type) {
+	case OfComplex64:
+		return []complex64(d)
+	case *OfComplex64St:
+		return []complex64(d.somes)
+	default:
+		res := make([]complex64, __.Len())
+		for i := 0; i < len(res); i += 1 {
+			res[i] = __.Get(i)
+		}
+		return res
+	}
 }
 
 type OfComplex64 []complex64
@@ -450,6 +510,21 @@ type OfErrorIfMut32 interface {
 	Set(int32, error) error
 }
 
+func OfErrorInto(__ OfErrorIf) []error {
+	switch d := __.(type) {
+	case OfError:
+		return []error(d)
+	case *OfErrorSt:
+		return []error(d.somes)
+	default:
+		res := make([]error, __.Len())
+		for i := 0; i < len(res); i += 1 {
+			res[i] = __.Get(i)
+		}
+		return res
+	}
+}
+
 type OfError []error
 
 func (__ OfError) Get(i int) error {
@@ -553,6 +628,21 @@ type OfFloat32If32 interface {
 type OfFloat32IfMut32 interface {
 	OfFloat32If32
 	Set(int32, float32) float32
+}
+
+func OfFloat32Into(__ OfFloat32If) []float32 {
+	switch d := __.(type) {
+	case OfFloat32:
+		return []float32(d)
+	case *OfFloat32St:
+		return []float32(d.somes)
+	default:
+		res := make([]float32, __.Len())
+		for i := 0; i < len(res); i += 1 {
+			res[i] = __.Get(i)
+		}
+		return res
+	}
 }
 
 type OfFloat32 []float32
@@ -660,6 +750,21 @@ type OfFloat64IfMut32 interface {
 	Set(int32, float64) float64
 }
 
+func OfFloat64Into(__ OfFloat64If) []float64 {
+	switch d := __.(type) {
+	case OfFloat64:
+		return []float64(d)
+	case *OfFloat64St:
+		return []float64(d.somes)
+	default:
+		res := make([]float64, __.Len())
+		for i := 0; i < len(res); i += 1 {
+			res[i] = __.Get(i)
+		}
+		return res
+	}
+}
+
 type OfFloat64 []float64
 
 func (__ OfFloat64) Get(i int) float64 {
@@ -763,6 +868,21 @@ type OfIntIf32 interface {
 type OfIntIfMut32 interface {
 	OfIntIf32
 	Set(int32, int) int
+}
+
+func OfIntInto(__ OfIntIf) []int {
+	switch d := __.(type) {
+	case OfInt:
+		return []int(d)
+	case *OfIntSt:
+		return []int(d.somes)
+	default:
+		res := make([]int, __.Len())
+		for i := 0; i < len(res); i += 1 {
+			res[i] = __.Get(i)
+		}
+		return res
+	}
 }
 
 type OfInt []int
@@ -870,6 +990,21 @@ type OfInt16IfMut32 interface {
 	Set(int32, int16) int16
 }
 
+func OfInt16Into(__ OfInt16If) []int16 {
+	switch d := __.(type) {
+	case OfInt16:
+		return []int16(d)
+	case *OfInt16St:
+		return []int16(d.somes)
+	default:
+		res := make([]int16, __.Len())
+		for i := 0; i < len(res); i += 1 {
+			res[i] = __.Get(i)
+		}
+		return res
+	}
+}
+
 type OfInt16 []int16
 
 func (__ OfInt16) Get(i int) int16 {
@@ -973,6 +1108,21 @@ type OfInt32If32 interface {
 type OfInt32IfMut32 interface {
 	OfInt32If32
 	Set(int32, int32) int32
+}
+
+func OfInt32Into(__ OfInt32If) []int32 {
+	switch d := __.(type) {
+	case OfInt32:
+		return []int32(d)
+	case *OfInt32St:
+		return []int32(d.somes)
+	default:
+		res := make([]int32, __.Len())
+		for i := 0; i < len(res); i += 1 {
+			res[i] = __.Get(i)
+		}
+		return res
+	}
 }
 
 type OfInt32 []int32
@@ -1080,6 +1230,21 @@ type OfInt64IfMut32 interface {
 	Set(int32, int64) int64
 }
 
+func OfInt64Into(__ OfInt64If) []int64 {
+	switch d := __.(type) {
+	case OfInt64:
+		return []int64(d)
+	case *OfInt64St:
+		return []int64(d.somes)
+	default:
+		res := make([]int64, __.Len())
+		for i := 0; i < len(res); i += 1 {
+			res[i] = __.Get(i)
+		}
+		return res
+	}
+}
+
 type OfInt64 []int64
 
 func (__ OfInt64) Get(i int) int64 {
@@ -1183,6 +1348,21 @@ type OfInt8If32 interface {
 type OfInt8IfMut32 interface {
 	OfInt8If32
 	Set(int32, int8) int8
+}
+
+func OfInt8Into(__ OfInt8If) []int8 {
+	switch d := __.(type) {
+	case OfInt8:
+		return []int8(d)
+	case *OfInt8St:
+		return []int8(d.somes)
+	default:
+		res := make([]int8, __.Len())
+		for i := 0; i < len(res); i += 1 {
+			res[i] = __.Get(i)
+		}
+		return res
+	}
 }
 
 type OfInt8 []int8
@@ -1290,6 +1470,21 @@ type OfRuneIfMut32 interface {
 	Set(int32, rune) rune
 }
 
+func OfRuneInto(__ OfRuneIf) []rune {
+	switch d := __.(type) {
+	case OfRune:
+		return []rune(d)
+	case *OfRuneSt:
+		return []rune(d.somes)
+	default:
+		res := make([]rune, __.Len())
+		for i := 0; i < len(res); i += 1 {
+			res[i] = __.Get(i)
+		}
+		return res
+	}
+}
+
 type OfRune []rune
 
 func (__ OfRune) Get(i int) rune {
@@ -1393,6 +1588,21 @@ type OfStringIf32 interface {
 type OfStringIfMut32 interface {
 	OfStringIf32
 	Set(int32, string) string
+}
+
+func OfStringInto(__ OfStringIf) []string {
+	switch d := __.(type) {
+	case OfString:
+		return []string(d)
+	case *OfStringSt:
+		return []string(d.somes)
+	default:
+		res := make([]string, __.Len())
+		for i := 0; i < len(res); i += 1 {
+			res[i] = __.Get(i)
+		}
+		return res
+	}
 }
 
 type OfString []string
@@ -1500,6 +1710,21 @@ type OfUintIfMut32 interface {
 	Set(int32, uint) uint
 }
 
+func OfUintInto(__ OfUintIf) []uint {
+	switch d := __.(type) {
+	case OfUint:
+		return []uint(d)
+	case *OfUintSt:
+		return []uint(d.somes)
+	default:
+		res := make([]uint, __.Len())
+		for i := 0; i < len(res); i += 1 {
+			res[i] = __.Get(i)
+		}
+		return res
+	}
+}
+
 type OfUint []uint
 
 func (__ OfUint) Get(i int) uint {
@@ -1603,6 +1828,21 @@ type OfUint16If32 interface {
 type OfUint16IfMut32 interface {
 	OfUint16If32
 	Set(int32, uint16) uint16
+}
+
+func OfUint16Into(__ OfUint16If) []uint16 {
+	switch d := __.(type) {
+	case OfUint16:
+		return []uint16(d)
+	case *OfUint16St:
+		return []uint16(d.somes)
+	default:
+		res := make([]uint16, __.Len())
+		for i := 0; i < len(res); i += 1 {
+			res[i] = __.Get(i)
+		}
+		return res
+	}
 }
 
 type OfUint16 []uint16
@@ -1710,6 +1950,21 @@ type OfUint32IfMut32 interface {
 	Set(int32, uint32) uint32
 }
 
+func OfUint32Into(__ OfUint32If) []uint32 {
+	switch d := __.(type) {
+	case OfUint32:
+		return []uint32(d)
+	case *OfUint32St:
+		return []uint32(d.somes)
+	default:
+		res := make([]uint32, __.Len())
+		for i := 0; i < len(res); i += 1 {
+			res[i] = __.Get(i)
+		}
+		return res
+	}
+}
+
 type OfUint32 []uint32
 
 func (__ OfUint32) Get(i int) uint32 {
@@ -1813,6 +2068,21 @@ type OfUint64If32 interface {
 type OfUint64IfMut32 interface {
 	OfUint64If32
 	Set(int32, uint64) uint64
+}
+
+func OfUint64Into(__ OfUint64If) []uint64 {
+	switch d := __.(type) {
+	case OfUint64:
+		return []uint64(d)
+	case *OfUint64St:
+		return []uint64(d.somes)
+	default:
+		res := make([]uint64, __.Len())
+		for i := 0; i < len(res); i += 1 {
+			res[i] = __.Get(i)
+		}
+		return res
+	}
 }
 
 type OfUint64 []uint64
@@ -1920,6 +2190,21 @@ type OfUint8IfMut32 interface {
 	Set(int32, uint8) uint8
 }
 
+func OfUint8Into(__ OfUint8If) []uint8 {
+	switch d := __.(type) {
+	case OfUint8:
+		return []uint8(d)
+	case *OfUint8St:
+		return []uint8(d.somes)
+	default:
+		res := make([]uint8, __.Len())
+		for i := 0; i < len(res); i += 1 {
+			res[i] = __.Get(i)
+		}
+		return res
+	}
+}
+
 type OfUint8 []uint8
 
 func (__ OfUint8) Get(i int) uint8 {
@@ -2023,6 +2308,21 @@ type OfUintptrIf32 interface {
 type OfUintptrIfMut32 interface {
 	OfUintptrIf32
 	Set(int32, uintptr) uintptr
+}
+
+func OfUintptrInto(__ OfUintptrIf) []uintptr {
+	switch d := __.(type) {
+	case OfUintptr:
+		return []uintptr(d)
+	case *OfUintptrSt:
+		return []uintptr(d.somes)
+	default:
+		res := make([]uintptr, __.Len())
+		for i := 0; i < len(res); i += 1 {
+			res[i] = __.Get(i)
+		}
+		return res
+	}
 }
 
 type OfUintptr []uintptr
