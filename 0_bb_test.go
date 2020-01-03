@@ -23,8 +23,10 @@ func TestTSt(t *testing.T) {
 		"0", "1", "2", "3",
 	})
 
-	if "3" != ss.At(3) {
-		t.Errorf("expect %v, got %v", "3", ss.At(3))
+	ss.Set(3, "30")
+
+	if "30" != ss.At(3) {
+		t.Errorf("expect %v, got %v", "30", ss.At(3))
 	}
 }
 

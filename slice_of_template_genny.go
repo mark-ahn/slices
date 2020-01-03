@@ -5,45 +5,62 @@
 package slices
 
 type InterfaceSliceInf interface {
-	At(int) interface{}
+	At(int) Some
+	Set(int, Some)
 	Count() int
 }
 
 type InterfaceSliceInf32 interface {
-	At(int32) interface{}
+	At(int32) Some
+	Set(int32, Some)
 	Count() int32
 }
 
-type InterfaceSlice []interface{}
-type InterfaceSliceI32 []interface{}
+type InterfaceSlice []Some
+type InterfaceSliceI32 []Some
 
-type InterfaceSliceIter []interface{}
+type InterfaceSliceIter []Some
 
-func (__ InterfaceSlice) At(i int) interface{} {
+func NewInterfaceSlice(i int) InterfaceSlice {
+	return InterfaceSlice(make([]Some, i))
+}
+
+func (__ InterfaceSlice) At(i int) Some {
 	return __[i]
+}
+func (__ InterfaceSlice) Set(i int, d Some) {
+	__[i] = d
 }
 
 func (__ InterfaceSlice) Count() int {
 	return len(__)
 }
 
-func (__ InterfaceSliceI32) At(i int32) interface{} {
+func NewInterfaceSliceI32(i int) InterfaceSliceI32 {
+	return InterfaceSliceI32(make([]Some, i))
+}
+
+func (__ InterfaceSliceI32) At(i int32) Some {
 	return __[int(i)]
+}
+
+func (__ InterfaceSliceI32) Set(i int32, d Some) {
+	__[i] = d
 }
 
 func (__ InterfaceSliceI32) Count() int32 {
 	return int32(len(__))
 }
 
-func (__ InterfaceSliceIter) Range(f func(i int, d interface{}) bool) {
+func (__ InterfaceSliceIter) Range(f func(i int, d Some) bool) {
 	for i := range __ {
 		if !f(i, __[i]) {
 			break
 		}
 	}
 }
-func (__ InterfaceSliceIter) Map(f func(i int, d interface{}) interface{}) InterfaceSliceIter {
-	rval := make([]interface{}, len(__))
+func (__ InterfaceSliceIter) Map(f func(i int, d Some) Some) InterfaceSliceIter {
+	rval := make([]Some, len(__))
 	for i := range __ {
 		rval[i] = f(i, __[i])
 	}
