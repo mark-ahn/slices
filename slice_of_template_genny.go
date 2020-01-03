@@ -4,65 +4,81 @@
 
 package slices
 
-type InterfaceSliceInf interface {
-	At(int) interface{}
-	Set(int, interface{})
-	Count() int
+type SliceOfInterfaceIf interface {
+	Get(int) interface{}
+	Set(int, interface{}) interface{}
+	Len() int
 }
 
-type InterfaceSliceInf32 interface {
-	At(int32) interface{}
-	Set(int32, interface{})
-	Count() int32
+type SliceOfInterfaceIf32 interface {
+	Get(int32) interface{}
+	Set(int32, interface{}) interface{}
+	Len() int32
 }
 
-type InterfaceSlice []interface{}
-type InterfaceSliceI32 []interface{}
+type SliceOfInterface []interface{}
 
-type InterfaceSliceIter []interface{}
-
-func NewInterfaceSlice(i int) InterfaceSlice {
-	return InterfaceSlice(make([]interface{}, i))
-}
-
-func (__ InterfaceSlice) At(i int) interface{} {
+func (__ SliceOfInterface) Get(i int) interface{} {
 	return __[i]
 }
-func (__ InterfaceSlice) Set(i int, d interface{}) {
+func (__ SliceOfInterface) Set(i int, d interface{}) interface{} {
+	old := __[i]
 	__[i] = d
+	return old
 }
 
-func (__ InterfaceSlice) Count() int {
+func (__ SliceOfInterface) Len() int {
 	return len(__)
 }
 
-func NewInterfaceSliceI32(i int) InterfaceSliceI32 {
-	return InterfaceSliceI32(make([]interface{}, i))
-}
+type SliceOfInterfaceI32 []interface{}
 
-func (__ InterfaceSliceI32) At(i int32) interface{} {
+func (__ SliceOfInterfaceI32) Get(i int32) interface{} {
 	return __[int(i)]
 }
 
-func (__ InterfaceSliceI32) Set(i int32, d interface{}) {
+func (__ SliceOfInterfaceI32) Set(i int32, d interface{}) interface{} {
+	old := __[i]
 	__[i] = d
+	return old
 }
 
-func (__ InterfaceSliceI32) Count() int32 {
+func (__ SliceOfInterfaceI32) Len() int32 {
 	return int32(len(__))
 }
 
-func (__ InterfaceSliceIter) Range(f func(i int, d interface{}) bool) {
+type SliceOfInterfaceSt struct {
+	somes SliceOfInterface
+}
+
+func NewSliceOfInterfaceSt(i int) *SliceOfInterfaceSt {
+	return &SliceOfInterfaceSt{somes: SliceOfInterface(make([]interface{}, i))}
+}
+
+func (__ *SliceOfInterfaceSt) Get(i int) interface{} {
+	return __.somes.Get(i)
+}
+func (__ *SliceOfInterfaceSt) Set(i int, d interface{}) interface{} {
+	return __.somes.Set(i, d)
+}
+
+func (__ *SliceOfInterfaceSt) Len() int {
+	return __.somes.Len()
+}
+
+type SliceOfInterfaceIter []interface{}
+
+func (__ SliceOfInterfaceIter) Range(f func(i int, d interface{}) bool) {
 	for i := range __ {
 		if !f(i, __[i]) {
 			break
 		}
 	}
 }
-func (__ InterfaceSliceIter) Map(f func(i int, d interface{}) interface{}) InterfaceSliceIter {
+func (__ SliceOfInterfaceIter) Map(f func(i int, d interface{}) interface{}) SliceOfInterfaceIter {
 	rval := make([]interface{}, len(__))
 	for i := range __ {
 		rval[i] = f(i, __[i])
 	}
-	return InterfaceSliceIter(rval)
+	return SliceOfInterfaceIter(rval)
 }

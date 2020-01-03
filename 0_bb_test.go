@@ -12,21 +12,26 @@ func TestT(t *testing.T) {
 		"0", "1", "2", "3",
 	})
 
-	if "3" != ss.At(3) {
-		t.Errorf("expect %v, got %v", "3", ss.At(3))
+	if "3" != ss.Get(3) {
+		t.Errorf("expect %v, got %v", "3", ss.Get(3))
 	}
 }
 
 func TestTSt(t *testing.T) {
-	var ss slices.OfStringInf
-	ss = slices.OfString([]string{
-		"0", "1", "2", "3",
-	})
+	var ss slices.OfStringIf
+	// ss = slices.OfString([]string{
+	// 	"0", "1", "2", "3",
+	// })
+	ss = slices.NewOfStringSt(4)
+	ss.Set(0, "0")
+	ss.Set(1, "1")
+	ss.Set(2, "2")
+	ss.Set(3, "3")
 
 	ss.Set(3, "30")
 
-	if "30" != ss.At(3) {
-		t.Errorf("expect %v, got %v", "30", ss.At(3))
+	if "30" != ss.Get(3) {
+		t.Errorf("expect %v, got %v", "30", ss.Get(3))
 	}
 }
 

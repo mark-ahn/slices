@@ -4,53 +4,69 @@
 
 package slices
 
-type OfBoolInf interface {
-	At(int) bool
-	Set(int, bool)
-	Count() int
+type OfBoolIf interface {
+	Get(int) bool
+	Set(int, bool) bool
+	Len() int
 }
 
-type OfBoolInf32 interface {
-	At(int32) bool
-	Set(int32, bool)
-	Count() int32
+type OfBoolIf32 interface {
+	Get(int32) bool
+	Set(int32, bool) bool
+	Len() int32
 }
 
 type OfBool []bool
-type OfBoolI32 []bool
 
-type OfBoolIter []bool
-
-func NewOfBoolSlice(i int) OfBool {
-	return OfBool(make([]bool, i))
-}
-
-func (__ OfBool) At(i int) bool {
+func (__ OfBool) Get(i int) bool {
 	return __[i]
 }
-func (__ OfBool) Set(i int, d bool) {
+func (__ OfBool) Set(i int, d bool) bool {
+	old := __[i]
 	__[i] = d
+	return old
 }
 
-func (__ OfBool) Count() int {
+func (__ OfBool) Len() int {
 	return len(__)
 }
 
-func NewOfBoolSliceI32(i int) OfBoolI32 {
-	return OfBoolI32(make([]bool, i))
-}
+type OfBoolI32 []bool
 
-func (__ OfBoolI32) At(i int32) bool {
+func (__ OfBoolI32) Get(i int32) bool {
 	return __[int(i)]
 }
 
-func (__ OfBoolI32) Set(i int32, d bool) {
+func (__ OfBoolI32) Set(i int32, d bool) bool {
+	old := __[i]
 	__[i] = d
+	return old
 }
 
-func (__ OfBoolI32) Count() int32 {
+func (__ OfBoolI32) Len() int32 {
 	return int32(len(__))
 }
+
+type OfBoolSt struct {
+	somes OfBool
+}
+
+func NewOfBoolSt(i int) *OfBoolSt {
+	return &OfBoolSt{somes: OfBool(make([]bool, i))}
+}
+
+func (__ *OfBoolSt) Get(i int) bool {
+	return __.somes.Get(i)
+}
+func (__ *OfBoolSt) Set(i int, d bool) bool {
+	return __.somes.Set(i, d)
+}
+
+func (__ *OfBoolSt) Len() int {
+	return __.somes.Len()
+}
+
+type OfBoolIter []bool
 
 func (__ OfBoolIter) Range(f func(i int, d bool) bool) {
 	for i := range __ {
@@ -67,53 +83,69 @@ func (__ OfBoolIter) Map(f func(i int, d bool) bool) OfBoolIter {
 	return OfBoolIter(rval)
 }
 
-type OfByteInf interface {
-	At(int) byte
-	Set(int, byte)
-	Count() int
+type OfByteIf interface {
+	Get(int) byte
+	Set(int, byte) byte
+	Len() int
 }
 
-type OfByteInf32 interface {
-	At(int32) byte
-	Set(int32, byte)
-	Count() int32
+type OfByteIf32 interface {
+	Get(int32) byte
+	Set(int32, byte) byte
+	Len() int32
 }
 
 type OfByte []byte
-type OfByteI32 []byte
 
-type OfByteIter []byte
-
-func NewOfByteSlice(i int) OfByte {
-	return OfByte(make([]byte, i))
-}
-
-func (__ OfByte) At(i int) byte {
+func (__ OfByte) Get(i int) byte {
 	return __[i]
 }
-func (__ OfByte) Set(i int, d byte) {
+func (__ OfByte) Set(i int, d byte) byte {
+	old := __[i]
 	__[i] = d
+	return old
 }
 
-func (__ OfByte) Count() int {
+func (__ OfByte) Len() int {
 	return len(__)
 }
 
-func NewOfByteSliceI32(i int) OfByteI32 {
-	return OfByteI32(make([]byte, i))
-}
+type OfByteI32 []byte
 
-func (__ OfByteI32) At(i int32) byte {
+func (__ OfByteI32) Get(i int32) byte {
 	return __[int(i)]
 }
 
-func (__ OfByteI32) Set(i int32, d byte) {
+func (__ OfByteI32) Set(i int32, d byte) byte {
+	old := __[i]
 	__[i] = d
+	return old
 }
 
-func (__ OfByteI32) Count() int32 {
+func (__ OfByteI32) Len() int32 {
 	return int32(len(__))
 }
+
+type OfByteSt struct {
+	somes OfByte
+}
+
+func NewOfByteSt(i int) *OfByteSt {
+	return &OfByteSt{somes: OfByte(make([]byte, i))}
+}
+
+func (__ *OfByteSt) Get(i int) byte {
+	return __.somes.Get(i)
+}
+func (__ *OfByteSt) Set(i int, d byte) byte {
+	return __.somes.Set(i, d)
+}
+
+func (__ *OfByteSt) Len() int {
+	return __.somes.Len()
+}
+
+type OfByteIter []byte
 
 func (__ OfByteIter) Range(f func(i int, d byte) bool) {
 	for i := range __ {
@@ -130,53 +162,69 @@ func (__ OfByteIter) Map(f func(i int, d byte) byte) OfByteIter {
 	return OfByteIter(rval)
 }
 
-type OfComplex128Inf interface {
-	At(int) complex128
-	Set(int, complex128)
-	Count() int
+type OfComplex128If interface {
+	Get(int) complex128
+	Set(int, complex128) complex128
+	Len() int
 }
 
-type OfComplex128Inf32 interface {
-	At(int32) complex128
-	Set(int32, complex128)
-	Count() int32
+type OfComplex128If32 interface {
+	Get(int32) complex128
+	Set(int32, complex128) complex128
+	Len() int32
 }
 
 type OfComplex128 []complex128
-type OfComplex128I32 []complex128
 
-type OfComplex128Iter []complex128
-
-func NewOfComplex128Slice(i int) OfComplex128 {
-	return OfComplex128(make([]complex128, i))
-}
-
-func (__ OfComplex128) At(i int) complex128 {
+func (__ OfComplex128) Get(i int) complex128 {
 	return __[i]
 }
-func (__ OfComplex128) Set(i int, d complex128) {
+func (__ OfComplex128) Set(i int, d complex128) complex128 {
+	old := __[i]
 	__[i] = d
+	return old
 }
 
-func (__ OfComplex128) Count() int {
+func (__ OfComplex128) Len() int {
 	return len(__)
 }
 
-func NewOfComplex128SliceI32(i int) OfComplex128I32 {
-	return OfComplex128I32(make([]complex128, i))
-}
+type OfComplex128I32 []complex128
 
-func (__ OfComplex128I32) At(i int32) complex128 {
+func (__ OfComplex128I32) Get(i int32) complex128 {
 	return __[int(i)]
 }
 
-func (__ OfComplex128I32) Set(i int32, d complex128) {
+func (__ OfComplex128I32) Set(i int32, d complex128) complex128 {
+	old := __[i]
 	__[i] = d
+	return old
 }
 
-func (__ OfComplex128I32) Count() int32 {
+func (__ OfComplex128I32) Len() int32 {
 	return int32(len(__))
 }
+
+type OfComplex128St struct {
+	somes OfComplex128
+}
+
+func NewOfComplex128St(i int) *OfComplex128St {
+	return &OfComplex128St{somes: OfComplex128(make([]complex128, i))}
+}
+
+func (__ *OfComplex128St) Get(i int) complex128 {
+	return __.somes.Get(i)
+}
+func (__ *OfComplex128St) Set(i int, d complex128) complex128 {
+	return __.somes.Set(i, d)
+}
+
+func (__ *OfComplex128St) Len() int {
+	return __.somes.Len()
+}
+
+type OfComplex128Iter []complex128
 
 func (__ OfComplex128Iter) Range(f func(i int, d complex128) bool) {
 	for i := range __ {
@@ -193,53 +241,69 @@ func (__ OfComplex128Iter) Map(f func(i int, d complex128) complex128) OfComplex
 	return OfComplex128Iter(rval)
 }
 
-type OfComplex64Inf interface {
-	At(int) complex64
-	Set(int, complex64)
-	Count() int
+type OfComplex64If interface {
+	Get(int) complex64
+	Set(int, complex64) complex64
+	Len() int
 }
 
-type OfComplex64Inf32 interface {
-	At(int32) complex64
-	Set(int32, complex64)
-	Count() int32
+type OfComplex64If32 interface {
+	Get(int32) complex64
+	Set(int32, complex64) complex64
+	Len() int32
 }
 
 type OfComplex64 []complex64
-type OfComplex64I32 []complex64
 
-type OfComplex64Iter []complex64
-
-func NewOfComplex64Slice(i int) OfComplex64 {
-	return OfComplex64(make([]complex64, i))
-}
-
-func (__ OfComplex64) At(i int) complex64 {
+func (__ OfComplex64) Get(i int) complex64 {
 	return __[i]
 }
-func (__ OfComplex64) Set(i int, d complex64) {
+func (__ OfComplex64) Set(i int, d complex64) complex64 {
+	old := __[i]
 	__[i] = d
+	return old
 }
 
-func (__ OfComplex64) Count() int {
+func (__ OfComplex64) Len() int {
 	return len(__)
 }
 
-func NewOfComplex64SliceI32(i int) OfComplex64I32 {
-	return OfComplex64I32(make([]complex64, i))
-}
+type OfComplex64I32 []complex64
 
-func (__ OfComplex64I32) At(i int32) complex64 {
+func (__ OfComplex64I32) Get(i int32) complex64 {
 	return __[int(i)]
 }
 
-func (__ OfComplex64I32) Set(i int32, d complex64) {
+func (__ OfComplex64I32) Set(i int32, d complex64) complex64 {
+	old := __[i]
 	__[i] = d
+	return old
 }
 
-func (__ OfComplex64I32) Count() int32 {
+func (__ OfComplex64I32) Len() int32 {
 	return int32(len(__))
 }
+
+type OfComplex64St struct {
+	somes OfComplex64
+}
+
+func NewOfComplex64St(i int) *OfComplex64St {
+	return &OfComplex64St{somes: OfComplex64(make([]complex64, i))}
+}
+
+func (__ *OfComplex64St) Get(i int) complex64 {
+	return __.somes.Get(i)
+}
+func (__ *OfComplex64St) Set(i int, d complex64) complex64 {
+	return __.somes.Set(i, d)
+}
+
+func (__ *OfComplex64St) Len() int {
+	return __.somes.Len()
+}
+
+type OfComplex64Iter []complex64
 
 func (__ OfComplex64Iter) Range(f func(i int, d complex64) bool) {
 	for i := range __ {
@@ -256,53 +320,69 @@ func (__ OfComplex64Iter) Map(f func(i int, d complex64) complex64) OfComplex64I
 	return OfComplex64Iter(rval)
 }
 
-type OfErrorInf interface {
-	At(int) error
-	Set(int, error)
-	Count() int
+type OfErrorIf interface {
+	Get(int) error
+	Set(int, error) error
+	Len() int
 }
 
-type OfErrorInf32 interface {
-	At(int32) error
-	Set(int32, error)
-	Count() int32
+type OfErrorIf32 interface {
+	Get(int32) error
+	Set(int32, error) error
+	Len() int32
 }
 
 type OfError []error
-type OfErrorI32 []error
 
-type OfErrorIter []error
-
-func NewOfErrorSlice(i int) OfError {
-	return OfError(make([]error, i))
-}
-
-func (__ OfError) At(i int) error {
+func (__ OfError) Get(i int) error {
 	return __[i]
 }
-func (__ OfError) Set(i int, d error) {
+func (__ OfError) Set(i int, d error) error {
+	old := __[i]
 	__[i] = d
+	return old
 }
 
-func (__ OfError) Count() int {
+func (__ OfError) Len() int {
 	return len(__)
 }
 
-func NewOfErrorSliceI32(i int) OfErrorI32 {
-	return OfErrorI32(make([]error, i))
-}
+type OfErrorI32 []error
 
-func (__ OfErrorI32) At(i int32) error {
+func (__ OfErrorI32) Get(i int32) error {
 	return __[int(i)]
 }
 
-func (__ OfErrorI32) Set(i int32, d error) {
+func (__ OfErrorI32) Set(i int32, d error) error {
+	old := __[i]
 	__[i] = d
+	return old
 }
 
-func (__ OfErrorI32) Count() int32 {
+func (__ OfErrorI32) Len() int32 {
 	return int32(len(__))
 }
+
+type OfErrorSt struct {
+	somes OfError
+}
+
+func NewOfErrorSt(i int) *OfErrorSt {
+	return &OfErrorSt{somes: OfError(make([]error, i))}
+}
+
+func (__ *OfErrorSt) Get(i int) error {
+	return __.somes.Get(i)
+}
+func (__ *OfErrorSt) Set(i int, d error) error {
+	return __.somes.Set(i, d)
+}
+
+func (__ *OfErrorSt) Len() int {
+	return __.somes.Len()
+}
+
+type OfErrorIter []error
 
 func (__ OfErrorIter) Range(f func(i int, d error) bool) {
 	for i := range __ {
@@ -319,53 +399,69 @@ func (__ OfErrorIter) Map(f func(i int, d error) error) OfErrorIter {
 	return OfErrorIter(rval)
 }
 
-type OfFloat32Inf interface {
-	At(int) float32
-	Set(int, float32)
-	Count() int
+type OfFloat32If interface {
+	Get(int) float32
+	Set(int, float32) float32
+	Len() int
 }
 
-type OfFloat32Inf32 interface {
-	At(int32) float32
-	Set(int32, float32)
-	Count() int32
+type OfFloat32If32 interface {
+	Get(int32) float32
+	Set(int32, float32) float32
+	Len() int32
 }
 
 type OfFloat32 []float32
-type OfFloat32I32 []float32
 
-type OfFloat32Iter []float32
-
-func NewOfFloat32Slice(i int) OfFloat32 {
-	return OfFloat32(make([]float32, i))
-}
-
-func (__ OfFloat32) At(i int) float32 {
+func (__ OfFloat32) Get(i int) float32 {
 	return __[i]
 }
-func (__ OfFloat32) Set(i int, d float32) {
+func (__ OfFloat32) Set(i int, d float32) float32 {
+	old := __[i]
 	__[i] = d
+	return old
 }
 
-func (__ OfFloat32) Count() int {
+func (__ OfFloat32) Len() int {
 	return len(__)
 }
 
-func NewOfFloat32SliceI32(i int) OfFloat32I32 {
-	return OfFloat32I32(make([]float32, i))
-}
+type OfFloat32I32 []float32
 
-func (__ OfFloat32I32) At(i int32) float32 {
+func (__ OfFloat32I32) Get(i int32) float32 {
 	return __[int(i)]
 }
 
-func (__ OfFloat32I32) Set(i int32, d float32) {
+func (__ OfFloat32I32) Set(i int32, d float32) float32 {
+	old := __[i]
 	__[i] = d
+	return old
 }
 
-func (__ OfFloat32I32) Count() int32 {
+func (__ OfFloat32I32) Len() int32 {
 	return int32(len(__))
 }
+
+type OfFloat32St struct {
+	somes OfFloat32
+}
+
+func NewOfFloat32St(i int) *OfFloat32St {
+	return &OfFloat32St{somes: OfFloat32(make([]float32, i))}
+}
+
+func (__ *OfFloat32St) Get(i int) float32 {
+	return __.somes.Get(i)
+}
+func (__ *OfFloat32St) Set(i int, d float32) float32 {
+	return __.somes.Set(i, d)
+}
+
+func (__ *OfFloat32St) Len() int {
+	return __.somes.Len()
+}
+
+type OfFloat32Iter []float32
 
 func (__ OfFloat32Iter) Range(f func(i int, d float32) bool) {
 	for i := range __ {
@@ -382,53 +478,69 @@ func (__ OfFloat32Iter) Map(f func(i int, d float32) float32) OfFloat32Iter {
 	return OfFloat32Iter(rval)
 }
 
-type OfFloat64Inf interface {
-	At(int) float64
-	Set(int, float64)
-	Count() int
+type OfFloat64If interface {
+	Get(int) float64
+	Set(int, float64) float64
+	Len() int
 }
 
-type OfFloat64Inf32 interface {
-	At(int32) float64
-	Set(int32, float64)
-	Count() int32
+type OfFloat64If32 interface {
+	Get(int32) float64
+	Set(int32, float64) float64
+	Len() int32
 }
 
 type OfFloat64 []float64
-type OfFloat64I32 []float64
 
-type OfFloat64Iter []float64
-
-func NewOfFloat64Slice(i int) OfFloat64 {
-	return OfFloat64(make([]float64, i))
-}
-
-func (__ OfFloat64) At(i int) float64 {
+func (__ OfFloat64) Get(i int) float64 {
 	return __[i]
 }
-func (__ OfFloat64) Set(i int, d float64) {
+func (__ OfFloat64) Set(i int, d float64) float64 {
+	old := __[i]
 	__[i] = d
+	return old
 }
 
-func (__ OfFloat64) Count() int {
+func (__ OfFloat64) Len() int {
 	return len(__)
 }
 
-func NewOfFloat64SliceI32(i int) OfFloat64I32 {
-	return OfFloat64I32(make([]float64, i))
-}
+type OfFloat64I32 []float64
 
-func (__ OfFloat64I32) At(i int32) float64 {
+func (__ OfFloat64I32) Get(i int32) float64 {
 	return __[int(i)]
 }
 
-func (__ OfFloat64I32) Set(i int32, d float64) {
+func (__ OfFloat64I32) Set(i int32, d float64) float64 {
+	old := __[i]
 	__[i] = d
+	return old
 }
 
-func (__ OfFloat64I32) Count() int32 {
+func (__ OfFloat64I32) Len() int32 {
 	return int32(len(__))
 }
+
+type OfFloat64St struct {
+	somes OfFloat64
+}
+
+func NewOfFloat64St(i int) *OfFloat64St {
+	return &OfFloat64St{somes: OfFloat64(make([]float64, i))}
+}
+
+func (__ *OfFloat64St) Get(i int) float64 {
+	return __.somes.Get(i)
+}
+func (__ *OfFloat64St) Set(i int, d float64) float64 {
+	return __.somes.Set(i, d)
+}
+
+func (__ *OfFloat64St) Len() int {
+	return __.somes.Len()
+}
+
+type OfFloat64Iter []float64
 
 func (__ OfFloat64Iter) Range(f func(i int, d float64) bool) {
 	for i := range __ {
@@ -445,53 +557,69 @@ func (__ OfFloat64Iter) Map(f func(i int, d float64) float64) OfFloat64Iter {
 	return OfFloat64Iter(rval)
 }
 
-type OfIntInf interface {
-	At(int) int
-	Set(int, int)
-	Count() int
+type OfIntIf interface {
+	Get(int) int
+	Set(int, int) int
+	Len() int
 }
 
-type OfIntInf32 interface {
-	At(int32) int
-	Set(int32, int)
-	Count() int32
+type OfIntIf32 interface {
+	Get(int32) int
+	Set(int32, int) int
+	Len() int32
 }
 
 type OfInt []int
-type OfIntI32 []int
 
-type OfIntIter []int
-
-func NewOfIntSlice(i int) OfInt {
-	return OfInt(make([]int, i))
-}
-
-func (__ OfInt) At(i int) int {
+func (__ OfInt) Get(i int) int {
 	return __[i]
 }
-func (__ OfInt) Set(i int, d int) {
+func (__ OfInt) Set(i int, d int) int {
+	old := __[i]
 	__[i] = d
+	return old
 }
 
-func (__ OfInt) Count() int {
+func (__ OfInt) Len() int {
 	return len(__)
 }
 
-func NewOfIntSliceI32(i int) OfIntI32 {
-	return OfIntI32(make([]int, i))
-}
+type OfIntI32 []int
 
-func (__ OfIntI32) At(i int32) int {
+func (__ OfIntI32) Get(i int32) int {
 	return __[int(i)]
 }
 
-func (__ OfIntI32) Set(i int32, d int) {
+func (__ OfIntI32) Set(i int32, d int) int {
+	old := __[i]
 	__[i] = d
+	return old
 }
 
-func (__ OfIntI32) Count() int32 {
+func (__ OfIntI32) Len() int32 {
 	return int32(len(__))
 }
+
+type OfIntSt struct {
+	somes OfInt
+}
+
+func NewOfIntSt(i int) *OfIntSt {
+	return &OfIntSt{somes: OfInt(make([]int, i))}
+}
+
+func (__ *OfIntSt) Get(i int) int {
+	return __.somes.Get(i)
+}
+func (__ *OfIntSt) Set(i int, d int) int {
+	return __.somes.Set(i, d)
+}
+
+func (__ *OfIntSt) Len() int {
+	return __.somes.Len()
+}
+
+type OfIntIter []int
 
 func (__ OfIntIter) Range(f func(i int, d int) bool) {
 	for i := range __ {
@@ -508,53 +636,69 @@ func (__ OfIntIter) Map(f func(i int, d int) int) OfIntIter {
 	return OfIntIter(rval)
 }
 
-type OfInt16Inf interface {
-	At(int) int16
-	Set(int, int16)
-	Count() int
+type OfInt16If interface {
+	Get(int) int16
+	Set(int, int16) int16
+	Len() int
 }
 
-type OfInt16Inf32 interface {
-	At(int32) int16
-	Set(int32, int16)
-	Count() int32
+type OfInt16If32 interface {
+	Get(int32) int16
+	Set(int32, int16) int16
+	Len() int32
 }
 
 type OfInt16 []int16
-type OfInt16I32 []int16
 
-type OfInt16Iter []int16
-
-func NewOfInt16Slice(i int) OfInt16 {
-	return OfInt16(make([]int16, i))
-}
-
-func (__ OfInt16) At(i int) int16 {
+func (__ OfInt16) Get(i int) int16 {
 	return __[i]
 }
-func (__ OfInt16) Set(i int, d int16) {
+func (__ OfInt16) Set(i int, d int16) int16 {
+	old := __[i]
 	__[i] = d
+	return old
 }
 
-func (__ OfInt16) Count() int {
+func (__ OfInt16) Len() int {
 	return len(__)
 }
 
-func NewOfInt16SliceI32(i int) OfInt16I32 {
-	return OfInt16I32(make([]int16, i))
-}
+type OfInt16I32 []int16
 
-func (__ OfInt16I32) At(i int32) int16 {
+func (__ OfInt16I32) Get(i int32) int16 {
 	return __[int(i)]
 }
 
-func (__ OfInt16I32) Set(i int32, d int16) {
+func (__ OfInt16I32) Set(i int32, d int16) int16 {
+	old := __[i]
 	__[i] = d
+	return old
 }
 
-func (__ OfInt16I32) Count() int32 {
+func (__ OfInt16I32) Len() int32 {
 	return int32(len(__))
 }
+
+type OfInt16St struct {
+	somes OfInt16
+}
+
+func NewOfInt16St(i int) *OfInt16St {
+	return &OfInt16St{somes: OfInt16(make([]int16, i))}
+}
+
+func (__ *OfInt16St) Get(i int) int16 {
+	return __.somes.Get(i)
+}
+func (__ *OfInt16St) Set(i int, d int16) int16 {
+	return __.somes.Set(i, d)
+}
+
+func (__ *OfInt16St) Len() int {
+	return __.somes.Len()
+}
+
+type OfInt16Iter []int16
 
 func (__ OfInt16Iter) Range(f func(i int, d int16) bool) {
 	for i := range __ {
@@ -571,53 +715,69 @@ func (__ OfInt16Iter) Map(f func(i int, d int16) int16) OfInt16Iter {
 	return OfInt16Iter(rval)
 }
 
-type OfInt32Inf interface {
-	At(int) int32
-	Set(int, int32)
-	Count() int
+type OfInt32If interface {
+	Get(int) int32
+	Set(int, int32) int32
+	Len() int
 }
 
-type OfInt32Inf32 interface {
-	At(int32) int32
-	Set(int32, int32)
-	Count() int32
+type OfInt32If32 interface {
+	Get(int32) int32
+	Set(int32, int32) int32
+	Len() int32
 }
 
 type OfInt32 []int32
-type OfInt32I32 []int32
 
-type OfInt32Iter []int32
-
-func NewOfInt32Slice(i int) OfInt32 {
-	return OfInt32(make([]int32, i))
-}
-
-func (__ OfInt32) At(i int) int32 {
+func (__ OfInt32) Get(i int) int32 {
 	return __[i]
 }
-func (__ OfInt32) Set(i int, d int32) {
+func (__ OfInt32) Set(i int, d int32) int32 {
+	old := __[i]
 	__[i] = d
+	return old
 }
 
-func (__ OfInt32) Count() int {
+func (__ OfInt32) Len() int {
 	return len(__)
 }
 
-func NewOfInt32SliceI32(i int) OfInt32I32 {
-	return OfInt32I32(make([]int32, i))
-}
+type OfInt32I32 []int32
 
-func (__ OfInt32I32) At(i int32) int32 {
+func (__ OfInt32I32) Get(i int32) int32 {
 	return __[int(i)]
 }
 
-func (__ OfInt32I32) Set(i int32, d int32) {
+func (__ OfInt32I32) Set(i int32, d int32) int32 {
+	old := __[i]
 	__[i] = d
+	return old
 }
 
-func (__ OfInt32I32) Count() int32 {
+func (__ OfInt32I32) Len() int32 {
 	return int32(len(__))
 }
+
+type OfInt32St struct {
+	somes OfInt32
+}
+
+func NewOfInt32St(i int) *OfInt32St {
+	return &OfInt32St{somes: OfInt32(make([]int32, i))}
+}
+
+func (__ *OfInt32St) Get(i int) int32 {
+	return __.somes.Get(i)
+}
+func (__ *OfInt32St) Set(i int, d int32) int32 {
+	return __.somes.Set(i, d)
+}
+
+func (__ *OfInt32St) Len() int {
+	return __.somes.Len()
+}
+
+type OfInt32Iter []int32
 
 func (__ OfInt32Iter) Range(f func(i int, d int32) bool) {
 	for i := range __ {
@@ -634,53 +794,69 @@ func (__ OfInt32Iter) Map(f func(i int, d int32) int32) OfInt32Iter {
 	return OfInt32Iter(rval)
 }
 
-type OfInt64Inf interface {
-	At(int) int64
-	Set(int, int64)
-	Count() int
+type OfInt64If interface {
+	Get(int) int64
+	Set(int, int64) int64
+	Len() int
 }
 
-type OfInt64Inf32 interface {
-	At(int32) int64
-	Set(int32, int64)
-	Count() int32
+type OfInt64If32 interface {
+	Get(int32) int64
+	Set(int32, int64) int64
+	Len() int32
 }
 
 type OfInt64 []int64
-type OfInt64I32 []int64
 
-type OfInt64Iter []int64
-
-func NewOfInt64Slice(i int) OfInt64 {
-	return OfInt64(make([]int64, i))
-}
-
-func (__ OfInt64) At(i int) int64 {
+func (__ OfInt64) Get(i int) int64 {
 	return __[i]
 }
-func (__ OfInt64) Set(i int, d int64) {
+func (__ OfInt64) Set(i int, d int64) int64 {
+	old := __[i]
 	__[i] = d
+	return old
 }
 
-func (__ OfInt64) Count() int {
+func (__ OfInt64) Len() int {
 	return len(__)
 }
 
-func NewOfInt64SliceI32(i int) OfInt64I32 {
-	return OfInt64I32(make([]int64, i))
-}
+type OfInt64I32 []int64
 
-func (__ OfInt64I32) At(i int32) int64 {
+func (__ OfInt64I32) Get(i int32) int64 {
 	return __[int(i)]
 }
 
-func (__ OfInt64I32) Set(i int32, d int64) {
+func (__ OfInt64I32) Set(i int32, d int64) int64 {
+	old := __[i]
 	__[i] = d
+	return old
 }
 
-func (__ OfInt64I32) Count() int32 {
+func (__ OfInt64I32) Len() int32 {
 	return int32(len(__))
 }
+
+type OfInt64St struct {
+	somes OfInt64
+}
+
+func NewOfInt64St(i int) *OfInt64St {
+	return &OfInt64St{somes: OfInt64(make([]int64, i))}
+}
+
+func (__ *OfInt64St) Get(i int) int64 {
+	return __.somes.Get(i)
+}
+func (__ *OfInt64St) Set(i int, d int64) int64 {
+	return __.somes.Set(i, d)
+}
+
+func (__ *OfInt64St) Len() int {
+	return __.somes.Len()
+}
+
+type OfInt64Iter []int64
 
 func (__ OfInt64Iter) Range(f func(i int, d int64) bool) {
 	for i := range __ {
@@ -697,53 +873,69 @@ func (__ OfInt64Iter) Map(f func(i int, d int64) int64) OfInt64Iter {
 	return OfInt64Iter(rval)
 }
 
-type OfInt8Inf interface {
-	At(int) int8
-	Set(int, int8)
-	Count() int
+type OfInt8If interface {
+	Get(int) int8
+	Set(int, int8) int8
+	Len() int
 }
 
-type OfInt8Inf32 interface {
-	At(int32) int8
-	Set(int32, int8)
-	Count() int32
+type OfInt8If32 interface {
+	Get(int32) int8
+	Set(int32, int8) int8
+	Len() int32
 }
 
 type OfInt8 []int8
-type OfInt8I32 []int8
 
-type OfInt8Iter []int8
-
-func NewOfInt8Slice(i int) OfInt8 {
-	return OfInt8(make([]int8, i))
-}
-
-func (__ OfInt8) At(i int) int8 {
+func (__ OfInt8) Get(i int) int8 {
 	return __[i]
 }
-func (__ OfInt8) Set(i int, d int8) {
+func (__ OfInt8) Set(i int, d int8) int8 {
+	old := __[i]
 	__[i] = d
+	return old
 }
 
-func (__ OfInt8) Count() int {
+func (__ OfInt8) Len() int {
 	return len(__)
 }
 
-func NewOfInt8SliceI32(i int) OfInt8I32 {
-	return OfInt8I32(make([]int8, i))
-}
+type OfInt8I32 []int8
 
-func (__ OfInt8I32) At(i int32) int8 {
+func (__ OfInt8I32) Get(i int32) int8 {
 	return __[int(i)]
 }
 
-func (__ OfInt8I32) Set(i int32, d int8) {
+func (__ OfInt8I32) Set(i int32, d int8) int8 {
+	old := __[i]
 	__[i] = d
+	return old
 }
 
-func (__ OfInt8I32) Count() int32 {
+func (__ OfInt8I32) Len() int32 {
 	return int32(len(__))
 }
+
+type OfInt8St struct {
+	somes OfInt8
+}
+
+func NewOfInt8St(i int) *OfInt8St {
+	return &OfInt8St{somes: OfInt8(make([]int8, i))}
+}
+
+func (__ *OfInt8St) Get(i int) int8 {
+	return __.somes.Get(i)
+}
+func (__ *OfInt8St) Set(i int, d int8) int8 {
+	return __.somes.Set(i, d)
+}
+
+func (__ *OfInt8St) Len() int {
+	return __.somes.Len()
+}
+
+type OfInt8Iter []int8
 
 func (__ OfInt8Iter) Range(f func(i int, d int8) bool) {
 	for i := range __ {
@@ -760,53 +952,69 @@ func (__ OfInt8Iter) Map(f func(i int, d int8) int8) OfInt8Iter {
 	return OfInt8Iter(rval)
 }
 
-type OfRuneInf interface {
-	At(int) rune
-	Set(int, rune)
-	Count() int
+type OfRuneIf interface {
+	Get(int) rune
+	Set(int, rune) rune
+	Len() int
 }
 
-type OfRuneInf32 interface {
-	At(int32) rune
-	Set(int32, rune)
-	Count() int32
+type OfRuneIf32 interface {
+	Get(int32) rune
+	Set(int32, rune) rune
+	Len() int32
 }
 
 type OfRune []rune
-type OfRuneI32 []rune
 
-type OfRuneIter []rune
-
-func NewOfRuneSlice(i int) OfRune {
-	return OfRune(make([]rune, i))
-}
-
-func (__ OfRune) At(i int) rune {
+func (__ OfRune) Get(i int) rune {
 	return __[i]
 }
-func (__ OfRune) Set(i int, d rune) {
+func (__ OfRune) Set(i int, d rune) rune {
+	old := __[i]
 	__[i] = d
+	return old
 }
 
-func (__ OfRune) Count() int {
+func (__ OfRune) Len() int {
 	return len(__)
 }
 
-func NewOfRuneSliceI32(i int) OfRuneI32 {
-	return OfRuneI32(make([]rune, i))
-}
+type OfRuneI32 []rune
 
-func (__ OfRuneI32) At(i int32) rune {
+func (__ OfRuneI32) Get(i int32) rune {
 	return __[int(i)]
 }
 
-func (__ OfRuneI32) Set(i int32, d rune) {
+func (__ OfRuneI32) Set(i int32, d rune) rune {
+	old := __[i]
 	__[i] = d
+	return old
 }
 
-func (__ OfRuneI32) Count() int32 {
+func (__ OfRuneI32) Len() int32 {
 	return int32(len(__))
 }
+
+type OfRuneSt struct {
+	somes OfRune
+}
+
+func NewOfRuneSt(i int) *OfRuneSt {
+	return &OfRuneSt{somes: OfRune(make([]rune, i))}
+}
+
+func (__ *OfRuneSt) Get(i int) rune {
+	return __.somes.Get(i)
+}
+func (__ *OfRuneSt) Set(i int, d rune) rune {
+	return __.somes.Set(i, d)
+}
+
+func (__ *OfRuneSt) Len() int {
+	return __.somes.Len()
+}
+
+type OfRuneIter []rune
 
 func (__ OfRuneIter) Range(f func(i int, d rune) bool) {
 	for i := range __ {
@@ -823,53 +1031,69 @@ func (__ OfRuneIter) Map(f func(i int, d rune) rune) OfRuneIter {
 	return OfRuneIter(rval)
 }
 
-type OfStringInf interface {
-	At(int) string
-	Set(int, string)
-	Count() int
+type OfStringIf interface {
+	Get(int) string
+	Set(int, string) string
+	Len() int
 }
 
-type OfStringInf32 interface {
-	At(int32) string
-	Set(int32, string)
-	Count() int32
+type OfStringIf32 interface {
+	Get(int32) string
+	Set(int32, string) string
+	Len() int32
 }
 
 type OfString []string
-type OfStringI32 []string
 
-type OfStringIter []string
-
-func NewOfStringSlice(i int) OfString {
-	return OfString(make([]string, i))
-}
-
-func (__ OfString) At(i int) string {
+func (__ OfString) Get(i int) string {
 	return __[i]
 }
-func (__ OfString) Set(i int, d string) {
+func (__ OfString) Set(i int, d string) string {
+	old := __[i]
 	__[i] = d
+	return old
 }
 
-func (__ OfString) Count() int {
+func (__ OfString) Len() int {
 	return len(__)
 }
 
-func NewOfStringSliceI32(i int) OfStringI32 {
-	return OfStringI32(make([]string, i))
-}
+type OfStringI32 []string
 
-func (__ OfStringI32) At(i int32) string {
+func (__ OfStringI32) Get(i int32) string {
 	return __[int(i)]
 }
 
-func (__ OfStringI32) Set(i int32, d string) {
+func (__ OfStringI32) Set(i int32, d string) string {
+	old := __[i]
 	__[i] = d
+	return old
 }
 
-func (__ OfStringI32) Count() int32 {
+func (__ OfStringI32) Len() int32 {
 	return int32(len(__))
 }
+
+type OfStringSt struct {
+	somes OfString
+}
+
+func NewOfStringSt(i int) *OfStringSt {
+	return &OfStringSt{somes: OfString(make([]string, i))}
+}
+
+func (__ *OfStringSt) Get(i int) string {
+	return __.somes.Get(i)
+}
+func (__ *OfStringSt) Set(i int, d string) string {
+	return __.somes.Set(i, d)
+}
+
+func (__ *OfStringSt) Len() int {
+	return __.somes.Len()
+}
+
+type OfStringIter []string
 
 func (__ OfStringIter) Range(f func(i int, d string) bool) {
 	for i := range __ {
@@ -886,53 +1110,69 @@ func (__ OfStringIter) Map(f func(i int, d string) string) OfStringIter {
 	return OfStringIter(rval)
 }
 
-type OfUintInf interface {
-	At(int) uint
-	Set(int, uint)
-	Count() int
+type OfUintIf interface {
+	Get(int) uint
+	Set(int, uint) uint
+	Len() int
 }
 
-type OfUintInf32 interface {
-	At(int32) uint
-	Set(int32, uint)
-	Count() int32
+type OfUintIf32 interface {
+	Get(int32) uint
+	Set(int32, uint) uint
+	Len() int32
 }
 
 type OfUint []uint
-type OfUintI32 []uint
 
-type OfUintIter []uint
-
-func NewOfUintSlice(i int) OfUint {
-	return OfUint(make([]uint, i))
-}
-
-func (__ OfUint) At(i int) uint {
+func (__ OfUint) Get(i int) uint {
 	return __[i]
 }
-func (__ OfUint) Set(i int, d uint) {
+func (__ OfUint) Set(i int, d uint) uint {
+	old := __[i]
 	__[i] = d
+	return old
 }
 
-func (__ OfUint) Count() int {
+func (__ OfUint) Len() int {
 	return len(__)
 }
 
-func NewOfUintSliceI32(i int) OfUintI32 {
-	return OfUintI32(make([]uint, i))
-}
+type OfUintI32 []uint
 
-func (__ OfUintI32) At(i int32) uint {
+func (__ OfUintI32) Get(i int32) uint {
 	return __[int(i)]
 }
 
-func (__ OfUintI32) Set(i int32, d uint) {
+func (__ OfUintI32) Set(i int32, d uint) uint {
+	old := __[i]
 	__[i] = d
+	return old
 }
 
-func (__ OfUintI32) Count() int32 {
+func (__ OfUintI32) Len() int32 {
 	return int32(len(__))
 }
+
+type OfUintSt struct {
+	somes OfUint
+}
+
+func NewOfUintSt(i int) *OfUintSt {
+	return &OfUintSt{somes: OfUint(make([]uint, i))}
+}
+
+func (__ *OfUintSt) Get(i int) uint {
+	return __.somes.Get(i)
+}
+func (__ *OfUintSt) Set(i int, d uint) uint {
+	return __.somes.Set(i, d)
+}
+
+func (__ *OfUintSt) Len() int {
+	return __.somes.Len()
+}
+
+type OfUintIter []uint
 
 func (__ OfUintIter) Range(f func(i int, d uint) bool) {
 	for i := range __ {
@@ -949,53 +1189,69 @@ func (__ OfUintIter) Map(f func(i int, d uint) uint) OfUintIter {
 	return OfUintIter(rval)
 }
 
-type OfUint16Inf interface {
-	At(int) uint16
-	Set(int, uint16)
-	Count() int
+type OfUint16If interface {
+	Get(int) uint16
+	Set(int, uint16) uint16
+	Len() int
 }
 
-type OfUint16Inf32 interface {
-	At(int32) uint16
-	Set(int32, uint16)
-	Count() int32
+type OfUint16If32 interface {
+	Get(int32) uint16
+	Set(int32, uint16) uint16
+	Len() int32
 }
 
 type OfUint16 []uint16
-type OfUint16I32 []uint16
 
-type OfUint16Iter []uint16
-
-func NewOfUint16Slice(i int) OfUint16 {
-	return OfUint16(make([]uint16, i))
-}
-
-func (__ OfUint16) At(i int) uint16 {
+func (__ OfUint16) Get(i int) uint16 {
 	return __[i]
 }
-func (__ OfUint16) Set(i int, d uint16) {
+func (__ OfUint16) Set(i int, d uint16) uint16 {
+	old := __[i]
 	__[i] = d
+	return old
 }
 
-func (__ OfUint16) Count() int {
+func (__ OfUint16) Len() int {
 	return len(__)
 }
 
-func NewOfUint16SliceI32(i int) OfUint16I32 {
-	return OfUint16I32(make([]uint16, i))
-}
+type OfUint16I32 []uint16
 
-func (__ OfUint16I32) At(i int32) uint16 {
+func (__ OfUint16I32) Get(i int32) uint16 {
 	return __[int(i)]
 }
 
-func (__ OfUint16I32) Set(i int32, d uint16) {
+func (__ OfUint16I32) Set(i int32, d uint16) uint16 {
+	old := __[i]
 	__[i] = d
+	return old
 }
 
-func (__ OfUint16I32) Count() int32 {
+func (__ OfUint16I32) Len() int32 {
 	return int32(len(__))
 }
+
+type OfUint16St struct {
+	somes OfUint16
+}
+
+func NewOfUint16St(i int) *OfUint16St {
+	return &OfUint16St{somes: OfUint16(make([]uint16, i))}
+}
+
+func (__ *OfUint16St) Get(i int) uint16 {
+	return __.somes.Get(i)
+}
+func (__ *OfUint16St) Set(i int, d uint16) uint16 {
+	return __.somes.Set(i, d)
+}
+
+func (__ *OfUint16St) Len() int {
+	return __.somes.Len()
+}
+
+type OfUint16Iter []uint16
 
 func (__ OfUint16Iter) Range(f func(i int, d uint16) bool) {
 	for i := range __ {
@@ -1012,53 +1268,69 @@ func (__ OfUint16Iter) Map(f func(i int, d uint16) uint16) OfUint16Iter {
 	return OfUint16Iter(rval)
 }
 
-type OfUint32Inf interface {
-	At(int) uint32
-	Set(int, uint32)
-	Count() int
+type OfUint32If interface {
+	Get(int) uint32
+	Set(int, uint32) uint32
+	Len() int
 }
 
-type OfUint32Inf32 interface {
-	At(int32) uint32
-	Set(int32, uint32)
-	Count() int32
+type OfUint32If32 interface {
+	Get(int32) uint32
+	Set(int32, uint32) uint32
+	Len() int32
 }
 
 type OfUint32 []uint32
-type OfUint32I32 []uint32
 
-type OfUint32Iter []uint32
-
-func NewOfUint32Slice(i int) OfUint32 {
-	return OfUint32(make([]uint32, i))
-}
-
-func (__ OfUint32) At(i int) uint32 {
+func (__ OfUint32) Get(i int) uint32 {
 	return __[i]
 }
-func (__ OfUint32) Set(i int, d uint32) {
+func (__ OfUint32) Set(i int, d uint32) uint32 {
+	old := __[i]
 	__[i] = d
+	return old
 }
 
-func (__ OfUint32) Count() int {
+func (__ OfUint32) Len() int {
 	return len(__)
 }
 
-func NewOfUint32SliceI32(i int) OfUint32I32 {
-	return OfUint32I32(make([]uint32, i))
-}
+type OfUint32I32 []uint32
 
-func (__ OfUint32I32) At(i int32) uint32 {
+func (__ OfUint32I32) Get(i int32) uint32 {
 	return __[int(i)]
 }
 
-func (__ OfUint32I32) Set(i int32, d uint32) {
+func (__ OfUint32I32) Set(i int32, d uint32) uint32 {
+	old := __[i]
 	__[i] = d
+	return old
 }
 
-func (__ OfUint32I32) Count() int32 {
+func (__ OfUint32I32) Len() int32 {
 	return int32(len(__))
 }
+
+type OfUint32St struct {
+	somes OfUint32
+}
+
+func NewOfUint32St(i int) *OfUint32St {
+	return &OfUint32St{somes: OfUint32(make([]uint32, i))}
+}
+
+func (__ *OfUint32St) Get(i int) uint32 {
+	return __.somes.Get(i)
+}
+func (__ *OfUint32St) Set(i int, d uint32) uint32 {
+	return __.somes.Set(i, d)
+}
+
+func (__ *OfUint32St) Len() int {
+	return __.somes.Len()
+}
+
+type OfUint32Iter []uint32
 
 func (__ OfUint32Iter) Range(f func(i int, d uint32) bool) {
 	for i := range __ {
@@ -1075,53 +1347,69 @@ func (__ OfUint32Iter) Map(f func(i int, d uint32) uint32) OfUint32Iter {
 	return OfUint32Iter(rval)
 }
 
-type OfUint64Inf interface {
-	At(int) uint64
-	Set(int, uint64)
-	Count() int
+type OfUint64If interface {
+	Get(int) uint64
+	Set(int, uint64) uint64
+	Len() int
 }
 
-type OfUint64Inf32 interface {
-	At(int32) uint64
-	Set(int32, uint64)
-	Count() int32
+type OfUint64If32 interface {
+	Get(int32) uint64
+	Set(int32, uint64) uint64
+	Len() int32
 }
 
 type OfUint64 []uint64
-type OfUint64I32 []uint64
 
-type OfUint64Iter []uint64
-
-func NewOfUint64Slice(i int) OfUint64 {
-	return OfUint64(make([]uint64, i))
-}
-
-func (__ OfUint64) At(i int) uint64 {
+func (__ OfUint64) Get(i int) uint64 {
 	return __[i]
 }
-func (__ OfUint64) Set(i int, d uint64) {
+func (__ OfUint64) Set(i int, d uint64) uint64 {
+	old := __[i]
 	__[i] = d
+	return old
 }
 
-func (__ OfUint64) Count() int {
+func (__ OfUint64) Len() int {
 	return len(__)
 }
 
-func NewOfUint64SliceI32(i int) OfUint64I32 {
-	return OfUint64I32(make([]uint64, i))
-}
+type OfUint64I32 []uint64
 
-func (__ OfUint64I32) At(i int32) uint64 {
+func (__ OfUint64I32) Get(i int32) uint64 {
 	return __[int(i)]
 }
 
-func (__ OfUint64I32) Set(i int32, d uint64) {
+func (__ OfUint64I32) Set(i int32, d uint64) uint64 {
+	old := __[i]
 	__[i] = d
+	return old
 }
 
-func (__ OfUint64I32) Count() int32 {
+func (__ OfUint64I32) Len() int32 {
 	return int32(len(__))
 }
+
+type OfUint64St struct {
+	somes OfUint64
+}
+
+func NewOfUint64St(i int) *OfUint64St {
+	return &OfUint64St{somes: OfUint64(make([]uint64, i))}
+}
+
+func (__ *OfUint64St) Get(i int) uint64 {
+	return __.somes.Get(i)
+}
+func (__ *OfUint64St) Set(i int, d uint64) uint64 {
+	return __.somes.Set(i, d)
+}
+
+func (__ *OfUint64St) Len() int {
+	return __.somes.Len()
+}
+
+type OfUint64Iter []uint64
 
 func (__ OfUint64Iter) Range(f func(i int, d uint64) bool) {
 	for i := range __ {
@@ -1138,53 +1426,69 @@ func (__ OfUint64Iter) Map(f func(i int, d uint64) uint64) OfUint64Iter {
 	return OfUint64Iter(rval)
 }
 
-type OfUint8Inf interface {
-	At(int) uint8
-	Set(int, uint8)
-	Count() int
+type OfUint8If interface {
+	Get(int) uint8
+	Set(int, uint8) uint8
+	Len() int
 }
 
-type OfUint8Inf32 interface {
-	At(int32) uint8
-	Set(int32, uint8)
-	Count() int32
+type OfUint8If32 interface {
+	Get(int32) uint8
+	Set(int32, uint8) uint8
+	Len() int32
 }
 
 type OfUint8 []uint8
-type OfUint8I32 []uint8
 
-type OfUint8Iter []uint8
-
-func NewOfUint8Slice(i int) OfUint8 {
-	return OfUint8(make([]uint8, i))
-}
-
-func (__ OfUint8) At(i int) uint8 {
+func (__ OfUint8) Get(i int) uint8 {
 	return __[i]
 }
-func (__ OfUint8) Set(i int, d uint8) {
+func (__ OfUint8) Set(i int, d uint8) uint8 {
+	old := __[i]
 	__[i] = d
+	return old
 }
 
-func (__ OfUint8) Count() int {
+func (__ OfUint8) Len() int {
 	return len(__)
 }
 
-func NewOfUint8SliceI32(i int) OfUint8I32 {
-	return OfUint8I32(make([]uint8, i))
-}
+type OfUint8I32 []uint8
 
-func (__ OfUint8I32) At(i int32) uint8 {
+func (__ OfUint8I32) Get(i int32) uint8 {
 	return __[int(i)]
 }
 
-func (__ OfUint8I32) Set(i int32, d uint8) {
+func (__ OfUint8I32) Set(i int32, d uint8) uint8 {
+	old := __[i]
 	__[i] = d
+	return old
 }
 
-func (__ OfUint8I32) Count() int32 {
+func (__ OfUint8I32) Len() int32 {
 	return int32(len(__))
 }
+
+type OfUint8St struct {
+	somes OfUint8
+}
+
+func NewOfUint8St(i int) *OfUint8St {
+	return &OfUint8St{somes: OfUint8(make([]uint8, i))}
+}
+
+func (__ *OfUint8St) Get(i int) uint8 {
+	return __.somes.Get(i)
+}
+func (__ *OfUint8St) Set(i int, d uint8) uint8 {
+	return __.somes.Set(i, d)
+}
+
+func (__ *OfUint8St) Len() int {
+	return __.somes.Len()
+}
+
+type OfUint8Iter []uint8
 
 func (__ OfUint8Iter) Range(f func(i int, d uint8) bool) {
 	for i := range __ {
@@ -1201,53 +1505,69 @@ func (__ OfUint8Iter) Map(f func(i int, d uint8) uint8) OfUint8Iter {
 	return OfUint8Iter(rval)
 }
 
-type OfUintptrInf interface {
-	At(int) uintptr
-	Set(int, uintptr)
-	Count() int
+type OfUintptrIf interface {
+	Get(int) uintptr
+	Set(int, uintptr) uintptr
+	Len() int
 }
 
-type OfUintptrInf32 interface {
-	At(int32) uintptr
-	Set(int32, uintptr)
-	Count() int32
+type OfUintptrIf32 interface {
+	Get(int32) uintptr
+	Set(int32, uintptr) uintptr
+	Len() int32
 }
 
 type OfUintptr []uintptr
-type OfUintptrI32 []uintptr
 
-type OfUintptrIter []uintptr
-
-func NewOfUintptrSlice(i int) OfUintptr {
-	return OfUintptr(make([]uintptr, i))
-}
-
-func (__ OfUintptr) At(i int) uintptr {
+func (__ OfUintptr) Get(i int) uintptr {
 	return __[i]
 }
-func (__ OfUintptr) Set(i int, d uintptr) {
+func (__ OfUintptr) Set(i int, d uintptr) uintptr {
+	old := __[i]
 	__[i] = d
+	return old
 }
 
-func (__ OfUintptr) Count() int {
+func (__ OfUintptr) Len() int {
 	return len(__)
 }
 
-func NewOfUintptrSliceI32(i int) OfUintptrI32 {
-	return OfUintptrI32(make([]uintptr, i))
-}
+type OfUintptrI32 []uintptr
 
-func (__ OfUintptrI32) At(i int32) uintptr {
+func (__ OfUintptrI32) Get(i int32) uintptr {
 	return __[int(i)]
 }
 
-func (__ OfUintptrI32) Set(i int32, d uintptr) {
+func (__ OfUintptrI32) Set(i int32, d uintptr) uintptr {
+	old := __[i]
 	__[i] = d
+	return old
 }
 
-func (__ OfUintptrI32) Count() int32 {
+func (__ OfUintptrI32) Len() int32 {
 	return int32(len(__))
 }
+
+type OfUintptrSt struct {
+	somes OfUintptr
+}
+
+func NewOfUintptrSt(i int) *OfUintptrSt {
+	return &OfUintptrSt{somes: OfUintptr(make([]uintptr, i))}
+}
+
+func (__ *OfUintptrSt) Get(i int) uintptr {
+	return __.somes.Get(i)
+}
+func (__ *OfUintptrSt) Set(i int, d uintptr) uintptr {
+	return __.somes.Set(i, d)
+}
+
+func (__ *OfUintptrSt) Len() int {
+	return __.somes.Len()
+}
+
+type OfUintptrIter []uintptr
 
 func (__ OfUintptrIter) Range(f func(i int, d uintptr) bool) {
 	for i := range __ {

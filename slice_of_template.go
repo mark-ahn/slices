@@ -1,70 +1,84 @@
 package slices
 
-//go:generate genny -in $GOFILE -out slice_of_template_genny.go gen "SomeT=interface{}"
+//go:generate genny -in $GOFILE -out slice_of_template_genny.go gen "Some=interface{}"
 
-import "github.com/cheekybits/genny/generic"
+// type Some generic.Type
 
-type SomeT generic.Type
-
-type SomeTSliceInf interface {
-	At(int) SomeT
-	Set(int, SomeT)
-	Count() int
+type SliceOfSomeIf interface {
+	Get(int) Some
+	Set(int, Some) Some
+	Len() int
 }
 
-type SomeTSliceInf32 interface {
-	At(int32) SomeT
-	Set(int32, SomeT)
-	Count() int32
+type SliceOfSomeIf32 interface {
+	Get(int32) Some
+	Set(int32, Some) Some
+	Len() int32
 }
 
-type SomeTSlice []SomeT
-type SomeTSliceI32 []SomeT
+type SliceOfSome []Some
 
-type SomeTSliceIter []SomeT
-
-func NewSomeTSlice(i int) SomeTSlice {
-	return SomeTSlice(make([]SomeT, i))
-}
-
-func (__ SomeTSlice) At(i int) SomeT {
+func (__ SliceOfSome) Get(i int) Some {
 	return __[i]
 }
-func (__ SomeTSlice) Set(i int, d SomeT) {
+func (__ SliceOfSome) Set(i int, d Some) Some {
+	old := __[i]
 	__[i] = d
+	return old
 }
 
-func (__ SomeTSlice) Count() int {
+func (__ SliceOfSome) Len() int {
 	return len(__)
 }
 
-func NewSomeTSliceI32(i int) SomeTSliceI32 {
-	return SomeTSliceI32(make([]SomeT, i))
-}
+type SliceOfSomeI32 []Some
 
-func (__ SomeTSliceI32) At(i int32) SomeT {
+func (__ SliceOfSomeI32) Get(i int32) Some {
 	return __[int(i)]
 }
 
-func (__ SomeTSliceI32) Set(i int32, d SomeT) {
+func (__ SliceOfSomeI32) Set(i int32, d Some) Some {
+	old := __[i]
 	__[i] = d
+	return old
 }
 
-func (__ SomeTSliceI32) Count() int32 {
+func (__ SliceOfSomeI32) Len() int32 {
 	return int32(len(__))
 }
 
-func (__ SomeTSliceIter) Range(f func(i int, d SomeT) bool) {
+type SliceOfSomeSt struct {
+	somes SliceOfSome
+}
+
+func NewSliceOfSomeSt(i int) *SliceOfSomeSt {
+	return &SliceOfSomeSt{somes: SliceOfSome(make([]Some, i))}
+}
+
+func (__ *SliceOfSomeSt) Get(i int) Some {
+	return __.somes.Get(i)
+}
+func (__ *SliceOfSomeSt) Set(i int, d Some) Some {
+	return __.somes.Set(i, d)
+}
+
+func (__ *SliceOfSomeSt) Len() int {
+	return __.somes.Len()
+}
+
+type SliceOfSomeIter []Some
+
+func (__ SliceOfSomeIter) Range(f func(i int, d Some) bool) {
 	for i := range __ {
 		if !f(i, __[i]) {
 			break
 		}
 	}
 }
-func (__ SomeTSliceIter) Map(f func(i int, d SomeT) SomeT) SomeTSliceIter {
-	rval := make([]SomeT, len(__))
+func (__ SliceOfSomeIter) Map(f func(i int, d Some) Some) SliceOfSomeIter {
+	rval := make([]Some, len(__))
 	for i := range __ {
 		rval[i] = f(i, __[i])
 	}
-	return SomeTSliceIter(rval)
+	return SliceOfSomeIter(rval)
 }

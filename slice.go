@@ -6,53 +6,69 @@ import "github.com/cheekybits/genny/generic"
 
 type Some generic.Type
 
-type OfSomeInf interface {
-	At(int) Some
-	Set(int, Some)
-	Count() int
+type OfSomeIf interface {
+	Get(int) Some
+	Set(int, Some) Some
+	Len() int
 }
 
-type OfSomeInf32 interface {
-	At(int32) Some
-	Set(int32, Some)
-	Count() int32
+type OfSomeIf32 interface {
+	Get(int32) Some
+	Set(int32, Some) Some
+	Len() int32
 }
 
 type OfSome []Some
-type OfSomeI32 []Some
 
-type OfSomeIter []Some
-
-func NewOfSomeSlice(i int) OfSome {
-	return OfSome(make([]Some, i))
-}
-
-func (__ OfSome) At(i int) Some {
+func (__ OfSome) Get(i int) Some {
 	return __[i]
 }
-func (__ OfSome) Set(i int, d Some) {
+func (__ OfSome) Set(i int, d Some) Some {
+	old := __[i]
 	__[i] = d
+	return old
 }
 
-func (__ OfSome) Count() int {
+func (__ OfSome) Len() int {
 	return len(__)
 }
 
-func NewOfSomeSliceI32(i int) OfSomeI32 {
-	return OfSomeI32(make([]Some, i))
-}
+type OfSomeI32 []Some
 
-func (__ OfSomeI32) At(i int32) Some {
+func (__ OfSomeI32) Get(i int32) Some {
 	return __[int(i)]
 }
 
-func (__ OfSomeI32) Set(i int32, d Some) {
+func (__ OfSomeI32) Set(i int32, d Some) Some {
+	old := __[i]
 	__[i] = d
+	return old
 }
 
-func (__ OfSomeI32) Count() int32 {
+func (__ OfSomeI32) Len() int32 {
 	return int32(len(__))
 }
+
+type OfSomeSt struct {
+	somes OfSome
+}
+
+func NewOfSomeSt(i int) *OfSomeSt {
+	return &OfSomeSt{somes: OfSome(make([]Some, i))}
+}
+
+func (__ *OfSomeSt) Get(i int) Some {
+	return __.somes.Get(i)
+}
+func (__ *OfSomeSt) Set(i int, d Some) Some {
+	return __.somes.Set(i, d)
+}
+
+func (__ *OfSomeSt) Len() int {
+	return __.somes.Len()
+}
+
+type OfSomeIter []Some
 
 func (__ OfSomeIter) Range(f func(i int, d Some) bool) {
 	for i := range __ {
