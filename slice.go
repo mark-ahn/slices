@@ -8,21 +8,28 @@ type Some generic.Type
 
 type OfSomeIterIf interface {
 	Range(f func(i int, d Some) bool)
-	Map(f func(i int, d Some) Some) OfSomeIf
+	Map(f func(i int, d Some) Some) OfSomeMutIf
 }
 type OfSomeIf interface {
 	Get(int) Some
-	Set(int, Some) Some
 	Len() int
 }
+type OfSomeMutIf interface {
+	OfSomeIf
+	Set(int, Some) Some
+}
+
 type OfSomeAsIterIf interface {
 	AsIter() OfSomeIterIf
 }
 
 type OfSomeIf32 interface {
 	Get(int32) Some
-	Set(int32, Some) Some
 	Len() int32
+}
+type OfSomeIfMut32 interface {
+	OfSomeIf32
+	Set(int32, Some) Some
 }
 
 type OfSome []Some
@@ -96,7 +103,7 @@ func (__ OfSomeIter) Range(f func(i int, d Some) bool) {
 		}
 	}
 }
-func (__ OfSomeIter) Map(f func(i int, d Some) Some) OfSomeIf {
+func (__ OfSomeIter) Map(f func(i int, d Some) Some) OfSomeMutIf {
 	rval := make([]Some, len(__))
 	for i := range __ {
 		rval[i] = f(i, __[i])

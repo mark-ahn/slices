@@ -20,7 +20,7 @@ func TestT(t *testing.T) {
 
 func TestTSt(t *testing.T) {
 	var ss interface {
-		slices.OfStringIf
+		slices.OfStringMutIf
 		slices.OfStringAsIterIf
 	}
 	// ss = slices.OfString([]string{

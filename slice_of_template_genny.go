@@ -6,21 +6,28 @@ package slices
 
 type SliceOfInterfaceIterIf interface {
 	Range(f func(i int, d interface{}) bool)
-	Map(f func(i int, d interface{}) interface{}) SliceOfInterfaceIf
+	Map(f func(i int, d interface{}) interface{}) SliceOfInterfaceMutIf
 }
 type SliceOfInterfaceIf interface {
 	Get(int) interface{}
-	Set(int, interface{}) interface{}
 	Len() int
 }
+type SliceOfInterfaceMutIf interface {
+	SliceOfInterfaceIf
+	Set(int, interface{}) interface{}
+}
+
 type SliceOfInterfaceAsIterIf interface {
 	AsIter() SliceOfInterfaceIterIf
 }
 
 type SliceOfInterfaceIf32 interface {
 	Get(int32) interface{}
-	Set(int32, interface{}) interface{}
 	Len() int32
+}
+type SliceOfInterfaceIfMut32 interface {
+	SliceOfInterfaceIf32
+	Set(int32, interface{}) interface{}
 }
 
 type SliceOfInterface []interface{}
@@ -94,7 +101,7 @@ func (__ SliceOfInterfaceIter) Range(f func(i int, d interface{}) bool) {
 		}
 	}
 }
-func (__ SliceOfInterfaceIter) Map(f func(i int, d interface{}) interface{}) SliceOfInterfaceIf {
+func (__ SliceOfInterfaceIter) Map(f func(i int, d interface{}) interface{}) SliceOfInterfaceMutIf {
 	rval := make([]interface{}, len(__))
 	for i := range __ {
 		rval[i] = f(i, __[i])

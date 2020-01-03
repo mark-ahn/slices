@@ -6,21 +6,28 @@ package slices
 
 type OfBoolIterIf interface {
 	Range(f func(i int, d bool) bool)
-	Map(f func(i int, d bool) bool) OfBoolIf
+	Map(f func(i int, d bool) bool) OfBoolMutIf
 }
 type OfBoolIf interface {
 	Get(int) bool
-	Set(int, bool) bool
 	Len() int
 }
+type OfBoolMutIf interface {
+	OfBoolIf
+	Set(int, bool) bool
+}
+
 type OfBoolAsIterIf interface {
 	AsIter() OfBoolIterIf
 }
 
 type OfBoolIf32 interface {
 	Get(int32) bool
-	Set(int32, bool) bool
 	Len() int32
+}
+type OfBoolIfMut32 interface {
+	OfBoolIf32
+	Set(int32, bool) bool
 }
 
 type OfBool []bool
@@ -94,7 +101,7 @@ func (__ OfBoolIter) Range(f func(i int, d bool) bool) {
 		}
 	}
 }
-func (__ OfBoolIter) Map(f func(i int, d bool) bool) OfBoolIf {
+func (__ OfBoolIter) Map(f func(i int, d bool) bool) OfBoolMutIf {
 	rval := make([]bool, len(__))
 	for i := range __ {
 		rval[i] = f(i, __[i])
@@ -104,21 +111,28 @@ func (__ OfBoolIter) Map(f func(i int, d bool) bool) OfBoolIf {
 
 type OfByteIterIf interface {
 	Range(f func(i int, d byte) bool)
-	Map(f func(i int, d byte) byte) OfByteIf
+	Map(f func(i int, d byte) byte) OfByteMutIf
 }
 type OfByteIf interface {
 	Get(int) byte
-	Set(int, byte) byte
 	Len() int
 }
+type OfByteMutIf interface {
+	OfByteIf
+	Set(int, byte) byte
+}
+
 type OfByteAsIterIf interface {
 	AsIter() OfByteIterIf
 }
 
 type OfByteIf32 interface {
 	Get(int32) byte
-	Set(int32, byte) byte
 	Len() int32
+}
+type OfByteIfMut32 interface {
+	OfByteIf32
+	Set(int32, byte) byte
 }
 
 type OfByte []byte
@@ -192,7 +206,7 @@ func (__ OfByteIter) Range(f func(i int, d byte) bool) {
 		}
 	}
 }
-func (__ OfByteIter) Map(f func(i int, d byte) byte) OfByteIf {
+func (__ OfByteIter) Map(f func(i int, d byte) byte) OfByteMutIf {
 	rval := make([]byte, len(__))
 	for i := range __ {
 		rval[i] = f(i, __[i])
@@ -202,21 +216,28 @@ func (__ OfByteIter) Map(f func(i int, d byte) byte) OfByteIf {
 
 type OfComplex128IterIf interface {
 	Range(f func(i int, d complex128) bool)
-	Map(f func(i int, d complex128) complex128) OfComplex128If
+	Map(f func(i int, d complex128) complex128) OfComplex128MutIf
 }
 type OfComplex128If interface {
 	Get(int) complex128
-	Set(int, complex128) complex128
 	Len() int
 }
+type OfComplex128MutIf interface {
+	OfComplex128If
+	Set(int, complex128) complex128
+}
+
 type OfComplex128AsIterIf interface {
 	AsIter() OfComplex128IterIf
 }
 
 type OfComplex128If32 interface {
 	Get(int32) complex128
-	Set(int32, complex128) complex128
 	Len() int32
+}
+type OfComplex128IfMut32 interface {
+	OfComplex128If32
+	Set(int32, complex128) complex128
 }
 
 type OfComplex128 []complex128
@@ -290,7 +311,7 @@ func (__ OfComplex128Iter) Range(f func(i int, d complex128) bool) {
 		}
 	}
 }
-func (__ OfComplex128Iter) Map(f func(i int, d complex128) complex128) OfComplex128If {
+func (__ OfComplex128Iter) Map(f func(i int, d complex128) complex128) OfComplex128MutIf {
 	rval := make([]complex128, len(__))
 	for i := range __ {
 		rval[i] = f(i, __[i])
@@ -300,21 +321,28 @@ func (__ OfComplex128Iter) Map(f func(i int, d complex128) complex128) OfComplex
 
 type OfComplex64IterIf interface {
 	Range(f func(i int, d complex64) bool)
-	Map(f func(i int, d complex64) complex64) OfComplex64If
+	Map(f func(i int, d complex64) complex64) OfComplex64MutIf
 }
 type OfComplex64If interface {
 	Get(int) complex64
-	Set(int, complex64) complex64
 	Len() int
 }
+type OfComplex64MutIf interface {
+	OfComplex64If
+	Set(int, complex64) complex64
+}
+
 type OfComplex64AsIterIf interface {
 	AsIter() OfComplex64IterIf
 }
 
 type OfComplex64If32 interface {
 	Get(int32) complex64
-	Set(int32, complex64) complex64
 	Len() int32
+}
+type OfComplex64IfMut32 interface {
+	OfComplex64If32
+	Set(int32, complex64) complex64
 }
 
 type OfComplex64 []complex64
@@ -388,7 +416,7 @@ func (__ OfComplex64Iter) Range(f func(i int, d complex64) bool) {
 		}
 	}
 }
-func (__ OfComplex64Iter) Map(f func(i int, d complex64) complex64) OfComplex64If {
+func (__ OfComplex64Iter) Map(f func(i int, d complex64) complex64) OfComplex64MutIf {
 	rval := make([]complex64, len(__))
 	for i := range __ {
 		rval[i] = f(i, __[i])
@@ -398,21 +426,28 @@ func (__ OfComplex64Iter) Map(f func(i int, d complex64) complex64) OfComplex64I
 
 type OfErrorIterIf interface {
 	Range(f func(i int, d error) bool)
-	Map(f func(i int, d error) error) OfErrorIf
+	Map(f func(i int, d error) error) OfErrorMutIf
 }
 type OfErrorIf interface {
 	Get(int) error
-	Set(int, error) error
 	Len() int
 }
+type OfErrorMutIf interface {
+	OfErrorIf
+	Set(int, error) error
+}
+
 type OfErrorAsIterIf interface {
 	AsIter() OfErrorIterIf
 }
 
 type OfErrorIf32 interface {
 	Get(int32) error
-	Set(int32, error) error
 	Len() int32
+}
+type OfErrorIfMut32 interface {
+	OfErrorIf32
+	Set(int32, error) error
 }
 
 type OfError []error
@@ -486,7 +521,7 @@ func (__ OfErrorIter) Range(f func(i int, d error) bool) {
 		}
 	}
 }
-func (__ OfErrorIter) Map(f func(i int, d error) error) OfErrorIf {
+func (__ OfErrorIter) Map(f func(i int, d error) error) OfErrorMutIf {
 	rval := make([]error, len(__))
 	for i := range __ {
 		rval[i] = f(i, __[i])
@@ -496,21 +531,28 @@ func (__ OfErrorIter) Map(f func(i int, d error) error) OfErrorIf {
 
 type OfFloat32IterIf interface {
 	Range(f func(i int, d float32) bool)
-	Map(f func(i int, d float32) float32) OfFloat32If
+	Map(f func(i int, d float32) float32) OfFloat32MutIf
 }
 type OfFloat32If interface {
 	Get(int) float32
-	Set(int, float32) float32
 	Len() int
 }
+type OfFloat32MutIf interface {
+	OfFloat32If
+	Set(int, float32) float32
+}
+
 type OfFloat32AsIterIf interface {
 	AsIter() OfFloat32IterIf
 }
 
 type OfFloat32If32 interface {
 	Get(int32) float32
-	Set(int32, float32) float32
 	Len() int32
+}
+type OfFloat32IfMut32 interface {
+	OfFloat32If32
+	Set(int32, float32) float32
 }
 
 type OfFloat32 []float32
@@ -584,7 +626,7 @@ func (__ OfFloat32Iter) Range(f func(i int, d float32) bool) {
 		}
 	}
 }
-func (__ OfFloat32Iter) Map(f func(i int, d float32) float32) OfFloat32If {
+func (__ OfFloat32Iter) Map(f func(i int, d float32) float32) OfFloat32MutIf {
 	rval := make([]float32, len(__))
 	for i := range __ {
 		rval[i] = f(i, __[i])
@@ -594,21 +636,28 @@ func (__ OfFloat32Iter) Map(f func(i int, d float32) float32) OfFloat32If {
 
 type OfFloat64IterIf interface {
 	Range(f func(i int, d float64) bool)
-	Map(f func(i int, d float64) float64) OfFloat64If
+	Map(f func(i int, d float64) float64) OfFloat64MutIf
 }
 type OfFloat64If interface {
 	Get(int) float64
-	Set(int, float64) float64
 	Len() int
 }
+type OfFloat64MutIf interface {
+	OfFloat64If
+	Set(int, float64) float64
+}
+
 type OfFloat64AsIterIf interface {
 	AsIter() OfFloat64IterIf
 }
 
 type OfFloat64If32 interface {
 	Get(int32) float64
-	Set(int32, float64) float64
 	Len() int32
+}
+type OfFloat64IfMut32 interface {
+	OfFloat64If32
+	Set(int32, float64) float64
 }
 
 type OfFloat64 []float64
@@ -682,7 +731,7 @@ func (__ OfFloat64Iter) Range(f func(i int, d float64) bool) {
 		}
 	}
 }
-func (__ OfFloat64Iter) Map(f func(i int, d float64) float64) OfFloat64If {
+func (__ OfFloat64Iter) Map(f func(i int, d float64) float64) OfFloat64MutIf {
 	rval := make([]float64, len(__))
 	for i := range __ {
 		rval[i] = f(i, __[i])
@@ -692,21 +741,28 @@ func (__ OfFloat64Iter) Map(f func(i int, d float64) float64) OfFloat64If {
 
 type OfIntIterIf interface {
 	Range(f func(i int, d int) bool)
-	Map(f func(i int, d int) int) OfIntIf
+	Map(f func(i int, d int) int) OfIntMutIf
 }
 type OfIntIf interface {
 	Get(int) int
-	Set(int, int) int
 	Len() int
 }
+type OfIntMutIf interface {
+	OfIntIf
+	Set(int, int) int
+}
+
 type OfIntAsIterIf interface {
 	AsIter() OfIntIterIf
 }
 
 type OfIntIf32 interface {
 	Get(int32) int
-	Set(int32, int) int
 	Len() int32
+}
+type OfIntIfMut32 interface {
+	OfIntIf32
+	Set(int32, int) int
 }
 
 type OfInt []int
@@ -780,7 +836,7 @@ func (__ OfIntIter) Range(f func(i int, d int) bool) {
 		}
 	}
 }
-func (__ OfIntIter) Map(f func(i int, d int) int) OfIntIf {
+func (__ OfIntIter) Map(f func(i int, d int) int) OfIntMutIf {
 	rval := make([]int, len(__))
 	for i := range __ {
 		rval[i] = f(i, __[i])
@@ -790,21 +846,28 @@ func (__ OfIntIter) Map(f func(i int, d int) int) OfIntIf {
 
 type OfInt16IterIf interface {
 	Range(f func(i int, d int16) bool)
-	Map(f func(i int, d int16) int16) OfInt16If
+	Map(f func(i int, d int16) int16) OfInt16MutIf
 }
 type OfInt16If interface {
 	Get(int) int16
-	Set(int, int16) int16
 	Len() int
 }
+type OfInt16MutIf interface {
+	OfInt16If
+	Set(int, int16) int16
+}
+
 type OfInt16AsIterIf interface {
 	AsIter() OfInt16IterIf
 }
 
 type OfInt16If32 interface {
 	Get(int32) int16
-	Set(int32, int16) int16
 	Len() int32
+}
+type OfInt16IfMut32 interface {
+	OfInt16If32
+	Set(int32, int16) int16
 }
 
 type OfInt16 []int16
@@ -878,7 +941,7 @@ func (__ OfInt16Iter) Range(f func(i int, d int16) bool) {
 		}
 	}
 }
-func (__ OfInt16Iter) Map(f func(i int, d int16) int16) OfInt16If {
+func (__ OfInt16Iter) Map(f func(i int, d int16) int16) OfInt16MutIf {
 	rval := make([]int16, len(__))
 	for i := range __ {
 		rval[i] = f(i, __[i])
@@ -888,21 +951,28 @@ func (__ OfInt16Iter) Map(f func(i int, d int16) int16) OfInt16If {
 
 type OfInt32IterIf interface {
 	Range(f func(i int, d int32) bool)
-	Map(f func(i int, d int32) int32) OfInt32If
+	Map(f func(i int, d int32) int32) OfInt32MutIf
 }
 type OfInt32If interface {
 	Get(int) int32
-	Set(int, int32) int32
 	Len() int
 }
+type OfInt32MutIf interface {
+	OfInt32If
+	Set(int, int32) int32
+}
+
 type OfInt32AsIterIf interface {
 	AsIter() OfInt32IterIf
 }
 
 type OfInt32If32 interface {
 	Get(int32) int32
-	Set(int32, int32) int32
 	Len() int32
+}
+type OfInt32IfMut32 interface {
+	OfInt32If32
+	Set(int32, int32) int32
 }
 
 type OfInt32 []int32
@@ -976,7 +1046,7 @@ func (__ OfInt32Iter) Range(f func(i int, d int32) bool) {
 		}
 	}
 }
-func (__ OfInt32Iter) Map(f func(i int, d int32) int32) OfInt32If {
+func (__ OfInt32Iter) Map(f func(i int, d int32) int32) OfInt32MutIf {
 	rval := make([]int32, len(__))
 	for i := range __ {
 		rval[i] = f(i, __[i])
@@ -986,21 +1056,28 @@ func (__ OfInt32Iter) Map(f func(i int, d int32) int32) OfInt32If {
 
 type OfInt64IterIf interface {
 	Range(f func(i int, d int64) bool)
-	Map(f func(i int, d int64) int64) OfInt64If
+	Map(f func(i int, d int64) int64) OfInt64MutIf
 }
 type OfInt64If interface {
 	Get(int) int64
-	Set(int, int64) int64
 	Len() int
 }
+type OfInt64MutIf interface {
+	OfInt64If
+	Set(int, int64) int64
+}
+
 type OfInt64AsIterIf interface {
 	AsIter() OfInt64IterIf
 }
 
 type OfInt64If32 interface {
 	Get(int32) int64
-	Set(int32, int64) int64
 	Len() int32
+}
+type OfInt64IfMut32 interface {
+	OfInt64If32
+	Set(int32, int64) int64
 }
 
 type OfInt64 []int64
@@ -1074,7 +1151,7 @@ func (__ OfInt64Iter) Range(f func(i int, d int64) bool) {
 		}
 	}
 }
-func (__ OfInt64Iter) Map(f func(i int, d int64) int64) OfInt64If {
+func (__ OfInt64Iter) Map(f func(i int, d int64) int64) OfInt64MutIf {
 	rval := make([]int64, len(__))
 	for i := range __ {
 		rval[i] = f(i, __[i])
@@ -1084,21 +1161,28 @@ func (__ OfInt64Iter) Map(f func(i int, d int64) int64) OfInt64If {
 
 type OfInt8IterIf interface {
 	Range(f func(i int, d int8) bool)
-	Map(f func(i int, d int8) int8) OfInt8If
+	Map(f func(i int, d int8) int8) OfInt8MutIf
 }
 type OfInt8If interface {
 	Get(int) int8
-	Set(int, int8) int8
 	Len() int
 }
+type OfInt8MutIf interface {
+	OfInt8If
+	Set(int, int8) int8
+}
+
 type OfInt8AsIterIf interface {
 	AsIter() OfInt8IterIf
 }
 
 type OfInt8If32 interface {
 	Get(int32) int8
-	Set(int32, int8) int8
 	Len() int32
+}
+type OfInt8IfMut32 interface {
+	OfInt8If32
+	Set(int32, int8) int8
 }
 
 type OfInt8 []int8
@@ -1172,7 +1256,7 @@ func (__ OfInt8Iter) Range(f func(i int, d int8) bool) {
 		}
 	}
 }
-func (__ OfInt8Iter) Map(f func(i int, d int8) int8) OfInt8If {
+func (__ OfInt8Iter) Map(f func(i int, d int8) int8) OfInt8MutIf {
 	rval := make([]int8, len(__))
 	for i := range __ {
 		rval[i] = f(i, __[i])
@@ -1182,21 +1266,28 @@ func (__ OfInt8Iter) Map(f func(i int, d int8) int8) OfInt8If {
 
 type OfRuneIterIf interface {
 	Range(f func(i int, d rune) bool)
-	Map(f func(i int, d rune) rune) OfRuneIf
+	Map(f func(i int, d rune) rune) OfRuneMutIf
 }
 type OfRuneIf interface {
 	Get(int) rune
-	Set(int, rune) rune
 	Len() int
 }
+type OfRuneMutIf interface {
+	OfRuneIf
+	Set(int, rune) rune
+}
+
 type OfRuneAsIterIf interface {
 	AsIter() OfRuneIterIf
 }
 
 type OfRuneIf32 interface {
 	Get(int32) rune
-	Set(int32, rune) rune
 	Len() int32
+}
+type OfRuneIfMut32 interface {
+	OfRuneIf32
+	Set(int32, rune) rune
 }
 
 type OfRune []rune
@@ -1270,7 +1361,7 @@ func (__ OfRuneIter) Range(f func(i int, d rune) bool) {
 		}
 	}
 }
-func (__ OfRuneIter) Map(f func(i int, d rune) rune) OfRuneIf {
+func (__ OfRuneIter) Map(f func(i int, d rune) rune) OfRuneMutIf {
 	rval := make([]rune, len(__))
 	for i := range __ {
 		rval[i] = f(i, __[i])
@@ -1280,21 +1371,28 @@ func (__ OfRuneIter) Map(f func(i int, d rune) rune) OfRuneIf {
 
 type OfStringIterIf interface {
 	Range(f func(i int, d string) bool)
-	Map(f func(i int, d string) string) OfStringIf
+	Map(f func(i int, d string) string) OfStringMutIf
 }
 type OfStringIf interface {
 	Get(int) string
-	Set(int, string) string
 	Len() int
 }
+type OfStringMutIf interface {
+	OfStringIf
+	Set(int, string) string
+}
+
 type OfStringAsIterIf interface {
 	AsIter() OfStringIterIf
 }
 
 type OfStringIf32 interface {
 	Get(int32) string
-	Set(int32, string) string
 	Len() int32
+}
+type OfStringIfMut32 interface {
+	OfStringIf32
+	Set(int32, string) string
 }
 
 type OfString []string
@@ -1368,7 +1466,7 @@ func (__ OfStringIter) Range(f func(i int, d string) bool) {
 		}
 	}
 }
-func (__ OfStringIter) Map(f func(i int, d string) string) OfStringIf {
+func (__ OfStringIter) Map(f func(i int, d string) string) OfStringMutIf {
 	rval := make([]string, len(__))
 	for i := range __ {
 		rval[i] = f(i, __[i])
@@ -1378,21 +1476,28 @@ func (__ OfStringIter) Map(f func(i int, d string) string) OfStringIf {
 
 type OfUintIterIf interface {
 	Range(f func(i int, d uint) bool)
-	Map(f func(i int, d uint) uint) OfUintIf
+	Map(f func(i int, d uint) uint) OfUintMutIf
 }
 type OfUintIf interface {
 	Get(int) uint
-	Set(int, uint) uint
 	Len() int
 }
+type OfUintMutIf interface {
+	OfUintIf
+	Set(int, uint) uint
+}
+
 type OfUintAsIterIf interface {
 	AsIter() OfUintIterIf
 }
 
 type OfUintIf32 interface {
 	Get(int32) uint
-	Set(int32, uint) uint
 	Len() int32
+}
+type OfUintIfMut32 interface {
+	OfUintIf32
+	Set(int32, uint) uint
 }
 
 type OfUint []uint
@@ -1466,7 +1571,7 @@ func (__ OfUintIter) Range(f func(i int, d uint) bool) {
 		}
 	}
 }
-func (__ OfUintIter) Map(f func(i int, d uint) uint) OfUintIf {
+func (__ OfUintIter) Map(f func(i int, d uint) uint) OfUintMutIf {
 	rval := make([]uint, len(__))
 	for i := range __ {
 		rval[i] = f(i, __[i])
@@ -1476,21 +1581,28 @@ func (__ OfUintIter) Map(f func(i int, d uint) uint) OfUintIf {
 
 type OfUint16IterIf interface {
 	Range(f func(i int, d uint16) bool)
-	Map(f func(i int, d uint16) uint16) OfUint16If
+	Map(f func(i int, d uint16) uint16) OfUint16MutIf
 }
 type OfUint16If interface {
 	Get(int) uint16
-	Set(int, uint16) uint16
 	Len() int
 }
+type OfUint16MutIf interface {
+	OfUint16If
+	Set(int, uint16) uint16
+}
+
 type OfUint16AsIterIf interface {
 	AsIter() OfUint16IterIf
 }
 
 type OfUint16If32 interface {
 	Get(int32) uint16
-	Set(int32, uint16) uint16
 	Len() int32
+}
+type OfUint16IfMut32 interface {
+	OfUint16If32
+	Set(int32, uint16) uint16
 }
 
 type OfUint16 []uint16
@@ -1564,7 +1676,7 @@ func (__ OfUint16Iter) Range(f func(i int, d uint16) bool) {
 		}
 	}
 }
-func (__ OfUint16Iter) Map(f func(i int, d uint16) uint16) OfUint16If {
+func (__ OfUint16Iter) Map(f func(i int, d uint16) uint16) OfUint16MutIf {
 	rval := make([]uint16, len(__))
 	for i := range __ {
 		rval[i] = f(i, __[i])
@@ -1574,21 +1686,28 @@ func (__ OfUint16Iter) Map(f func(i int, d uint16) uint16) OfUint16If {
 
 type OfUint32IterIf interface {
 	Range(f func(i int, d uint32) bool)
-	Map(f func(i int, d uint32) uint32) OfUint32If
+	Map(f func(i int, d uint32) uint32) OfUint32MutIf
 }
 type OfUint32If interface {
 	Get(int) uint32
-	Set(int, uint32) uint32
 	Len() int
 }
+type OfUint32MutIf interface {
+	OfUint32If
+	Set(int, uint32) uint32
+}
+
 type OfUint32AsIterIf interface {
 	AsIter() OfUint32IterIf
 }
 
 type OfUint32If32 interface {
 	Get(int32) uint32
-	Set(int32, uint32) uint32
 	Len() int32
+}
+type OfUint32IfMut32 interface {
+	OfUint32If32
+	Set(int32, uint32) uint32
 }
 
 type OfUint32 []uint32
@@ -1662,7 +1781,7 @@ func (__ OfUint32Iter) Range(f func(i int, d uint32) bool) {
 		}
 	}
 }
-func (__ OfUint32Iter) Map(f func(i int, d uint32) uint32) OfUint32If {
+func (__ OfUint32Iter) Map(f func(i int, d uint32) uint32) OfUint32MutIf {
 	rval := make([]uint32, len(__))
 	for i := range __ {
 		rval[i] = f(i, __[i])
@@ -1672,21 +1791,28 @@ func (__ OfUint32Iter) Map(f func(i int, d uint32) uint32) OfUint32If {
 
 type OfUint64IterIf interface {
 	Range(f func(i int, d uint64) bool)
-	Map(f func(i int, d uint64) uint64) OfUint64If
+	Map(f func(i int, d uint64) uint64) OfUint64MutIf
 }
 type OfUint64If interface {
 	Get(int) uint64
-	Set(int, uint64) uint64
 	Len() int
 }
+type OfUint64MutIf interface {
+	OfUint64If
+	Set(int, uint64) uint64
+}
+
 type OfUint64AsIterIf interface {
 	AsIter() OfUint64IterIf
 }
 
 type OfUint64If32 interface {
 	Get(int32) uint64
-	Set(int32, uint64) uint64
 	Len() int32
+}
+type OfUint64IfMut32 interface {
+	OfUint64If32
+	Set(int32, uint64) uint64
 }
 
 type OfUint64 []uint64
@@ -1760,7 +1886,7 @@ func (__ OfUint64Iter) Range(f func(i int, d uint64) bool) {
 		}
 	}
 }
-func (__ OfUint64Iter) Map(f func(i int, d uint64) uint64) OfUint64If {
+func (__ OfUint64Iter) Map(f func(i int, d uint64) uint64) OfUint64MutIf {
 	rval := make([]uint64, len(__))
 	for i := range __ {
 		rval[i] = f(i, __[i])
@@ -1770,21 +1896,28 @@ func (__ OfUint64Iter) Map(f func(i int, d uint64) uint64) OfUint64If {
 
 type OfUint8IterIf interface {
 	Range(f func(i int, d uint8) bool)
-	Map(f func(i int, d uint8) uint8) OfUint8If
+	Map(f func(i int, d uint8) uint8) OfUint8MutIf
 }
 type OfUint8If interface {
 	Get(int) uint8
-	Set(int, uint8) uint8
 	Len() int
 }
+type OfUint8MutIf interface {
+	OfUint8If
+	Set(int, uint8) uint8
+}
+
 type OfUint8AsIterIf interface {
 	AsIter() OfUint8IterIf
 }
 
 type OfUint8If32 interface {
 	Get(int32) uint8
-	Set(int32, uint8) uint8
 	Len() int32
+}
+type OfUint8IfMut32 interface {
+	OfUint8If32
+	Set(int32, uint8) uint8
 }
 
 type OfUint8 []uint8
@@ -1858,7 +1991,7 @@ func (__ OfUint8Iter) Range(f func(i int, d uint8) bool) {
 		}
 	}
 }
-func (__ OfUint8Iter) Map(f func(i int, d uint8) uint8) OfUint8If {
+func (__ OfUint8Iter) Map(f func(i int, d uint8) uint8) OfUint8MutIf {
 	rval := make([]uint8, len(__))
 	for i := range __ {
 		rval[i] = f(i, __[i])
@@ -1868,21 +2001,28 @@ func (__ OfUint8Iter) Map(f func(i int, d uint8) uint8) OfUint8If {
 
 type OfUintptrIterIf interface {
 	Range(f func(i int, d uintptr) bool)
-	Map(f func(i int, d uintptr) uintptr) OfUintptrIf
+	Map(f func(i int, d uintptr) uintptr) OfUintptrMutIf
 }
 type OfUintptrIf interface {
 	Get(int) uintptr
-	Set(int, uintptr) uintptr
 	Len() int
 }
+type OfUintptrMutIf interface {
+	OfUintptrIf
+	Set(int, uintptr) uintptr
+}
+
 type OfUintptrAsIterIf interface {
 	AsIter() OfUintptrIterIf
 }
 
 type OfUintptrIf32 interface {
 	Get(int32) uintptr
-	Set(int32, uintptr) uintptr
 	Len() int32
+}
+type OfUintptrIfMut32 interface {
+	OfUintptrIf32
+	Set(int32, uintptr) uintptr
 }
 
 type OfUintptr []uintptr
@@ -1956,7 +2096,7 @@ func (__ OfUintptrIter) Range(f func(i int, d uintptr) bool) {
 		}
 	}
 }
-func (__ OfUintptrIter) Map(f func(i int, d uintptr) uintptr) OfUintptrIf {
+func (__ OfUintptrIter) Map(f func(i int, d uintptr) uintptr) OfUintptrMutIf {
 	rval := make([]uintptr, len(__))
 	for i := range __ {
 		rval[i] = f(i, __[i])
