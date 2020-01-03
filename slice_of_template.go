@@ -111,6 +111,9 @@ type SliceOfSomeSt struct {
 func NewSliceOfSomeSt(i int) *SliceOfSomeSt {
 	return &SliceOfSomeSt{somes: SliceOfSome(make([]Some, i))}
 }
+func NewSliceOfSomeStFrom(list []Some) *SliceOfSomeSt {
+	return &SliceOfSomeSt{somes: SliceOfSome(list)}
+}
 
 func (__ *SliceOfSomeSt) Get(i int) Some {
 	return __.somes.Get(i)
@@ -133,6 +136,10 @@ type SliceOfSomeStI32 struct {
 
 func NewSliceOfSomeStI32(i int32) *SliceOfSomeStI32 {
 	return &SliceOfSomeStI32{somes: SliceOfSomeI32(make([]Some, i))}
+}
+
+func NewSliceOfSomeStI32From(list []Some) *SliceOfSomeStI32 {
+	return &SliceOfSomeStI32{somes: SliceOfSomeI32(list)}
 }
 
 func (__ *SliceOfSomeStI32) Get(i int32) Some {

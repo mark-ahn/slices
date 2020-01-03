@@ -110,6 +110,9 @@ type OfBoolSt struct {
 func NewOfBoolSt(i int) *OfBoolSt {
 	return &OfBoolSt{somes: OfBool(make([]bool, i))}
 }
+func NewOfBoolStFrom(list []bool) *OfBoolSt {
+	return &OfBoolSt{somes: OfBool(list)}
+}
 
 func (__ *OfBoolSt) Get(i int) bool {
 	return __.somes.Get(i)
@@ -132,6 +135,10 @@ type OfBoolStI32 struct {
 
 func NewOfBoolStI32(i int32) *OfBoolStI32 {
 	return &OfBoolStI32{somes: OfBoolI32(make([]bool, i))}
+}
+
+func NewOfBoolStI32From(list []bool) *OfBoolStI32 {
+	return &OfBoolStI32{somes: OfBoolI32(list)}
 }
 
 func (__ *OfBoolStI32) Get(i int32) bool {
@@ -272,6 +279,9 @@ type OfByteSt struct {
 func NewOfByteSt(i int) *OfByteSt {
 	return &OfByteSt{somes: OfByte(make([]byte, i))}
 }
+func NewOfByteStFrom(list []byte) *OfByteSt {
+	return &OfByteSt{somes: OfByte(list)}
+}
 
 func (__ *OfByteSt) Get(i int) byte {
 	return __.somes.Get(i)
@@ -294,6 +304,10 @@ type OfByteStI32 struct {
 
 func NewOfByteStI32(i int32) *OfByteStI32 {
 	return &OfByteStI32{somes: OfByteI32(make([]byte, i))}
+}
+
+func NewOfByteStI32From(list []byte) *OfByteStI32 {
+	return &OfByteStI32{somes: OfByteI32(list)}
 }
 
 func (__ *OfByteStI32) Get(i int32) byte {
@@ -434,6 +448,9 @@ type OfComplex128St struct {
 func NewOfComplex128St(i int) *OfComplex128St {
 	return &OfComplex128St{somes: OfComplex128(make([]complex128, i))}
 }
+func NewOfComplex128StFrom(list []complex128) *OfComplex128St {
+	return &OfComplex128St{somes: OfComplex128(list)}
+}
 
 func (__ *OfComplex128St) Get(i int) complex128 {
 	return __.somes.Get(i)
@@ -456,6 +473,10 @@ type OfComplex128StI32 struct {
 
 func NewOfComplex128StI32(i int32) *OfComplex128StI32 {
 	return &OfComplex128StI32{somes: OfComplex128I32(make([]complex128, i))}
+}
+
+func NewOfComplex128StI32From(list []complex128) *OfComplex128StI32 {
+	return &OfComplex128StI32{somes: OfComplex128I32(list)}
 }
 
 func (__ *OfComplex128StI32) Get(i int32) complex128 {
@@ -596,6 +617,9 @@ type OfComplex64St struct {
 func NewOfComplex64St(i int) *OfComplex64St {
 	return &OfComplex64St{somes: OfComplex64(make([]complex64, i))}
 }
+func NewOfComplex64StFrom(list []complex64) *OfComplex64St {
+	return &OfComplex64St{somes: OfComplex64(list)}
+}
 
 func (__ *OfComplex64St) Get(i int) complex64 {
 	return __.somes.Get(i)
@@ -618,6 +642,10 @@ type OfComplex64StI32 struct {
 
 func NewOfComplex64StI32(i int32) *OfComplex64StI32 {
 	return &OfComplex64StI32{somes: OfComplex64I32(make([]complex64, i))}
+}
+
+func NewOfComplex64StI32From(list []complex64) *OfComplex64StI32 {
+	return &OfComplex64StI32{somes: OfComplex64I32(list)}
 }
 
 func (__ *OfComplex64StI32) Get(i int32) complex64 {
@@ -758,6 +786,9 @@ type OfErrorSt struct {
 func NewOfErrorSt(i int) *OfErrorSt {
 	return &OfErrorSt{somes: OfError(make([]error, i))}
 }
+func NewOfErrorStFrom(list []error) *OfErrorSt {
+	return &OfErrorSt{somes: OfError(list)}
+}
 
 func (__ *OfErrorSt) Get(i int) error {
 	return __.somes.Get(i)
@@ -780,6 +811,10 @@ type OfErrorStI32 struct {
 
 func NewOfErrorStI32(i int32) *OfErrorStI32 {
 	return &OfErrorStI32{somes: OfErrorI32(make([]error, i))}
+}
+
+func NewOfErrorStI32From(list []error) *OfErrorStI32 {
+	return &OfErrorStI32{somes: OfErrorI32(list)}
 }
 
 func (__ *OfErrorStI32) Get(i int32) error {
@@ -920,6 +955,9 @@ type OfFloat32St struct {
 func NewOfFloat32St(i int) *OfFloat32St {
 	return &OfFloat32St{somes: OfFloat32(make([]float32, i))}
 }
+func NewOfFloat32StFrom(list []float32) *OfFloat32St {
+	return &OfFloat32St{somes: OfFloat32(list)}
+}
 
 func (__ *OfFloat32St) Get(i int) float32 {
 	return __.somes.Get(i)
@@ -942,6 +980,10 @@ type OfFloat32StI32 struct {
 
 func NewOfFloat32StI32(i int32) *OfFloat32StI32 {
 	return &OfFloat32StI32{somes: OfFloat32I32(make([]float32, i))}
+}
+
+func NewOfFloat32StI32From(list []float32) *OfFloat32StI32 {
+	return &OfFloat32StI32{somes: OfFloat32I32(list)}
 }
 
 func (__ *OfFloat32StI32) Get(i int32) float32 {
@@ -1082,6 +1124,9 @@ type OfFloat64St struct {
 func NewOfFloat64St(i int) *OfFloat64St {
 	return &OfFloat64St{somes: OfFloat64(make([]float64, i))}
 }
+func NewOfFloat64StFrom(list []float64) *OfFloat64St {
+	return &OfFloat64St{somes: OfFloat64(list)}
+}
 
 func (__ *OfFloat64St) Get(i int) float64 {
 	return __.somes.Get(i)
@@ -1104,6 +1149,10 @@ type OfFloat64StI32 struct {
 
 func NewOfFloat64StI32(i int32) *OfFloat64StI32 {
 	return &OfFloat64StI32{somes: OfFloat64I32(make([]float64, i))}
+}
+
+func NewOfFloat64StI32From(list []float64) *OfFloat64StI32 {
+	return &OfFloat64StI32{somes: OfFloat64I32(list)}
 }
 
 func (__ *OfFloat64StI32) Get(i int32) float64 {
@@ -1244,6 +1293,9 @@ type OfIntSt struct {
 func NewOfIntSt(i int) *OfIntSt {
 	return &OfIntSt{somes: OfInt(make([]int, i))}
 }
+func NewOfIntStFrom(list []int) *OfIntSt {
+	return &OfIntSt{somes: OfInt(list)}
+}
 
 func (__ *OfIntSt) Get(i int) int {
 	return __.somes.Get(i)
@@ -1266,6 +1318,10 @@ type OfIntStI32 struct {
 
 func NewOfIntStI32(i int32) *OfIntStI32 {
 	return &OfIntStI32{somes: OfIntI32(make([]int, i))}
+}
+
+func NewOfIntStI32From(list []int) *OfIntStI32 {
+	return &OfIntStI32{somes: OfIntI32(list)}
 }
 
 func (__ *OfIntStI32) Get(i int32) int {
@@ -1406,6 +1462,9 @@ type OfInt16St struct {
 func NewOfInt16St(i int) *OfInt16St {
 	return &OfInt16St{somes: OfInt16(make([]int16, i))}
 }
+func NewOfInt16StFrom(list []int16) *OfInt16St {
+	return &OfInt16St{somes: OfInt16(list)}
+}
 
 func (__ *OfInt16St) Get(i int) int16 {
 	return __.somes.Get(i)
@@ -1428,6 +1487,10 @@ type OfInt16StI32 struct {
 
 func NewOfInt16StI32(i int32) *OfInt16StI32 {
 	return &OfInt16StI32{somes: OfInt16I32(make([]int16, i))}
+}
+
+func NewOfInt16StI32From(list []int16) *OfInt16StI32 {
+	return &OfInt16StI32{somes: OfInt16I32(list)}
 }
 
 func (__ *OfInt16StI32) Get(i int32) int16 {
@@ -1568,6 +1631,9 @@ type OfInt32St struct {
 func NewOfInt32St(i int) *OfInt32St {
 	return &OfInt32St{somes: OfInt32(make([]int32, i))}
 }
+func NewOfInt32StFrom(list []int32) *OfInt32St {
+	return &OfInt32St{somes: OfInt32(list)}
+}
 
 func (__ *OfInt32St) Get(i int) int32 {
 	return __.somes.Get(i)
@@ -1590,6 +1656,10 @@ type OfInt32StI32 struct {
 
 func NewOfInt32StI32(i int32) *OfInt32StI32 {
 	return &OfInt32StI32{somes: OfInt32I32(make([]int32, i))}
+}
+
+func NewOfInt32StI32From(list []int32) *OfInt32StI32 {
+	return &OfInt32StI32{somes: OfInt32I32(list)}
 }
 
 func (__ *OfInt32StI32) Get(i int32) int32 {
@@ -1730,6 +1800,9 @@ type OfInt64St struct {
 func NewOfInt64St(i int) *OfInt64St {
 	return &OfInt64St{somes: OfInt64(make([]int64, i))}
 }
+func NewOfInt64StFrom(list []int64) *OfInt64St {
+	return &OfInt64St{somes: OfInt64(list)}
+}
 
 func (__ *OfInt64St) Get(i int) int64 {
 	return __.somes.Get(i)
@@ -1752,6 +1825,10 @@ type OfInt64StI32 struct {
 
 func NewOfInt64StI32(i int32) *OfInt64StI32 {
 	return &OfInt64StI32{somes: OfInt64I32(make([]int64, i))}
+}
+
+func NewOfInt64StI32From(list []int64) *OfInt64StI32 {
+	return &OfInt64StI32{somes: OfInt64I32(list)}
 }
 
 func (__ *OfInt64StI32) Get(i int32) int64 {
@@ -1892,6 +1969,9 @@ type OfInt8St struct {
 func NewOfInt8St(i int) *OfInt8St {
 	return &OfInt8St{somes: OfInt8(make([]int8, i))}
 }
+func NewOfInt8StFrom(list []int8) *OfInt8St {
+	return &OfInt8St{somes: OfInt8(list)}
+}
 
 func (__ *OfInt8St) Get(i int) int8 {
 	return __.somes.Get(i)
@@ -1914,6 +1994,10 @@ type OfInt8StI32 struct {
 
 func NewOfInt8StI32(i int32) *OfInt8StI32 {
 	return &OfInt8StI32{somes: OfInt8I32(make([]int8, i))}
+}
+
+func NewOfInt8StI32From(list []int8) *OfInt8StI32 {
+	return &OfInt8StI32{somes: OfInt8I32(list)}
 }
 
 func (__ *OfInt8StI32) Get(i int32) int8 {
@@ -2054,6 +2138,9 @@ type OfRuneSt struct {
 func NewOfRuneSt(i int) *OfRuneSt {
 	return &OfRuneSt{somes: OfRune(make([]rune, i))}
 }
+func NewOfRuneStFrom(list []rune) *OfRuneSt {
+	return &OfRuneSt{somes: OfRune(list)}
+}
 
 func (__ *OfRuneSt) Get(i int) rune {
 	return __.somes.Get(i)
@@ -2076,6 +2163,10 @@ type OfRuneStI32 struct {
 
 func NewOfRuneStI32(i int32) *OfRuneStI32 {
 	return &OfRuneStI32{somes: OfRuneI32(make([]rune, i))}
+}
+
+func NewOfRuneStI32From(list []rune) *OfRuneStI32 {
+	return &OfRuneStI32{somes: OfRuneI32(list)}
 }
 
 func (__ *OfRuneStI32) Get(i int32) rune {
@@ -2216,6 +2307,9 @@ type OfStringSt struct {
 func NewOfStringSt(i int) *OfStringSt {
 	return &OfStringSt{somes: OfString(make([]string, i))}
 }
+func NewOfStringStFrom(list []string) *OfStringSt {
+	return &OfStringSt{somes: OfString(list)}
+}
 
 func (__ *OfStringSt) Get(i int) string {
 	return __.somes.Get(i)
@@ -2238,6 +2332,10 @@ type OfStringStI32 struct {
 
 func NewOfStringStI32(i int32) *OfStringStI32 {
 	return &OfStringStI32{somes: OfStringI32(make([]string, i))}
+}
+
+func NewOfStringStI32From(list []string) *OfStringStI32 {
+	return &OfStringStI32{somes: OfStringI32(list)}
 }
 
 func (__ *OfStringStI32) Get(i int32) string {
@@ -2378,6 +2476,9 @@ type OfUintSt struct {
 func NewOfUintSt(i int) *OfUintSt {
 	return &OfUintSt{somes: OfUint(make([]uint, i))}
 }
+func NewOfUintStFrom(list []uint) *OfUintSt {
+	return &OfUintSt{somes: OfUint(list)}
+}
 
 func (__ *OfUintSt) Get(i int) uint {
 	return __.somes.Get(i)
@@ -2400,6 +2501,10 @@ type OfUintStI32 struct {
 
 func NewOfUintStI32(i int32) *OfUintStI32 {
 	return &OfUintStI32{somes: OfUintI32(make([]uint, i))}
+}
+
+func NewOfUintStI32From(list []uint) *OfUintStI32 {
+	return &OfUintStI32{somes: OfUintI32(list)}
 }
 
 func (__ *OfUintStI32) Get(i int32) uint {
@@ -2540,6 +2645,9 @@ type OfUint16St struct {
 func NewOfUint16St(i int) *OfUint16St {
 	return &OfUint16St{somes: OfUint16(make([]uint16, i))}
 }
+func NewOfUint16StFrom(list []uint16) *OfUint16St {
+	return &OfUint16St{somes: OfUint16(list)}
+}
 
 func (__ *OfUint16St) Get(i int) uint16 {
 	return __.somes.Get(i)
@@ -2562,6 +2670,10 @@ type OfUint16StI32 struct {
 
 func NewOfUint16StI32(i int32) *OfUint16StI32 {
 	return &OfUint16StI32{somes: OfUint16I32(make([]uint16, i))}
+}
+
+func NewOfUint16StI32From(list []uint16) *OfUint16StI32 {
+	return &OfUint16StI32{somes: OfUint16I32(list)}
 }
 
 func (__ *OfUint16StI32) Get(i int32) uint16 {
@@ -2702,6 +2814,9 @@ type OfUint32St struct {
 func NewOfUint32St(i int) *OfUint32St {
 	return &OfUint32St{somes: OfUint32(make([]uint32, i))}
 }
+func NewOfUint32StFrom(list []uint32) *OfUint32St {
+	return &OfUint32St{somes: OfUint32(list)}
+}
 
 func (__ *OfUint32St) Get(i int) uint32 {
 	return __.somes.Get(i)
@@ -2724,6 +2839,10 @@ type OfUint32StI32 struct {
 
 func NewOfUint32StI32(i int32) *OfUint32StI32 {
 	return &OfUint32StI32{somes: OfUint32I32(make([]uint32, i))}
+}
+
+func NewOfUint32StI32From(list []uint32) *OfUint32StI32 {
+	return &OfUint32StI32{somes: OfUint32I32(list)}
 }
 
 func (__ *OfUint32StI32) Get(i int32) uint32 {
@@ -2864,6 +2983,9 @@ type OfUint64St struct {
 func NewOfUint64St(i int) *OfUint64St {
 	return &OfUint64St{somes: OfUint64(make([]uint64, i))}
 }
+func NewOfUint64StFrom(list []uint64) *OfUint64St {
+	return &OfUint64St{somes: OfUint64(list)}
+}
 
 func (__ *OfUint64St) Get(i int) uint64 {
 	return __.somes.Get(i)
@@ -2886,6 +3008,10 @@ type OfUint64StI32 struct {
 
 func NewOfUint64StI32(i int32) *OfUint64StI32 {
 	return &OfUint64StI32{somes: OfUint64I32(make([]uint64, i))}
+}
+
+func NewOfUint64StI32From(list []uint64) *OfUint64StI32 {
+	return &OfUint64StI32{somes: OfUint64I32(list)}
 }
 
 func (__ *OfUint64StI32) Get(i int32) uint64 {
@@ -3026,6 +3152,9 @@ type OfUint8St struct {
 func NewOfUint8St(i int) *OfUint8St {
 	return &OfUint8St{somes: OfUint8(make([]uint8, i))}
 }
+func NewOfUint8StFrom(list []uint8) *OfUint8St {
+	return &OfUint8St{somes: OfUint8(list)}
+}
 
 func (__ *OfUint8St) Get(i int) uint8 {
 	return __.somes.Get(i)
@@ -3048,6 +3177,10 @@ type OfUint8StI32 struct {
 
 func NewOfUint8StI32(i int32) *OfUint8StI32 {
 	return &OfUint8StI32{somes: OfUint8I32(make([]uint8, i))}
+}
+
+func NewOfUint8StI32From(list []uint8) *OfUint8StI32 {
+	return &OfUint8StI32{somes: OfUint8I32(list)}
 }
 
 func (__ *OfUint8StI32) Get(i int32) uint8 {
@@ -3188,6 +3321,9 @@ type OfUintptrSt struct {
 func NewOfUintptrSt(i int) *OfUintptrSt {
 	return &OfUintptrSt{somes: OfUintptr(make([]uintptr, i))}
 }
+func NewOfUintptrStFrom(list []uintptr) *OfUintptrSt {
+	return &OfUintptrSt{somes: OfUintptr(list)}
+}
 
 func (__ *OfUintptrSt) Get(i int) uintptr {
 	return __.somes.Get(i)
@@ -3210,6 +3346,10 @@ type OfUintptrStI32 struct {
 
 func NewOfUintptrStI32(i int32) *OfUintptrStI32 {
 	return &OfUintptrStI32{somes: OfUintptrI32(make([]uintptr, i))}
+}
+
+func NewOfUintptrStI32From(list []uintptr) *OfUintptrStI32 {
+	return &OfUintptrStI32{somes: OfUintptrI32(list)}
 }
 
 func (__ *OfUintptrStI32) Get(i int32) uintptr {

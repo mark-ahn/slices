@@ -112,6 +112,9 @@ type OfSomeSt struct {
 func NewOfSomeSt(i int) *OfSomeSt {
 	return &OfSomeSt{somes: OfSome(make([]Some, i))}
 }
+func NewOfSomeStFrom(list []Some) *OfSomeSt {
+	return &OfSomeSt{somes: OfSome(list)}
+}
 
 func (__ *OfSomeSt) Get(i int) Some {
 	return __.somes.Get(i)
@@ -134,6 +137,10 @@ type OfSomeStI32 struct {
 
 func NewOfSomeStI32(i int32) *OfSomeStI32 {
 	return &OfSomeStI32{somes: OfSomeI32(make([]Some, i))}
+}
+
+func NewOfSomeStI32From(list []Some) *OfSomeStI32 {
+	return &OfSomeStI32{somes: OfSomeI32(list)}
 }
 
 func (__ *OfSomeStI32) Get(i int32) Some {
