@@ -16,7 +16,7 @@ type _Prefix_SomeAsIterIf interface {
 	AsIter() _Prefix_SomeIterIf
 }
 
-type _Prefix_SomeRanger interface {
+type _Prefix_SomeLooper interface {
 	LoopItem(i int, d Some) bool
 }
 type _Prefix_SomeMapper interface {
@@ -35,7 +35,7 @@ func (__ _Prefix_SomeMapFunc) MapItem(i int, d Some) Some {
 }
 
 type _Prefix_SomeIterIf interface {
-	Range(fntr _Prefix_SomeRanger)
+	Range(fntr _Prefix_SomeLooper)
 	Map(fntr _Prefix_SomeMapper) _Prefix_SomeMutIf
 }
 
@@ -90,7 +90,7 @@ func New_Prefix_SomeSt(i int) *_Prefix_SomeSt {
 
 type _Prefix_SomeIter []Some
 
-func (__ _Prefix_SomeIter) Range(fntr _Prefix_SomeRanger) {
+func (__ _Prefix_SomeIter) Range(fntr _Prefix_SomeLooper) {
 	for i := range __ {
 		if !fntr.LoopItem(i, __[i]) {
 			break

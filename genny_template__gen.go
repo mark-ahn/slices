@@ -16,7 +16,7 @@ type OfBoolAsIterIf interface {
 	AsIter() OfBoolIterIf
 }
 
-type OfBoolRanger interface {
+type OfBoolLooper interface {
 	LoopItem(i int, d bool) bool
 }
 type OfBoolMapper interface {
@@ -35,7 +35,7 @@ func (__ OfBoolMapFunc) MapItem(i int, d bool) bool {
 }
 
 type OfBoolIterIf interface {
-	Range(fntr OfBoolRanger)
+	Range(fntr OfBoolLooper)
 	Map(fntr OfBoolMapper) OfBoolMutIf
 }
 
@@ -90,7 +90,7 @@ func NewOfBoolSt(i int) *OfBoolSt {
 
 type OfBoolIter []bool
 
-func (__ OfBoolIter) Range(fntr OfBoolRanger) {
+func (__ OfBoolIter) Range(fntr OfBoolLooper) {
 	for i := range __ {
 		if !fntr.LoopItem(i, __[i]) {
 			break
@@ -117,7 +117,7 @@ type OfByteAsIterIf interface {
 	AsIter() OfByteIterIf
 }
 
-type OfByteRanger interface {
+type OfByteLooper interface {
 	LoopItem(i int, d byte) bool
 }
 type OfByteMapper interface {
@@ -136,7 +136,7 @@ func (__ OfByteMapFunc) MapItem(i int, d byte) byte {
 }
 
 type OfByteIterIf interface {
-	Range(fntr OfByteRanger)
+	Range(fntr OfByteLooper)
 	Map(fntr OfByteMapper) OfByteMutIf
 }
 
@@ -191,7 +191,7 @@ func NewOfByteSt(i int) *OfByteSt {
 
 type OfByteIter []byte
 
-func (__ OfByteIter) Range(fntr OfByteRanger) {
+func (__ OfByteIter) Range(fntr OfByteLooper) {
 	for i := range __ {
 		if !fntr.LoopItem(i, __[i]) {
 			break
@@ -218,7 +218,7 @@ type OfComplex128AsIterIf interface {
 	AsIter() OfComplex128IterIf
 }
 
-type OfComplex128Ranger interface {
+type OfComplex128Looper interface {
 	LoopItem(i int, d complex128) bool
 }
 type OfComplex128Mapper interface {
@@ -237,7 +237,7 @@ func (__ OfComplex128MapFunc) MapItem(i int, d complex128) complex128 {
 }
 
 type OfComplex128IterIf interface {
-	Range(fntr OfComplex128Ranger)
+	Range(fntr OfComplex128Looper)
 	Map(fntr OfComplex128Mapper) OfComplex128MutIf
 }
 
@@ -292,7 +292,7 @@ func NewOfComplex128St(i int) *OfComplex128St {
 
 type OfComplex128Iter []complex128
 
-func (__ OfComplex128Iter) Range(fntr OfComplex128Ranger) {
+func (__ OfComplex128Iter) Range(fntr OfComplex128Looper) {
 	for i := range __ {
 		if !fntr.LoopItem(i, __[i]) {
 			break
@@ -319,7 +319,7 @@ type OfComplex64AsIterIf interface {
 	AsIter() OfComplex64IterIf
 }
 
-type OfComplex64Ranger interface {
+type OfComplex64Looper interface {
 	LoopItem(i int, d complex64) bool
 }
 type OfComplex64Mapper interface {
@@ -338,7 +338,7 @@ func (__ OfComplex64MapFunc) MapItem(i int, d complex64) complex64 {
 }
 
 type OfComplex64IterIf interface {
-	Range(fntr OfComplex64Ranger)
+	Range(fntr OfComplex64Looper)
 	Map(fntr OfComplex64Mapper) OfComplex64MutIf
 }
 
@@ -393,7 +393,7 @@ func NewOfComplex64St(i int) *OfComplex64St {
 
 type OfComplex64Iter []complex64
 
-func (__ OfComplex64Iter) Range(fntr OfComplex64Ranger) {
+func (__ OfComplex64Iter) Range(fntr OfComplex64Looper) {
 	for i := range __ {
 		if !fntr.LoopItem(i, __[i]) {
 			break
@@ -420,7 +420,7 @@ type OfErrorAsIterIf interface {
 	AsIter() OfErrorIterIf
 }
 
-type OfErrorRanger interface {
+type OfErrorLooper interface {
 	LoopItem(i int, d error) bool
 }
 type OfErrorMapper interface {
@@ -439,7 +439,7 @@ func (__ OfErrorMapFunc) MapItem(i int, d error) error {
 }
 
 type OfErrorIterIf interface {
-	Range(fntr OfErrorRanger)
+	Range(fntr OfErrorLooper)
 	Map(fntr OfErrorMapper) OfErrorMutIf
 }
 
@@ -494,7 +494,7 @@ func NewOfErrorSt(i int) *OfErrorSt {
 
 type OfErrorIter []error
 
-func (__ OfErrorIter) Range(fntr OfErrorRanger) {
+func (__ OfErrorIter) Range(fntr OfErrorLooper) {
 	for i := range __ {
 		if !fntr.LoopItem(i, __[i]) {
 			break
@@ -521,7 +521,7 @@ type OfFloat32AsIterIf interface {
 	AsIter() OfFloat32IterIf
 }
 
-type OfFloat32Ranger interface {
+type OfFloat32Looper interface {
 	LoopItem(i int, d float32) bool
 }
 type OfFloat32Mapper interface {
@@ -540,7 +540,7 @@ func (__ OfFloat32MapFunc) MapItem(i int, d float32) float32 {
 }
 
 type OfFloat32IterIf interface {
-	Range(fntr OfFloat32Ranger)
+	Range(fntr OfFloat32Looper)
 	Map(fntr OfFloat32Mapper) OfFloat32MutIf
 }
 
@@ -595,7 +595,7 @@ func NewOfFloat32St(i int) *OfFloat32St {
 
 type OfFloat32Iter []float32
 
-func (__ OfFloat32Iter) Range(fntr OfFloat32Ranger) {
+func (__ OfFloat32Iter) Range(fntr OfFloat32Looper) {
 	for i := range __ {
 		if !fntr.LoopItem(i, __[i]) {
 			break
@@ -622,7 +622,7 @@ type OfFloat64AsIterIf interface {
 	AsIter() OfFloat64IterIf
 }
 
-type OfFloat64Ranger interface {
+type OfFloat64Looper interface {
 	LoopItem(i int, d float64) bool
 }
 type OfFloat64Mapper interface {
@@ -641,7 +641,7 @@ func (__ OfFloat64MapFunc) MapItem(i int, d float64) float64 {
 }
 
 type OfFloat64IterIf interface {
-	Range(fntr OfFloat64Ranger)
+	Range(fntr OfFloat64Looper)
 	Map(fntr OfFloat64Mapper) OfFloat64MutIf
 }
 
@@ -696,7 +696,7 @@ func NewOfFloat64St(i int) *OfFloat64St {
 
 type OfFloat64Iter []float64
 
-func (__ OfFloat64Iter) Range(fntr OfFloat64Ranger) {
+func (__ OfFloat64Iter) Range(fntr OfFloat64Looper) {
 	for i := range __ {
 		if !fntr.LoopItem(i, __[i]) {
 			break
@@ -723,7 +723,7 @@ type OfIntAsIterIf interface {
 	AsIter() OfIntIterIf
 }
 
-type OfIntRanger interface {
+type OfIntLooper interface {
 	LoopItem(i int, d int) bool
 }
 type OfIntMapper interface {
@@ -742,7 +742,7 @@ func (__ OfIntMapFunc) MapItem(i int, d int) int {
 }
 
 type OfIntIterIf interface {
-	Range(fntr OfIntRanger)
+	Range(fntr OfIntLooper)
 	Map(fntr OfIntMapper) OfIntMutIf
 }
 
@@ -797,7 +797,7 @@ func NewOfIntSt(i int) *OfIntSt {
 
 type OfIntIter []int
 
-func (__ OfIntIter) Range(fntr OfIntRanger) {
+func (__ OfIntIter) Range(fntr OfIntLooper) {
 	for i := range __ {
 		if !fntr.LoopItem(i, __[i]) {
 			break
@@ -824,7 +824,7 @@ type OfInt16AsIterIf interface {
 	AsIter() OfInt16IterIf
 }
 
-type OfInt16Ranger interface {
+type OfInt16Looper interface {
 	LoopItem(i int, d int16) bool
 }
 type OfInt16Mapper interface {
@@ -843,7 +843,7 @@ func (__ OfInt16MapFunc) MapItem(i int, d int16) int16 {
 }
 
 type OfInt16IterIf interface {
-	Range(fntr OfInt16Ranger)
+	Range(fntr OfInt16Looper)
 	Map(fntr OfInt16Mapper) OfInt16MutIf
 }
 
@@ -898,7 +898,7 @@ func NewOfInt16St(i int) *OfInt16St {
 
 type OfInt16Iter []int16
 
-func (__ OfInt16Iter) Range(fntr OfInt16Ranger) {
+func (__ OfInt16Iter) Range(fntr OfInt16Looper) {
 	for i := range __ {
 		if !fntr.LoopItem(i, __[i]) {
 			break
@@ -925,7 +925,7 @@ type OfInt32AsIterIf interface {
 	AsIter() OfInt32IterIf
 }
 
-type OfInt32Ranger interface {
+type OfInt32Looper interface {
 	LoopItem(i int, d int32) bool
 }
 type OfInt32Mapper interface {
@@ -944,7 +944,7 @@ func (__ OfInt32MapFunc) MapItem(i int, d int32) int32 {
 }
 
 type OfInt32IterIf interface {
-	Range(fntr OfInt32Ranger)
+	Range(fntr OfInt32Looper)
 	Map(fntr OfInt32Mapper) OfInt32MutIf
 }
 
@@ -999,7 +999,7 @@ func NewOfInt32St(i int) *OfInt32St {
 
 type OfInt32Iter []int32
 
-func (__ OfInt32Iter) Range(fntr OfInt32Ranger) {
+func (__ OfInt32Iter) Range(fntr OfInt32Looper) {
 	for i := range __ {
 		if !fntr.LoopItem(i, __[i]) {
 			break
@@ -1026,7 +1026,7 @@ type OfInt64AsIterIf interface {
 	AsIter() OfInt64IterIf
 }
 
-type OfInt64Ranger interface {
+type OfInt64Looper interface {
 	LoopItem(i int, d int64) bool
 }
 type OfInt64Mapper interface {
@@ -1045,7 +1045,7 @@ func (__ OfInt64MapFunc) MapItem(i int, d int64) int64 {
 }
 
 type OfInt64IterIf interface {
-	Range(fntr OfInt64Ranger)
+	Range(fntr OfInt64Looper)
 	Map(fntr OfInt64Mapper) OfInt64MutIf
 }
 
@@ -1100,7 +1100,7 @@ func NewOfInt64St(i int) *OfInt64St {
 
 type OfInt64Iter []int64
 
-func (__ OfInt64Iter) Range(fntr OfInt64Ranger) {
+func (__ OfInt64Iter) Range(fntr OfInt64Looper) {
 	for i := range __ {
 		if !fntr.LoopItem(i, __[i]) {
 			break
@@ -1127,7 +1127,7 @@ type OfInt8AsIterIf interface {
 	AsIter() OfInt8IterIf
 }
 
-type OfInt8Ranger interface {
+type OfInt8Looper interface {
 	LoopItem(i int, d int8) bool
 }
 type OfInt8Mapper interface {
@@ -1146,7 +1146,7 @@ func (__ OfInt8MapFunc) MapItem(i int, d int8) int8 {
 }
 
 type OfInt8IterIf interface {
-	Range(fntr OfInt8Ranger)
+	Range(fntr OfInt8Looper)
 	Map(fntr OfInt8Mapper) OfInt8MutIf
 }
 
@@ -1201,7 +1201,7 @@ func NewOfInt8St(i int) *OfInt8St {
 
 type OfInt8Iter []int8
 
-func (__ OfInt8Iter) Range(fntr OfInt8Ranger) {
+func (__ OfInt8Iter) Range(fntr OfInt8Looper) {
 	for i := range __ {
 		if !fntr.LoopItem(i, __[i]) {
 			break
@@ -1228,7 +1228,7 @@ type OfRuneAsIterIf interface {
 	AsIter() OfRuneIterIf
 }
 
-type OfRuneRanger interface {
+type OfRuneLooper interface {
 	LoopItem(i int, d rune) bool
 }
 type OfRuneMapper interface {
@@ -1247,7 +1247,7 @@ func (__ OfRuneMapFunc) MapItem(i int, d rune) rune {
 }
 
 type OfRuneIterIf interface {
-	Range(fntr OfRuneRanger)
+	Range(fntr OfRuneLooper)
 	Map(fntr OfRuneMapper) OfRuneMutIf
 }
 
@@ -1302,7 +1302,7 @@ func NewOfRuneSt(i int) *OfRuneSt {
 
 type OfRuneIter []rune
 
-func (__ OfRuneIter) Range(fntr OfRuneRanger) {
+func (__ OfRuneIter) Range(fntr OfRuneLooper) {
 	for i := range __ {
 		if !fntr.LoopItem(i, __[i]) {
 			break
@@ -1329,7 +1329,7 @@ type OfStringAsIterIf interface {
 	AsIter() OfStringIterIf
 }
 
-type OfStringRanger interface {
+type OfStringLooper interface {
 	LoopItem(i int, d string) bool
 }
 type OfStringMapper interface {
@@ -1348,7 +1348,7 @@ func (__ OfStringMapFunc) MapItem(i int, d string) string {
 }
 
 type OfStringIterIf interface {
-	Range(fntr OfStringRanger)
+	Range(fntr OfStringLooper)
 	Map(fntr OfStringMapper) OfStringMutIf
 }
 
@@ -1403,7 +1403,7 @@ func NewOfStringSt(i int) *OfStringSt {
 
 type OfStringIter []string
 
-func (__ OfStringIter) Range(fntr OfStringRanger) {
+func (__ OfStringIter) Range(fntr OfStringLooper) {
 	for i := range __ {
 		if !fntr.LoopItem(i, __[i]) {
 			break
@@ -1430,7 +1430,7 @@ type OfUintAsIterIf interface {
 	AsIter() OfUintIterIf
 }
 
-type OfUintRanger interface {
+type OfUintLooper interface {
 	LoopItem(i int, d uint) bool
 }
 type OfUintMapper interface {
@@ -1449,7 +1449,7 @@ func (__ OfUintMapFunc) MapItem(i int, d uint) uint {
 }
 
 type OfUintIterIf interface {
-	Range(fntr OfUintRanger)
+	Range(fntr OfUintLooper)
 	Map(fntr OfUintMapper) OfUintMutIf
 }
 
@@ -1504,7 +1504,7 @@ func NewOfUintSt(i int) *OfUintSt {
 
 type OfUintIter []uint
 
-func (__ OfUintIter) Range(fntr OfUintRanger) {
+func (__ OfUintIter) Range(fntr OfUintLooper) {
 	for i := range __ {
 		if !fntr.LoopItem(i, __[i]) {
 			break
@@ -1531,7 +1531,7 @@ type OfUint16AsIterIf interface {
 	AsIter() OfUint16IterIf
 }
 
-type OfUint16Ranger interface {
+type OfUint16Looper interface {
 	LoopItem(i int, d uint16) bool
 }
 type OfUint16Mapper interface {
@@ -1550,7 +1550,7 @@ func (__ OfUint16MapFunc) MapItem(i int, d uint16) uint16 {
 }
 
 type OfUint16IterIf interface {
-	Range(fntr OfUint16Ranger)
+	Range(fntr OfUint16Looper)
 	Map(fntr OfUint16Mapper) OfUint16MutIf
 }
 
@@ -1605,7 +1605,7 @@ func NewOfUint16St(i int) *OfUint16St {
 
 type OfUint16Iter []uint16
 
-func (__ OfUint16Iter) Range(fntr OfUint16Ranger) {
+func (__ OfUint16Iter) Range(fntr OfUint16Looper) {
 	for i := range __ {
 		if !fntr.LoopItem(i, __[i]) {
 			break
@@ -1632,7 +1632,7 @@ type OfUint32AsIterIf interface {
 	AsIter() OfUint32IterIf
 }
 
-type OfUint32Ranger interface {
+type OfUint32Looper interface {
 	LoopItem(i int, d uint32) bool
 }
 type OfUint32Mapper interface {
@@ -1651,7 +1651,7 @@ func (__ OfUint32MapFunc) MapItem(i int, d uint32) uint32 {
 }
 
 type OfUint32IterIf interface {
-	Range(fntr OfUint32Ranger)
+	Range(fntr OfUint32Looper)
 	Map(fntr OfUint32Mapper) OfUint32MutIf
 }
 
@@ -1706,7 +1706,7 @@ func NewOfUint32St(i int) *OfUint32St {
 
 type OfUint32Iter []uint32
 
-func (__ OfUint32Iter) Range(fntr OfUint32Ranger) {
+func (__ OfUint32Iter) Range(fntr OfUint32Looper) {
 	for i := range __ {
 		if !fntr.LoopItem(i, __[i]) {
 			break
@@ -1733,7 +1733,7 @@ type OfUint64AsIterIf interface {
 	AsIter() OfUint64IterIf
 }
 
-type OfUint64Ranger interface {
+type OfUint64Looper interface {
 	LoopItem(i int, d uint64) bool
 }
 type OfUint64Mapper interface {
@@ -1752,7 +1752,7 @@ func (__ OfUint64MapFunc) MapItem(i int, d uint64) uint64 {
 }
 
 type OfUint64IterIf interface {
-	Range(fntr OfUint64Ranger)
+	Range(fntr OfUint64Looper)
 	Map(fntr OfUint64Mapper) OfUint64MutIf
 }
 
@@ -1807,7 +1807,7 @@ func NewOfUint64St(i int) *OfUint64St {
 
 type OfUint64Iter []uint64
 
-func (__ OfUint64Iter) Range(fntr OfUint64Ranger) {
+func (__ OfUint64Iter) Range(fntr OfUint64Looper) {
 	for i := range __ {
 		if !fntr.LoopItem(i, __[i]) {
 			break
@@ -1834,7 +1834,7 @@ type OfUint8AsIterIf interface {
 	AsIter() OfUint8IterIf
 }
 
-type OfUint8Ranger interface {
+type OfUint8Looper interface {
 	LoopItem(i int, d uint8) bool
 }
 type OfUint8Mapper interface {
@@ -1853,7 +1853,7 @@ func (__ OfUint8MapFunc) MapItem(i int, d uint8) uint8 {
 }
 
 type OfUint8IterIf interface {
-	Range(fntr OfUint8Ranger)
+	Range(fntr OfUint8Looper)
 	Map(fntr OfUint8Mapper) OfUint8MutIf
 }
 
@@ -1908,7 +1908,7 @@ func NewOfUint8St(i int) *OfUint8St {
 
 type OfUint8Iter []uint8
 
-func (__ OfUint8Iter) Range(fntr OfUint8Ranger) {
+func (__ OfUint8Iter) Range(fntr OfUint8Looper) {
 	for i := range __ {
 		if !fntr.LoopItem(i, __[i]) {
 			break
@@ -1935,7 +1935,7 @@ type OfUintptrAsIterIf interface {
 	AsIter() OfUintptrIterIf
 }
 
-type OfUintptrRanger interface {
+type OfUintptrLooper interface {
 	LoopItem(i int, d uintptr) bool
 }
 type OfUintptrMapper interface {
@@ -1954,7 +1954,7 @@ func (__ OfUintptrMapFunc) MapItem(i int, d uintptr) uintptr {
 }
 
 type OfUintptrIterIf interface {
-	Range(fntr OfUintptrRanger)
+	Range(fntr OfUintptrLooper)
 	Map(fntr OfUintptrMapper) OfUintptrMutIf
 }
 
@@ -2009,7 +2009,7 @@ func NewOfUintptrSt(i int) *OfUintptrSt {
 
 type OfUintptrIter []uintptr
 
-func (__ OfUintptrIter) Range(fntr OfUintptrRanger) {
+func (__ OfUintptrIter) Range(fntr OfUintptrLooper) {
 	for i := range __ {
 		if !fntr.LoopItem(i, __[i]) {
 			break
