@@ -2023,3 +2023,104 @@ func (__ OfUintptrIter) Map(fntr OfUintptrMapper) OfUintptrMutIf {
 	}
 	return OfUintptr(rval)
 }
+
+type OfInterfaceIf interface {
+	Get(int) interface{}
+	Len() int
+}
+type OfInterfaceMutIf interface {
+	OfInterfaceIf
+	Set(int, interface{}) interface{}
+}
+type OfInterfaceAsIterIf interface {
+	AsIter() OfInterfaceIterIf
+}
+
+type OfInterfaceLooper interface {
+	LoopItem(i int, d interface{}) bool
+}
+type OfInterfaceMapper interface {
+	MapItem(i int, d interface{}) interface{}
+}
+type OfInterfaceLoopFunc func(i int, d interface{}) bool
+
+func (__ OfInterfaceLoopFunc) LoopItem(i int, d interface{}) bool {
+	return __(i, d)
+}
+
+type OfInterfaceMapFunc func(i int, d interface{}) interface{}
+
+func (__ OfInterfaceMapFunc) MapItem(i int, d interface{}) interface{} {
+	return __(i, d)
+}
+
+type OfInterfaceIterIf interface {
+	Range(fntr OfInterfaceLooper)
+	Map(fntr OfInterfaceMapper) OfInterfaceMutIf
+}
+
+func OfInterfaceInto(__ OfInterfaceIf) []interface{} {
+	switch d := __.(type) {
+	case OfInterface:
+		return []interface{}(d)
+	case *OfInterfaceSt:
+		return []interface{}(d._OfInterface)
+	case nil:
+		return nil
+	default:
+		res := make([]interface{}, __.Len())
+		for i := 0; i < len(res); i += 1 {
+			res[i] = __.Get(i)
+		}
+		return res
+	}
+}
+
+type OfInterface []interface{}
+
+func (__ OfInterface) Get(i int) interface{} {
+	return __[i]
+}
+func (__ OfInterface) Set(i int, d interface{}) interface{} {
+	old := __[i]
+	__[i] = d
+	return old
+}
+
+func (__ OfInterface) Len() int {
+	return len(__)
+}
+
+func (__ OfInterface) AsIter() OfInterfaceIterIf {
+	return OfInterfaceIter(__)
+}
+
+type _OfInterface = OfInterface
+type OfInterfaceSt struct {
+	// do not want to export but want to use embedding method
+	_OfInterface
+}
+
+func NewOfInterfaceStFrom(list []interface{}) *OfInterfaceSt {
+	return &OfInterfaceSt{_OfInterface: OfInterface(list)}
+}
+func NewOfInterfaceSt(i int) *OfInterfaceSt {
+	return NewOfInterfaceStFrom(make([]interface{}, i))
+}
+
+type OfInterfaceIter []interface{}
+
+func (__ OfInterfaceIter) Range(fntr OfInterfaceLooper) {
+	for i := range __ {
+		if !fntr.LoopItem(i, __[i]) {
+			break
+		}
+	}
+}
+func (__ OfInterfaceIter) Map(fntr OfInterfaceMapper) OfInterfaceMutIf {
+	rval := make([]interface{}, len(__))
+	for i := range __ {
+		rval[i] = fntr.MapItem(i, __[i])
+	}
+	return OfInterface(rval)
+}
