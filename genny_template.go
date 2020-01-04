@@ -22,9 +22,9 @@ type _Prefix_SomeLooper interface {
 type _Prefix_SomeMapper interface {
 	MapItem(i int, d Some) Some
 }
-type _Prefix_SomeRangeFunc func(i int, d Some) bool
+type _Prefix_SomeLoopFunc func(i int, d Some) bool
 
-func (__ _Prefix_SomeRangeFunc) LoopItem(i int, d Some) bool {
+func (__ _Prefix_SomeLoopFunc) LoopItem(i int, d Some) bool {
 	return __(i, d)
 }
 

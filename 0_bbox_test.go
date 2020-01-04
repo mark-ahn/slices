@@ -52,7 +52,7 @@ func TestTSt(t *testing.T) {
 
 	ss.Set(3, "30")
 
-	ss.AsIter().Range(slices.OfStringRangeFunc(func(_ int, d string) bool {
+	ss.AsIter().Range(slices.OfStringLoopFunc(func(_ int, d string) bool {
 		fmt.Println(d)
 		return true
 	}))
@@ -68,7 +68,7 @@ func TestSum(t *testing.T) {
 	})
 
 	sum := 0
-	is.Range(slices.OfIntRangeFunc(func(_ int, d int) bool {
+	is.Range(slices.OfIntLoopFunc(func(_ int, d int) bool {
 		sum += d
 		return true
 	}))

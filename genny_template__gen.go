@@ -22,9 +22,9 @@ type OfBoolLooper interface {
 type OfBoolMapper interface {
 	MapItem(i int, d bool) bool
 }
-type OfBoolRangeFunc func(i int, d bool) bool
+type OfBoolLoopFunc func(i int, d bool) bool
 
-func (__ OfBoolRangeFunc) LoopItem(i int, d bool) bool {
+func (__ OfBoolLoopFunc) LoopItem(i int, d bool) bool {
 	return __(i, d)
 }
 
@@ -123,9 +123,9 @@ type OfByteLooper interface {
 type OfByteMapper interface {
 	MapItem(i int, d byte) byte
 }
-type OfByteRangeFunc func(i int, d byte) bool
+type OfByteLoopFunc func(i int, d byte) bool
 
-func (__ OfByteRangeFunc) LoopItem(i int, d byte) bool {
+func (__ OfByteLoopFunc) LoopItem(i int, d byte) bool {
 	return __(i, d)
 }
 
@@ -224,9 +224,9 @@ type OfComplex128Looper interface {
 type OfComplex128Mapper interface {
 	MapItem(i int, d complex128) complex128
 }
-type OfComplex128RangeFunc func(i int, d complex128) bool
+type OfComplex128LoopFunc func(i int, d complex128) bool
 
-func (__ OfComplex128RangeFunc) LoopItem(i int, d complex128) bool {
+func (__ OfComplex128LoopFunc) LoopItem(i int, d complex128) bool {
 	return __(i, d)
 }
 
@@ -325,9 +325,9 @@ type OfComplex64Looper interface {
 type OfComplex64Mapper interface {
 	MapItem(i int, d complex64) complex64
 }
-type OfComplex64RangeFunc func(i int, d complex64) bool
+type OfComplex64LoopFunc func(i int, d complex64) bool
 
-func (__ OfComplex64RangeFunc) LoopItem(i int, d complex64) bool {
+func (__ OfComplex64LoopFunc) LoopItem(i int, d complex64) bool {
 	return __(i, d)
 }
 
@@ -426,9 +426,9 @@ type OfErrorLooper interface {
 type OfErrorMapper interface {
 	MapItem(i int, d error) error
 }
-type OfErrorRangeFunc func(i int, d error) bool
+type OfErrorLoopFunc func(i int, d error) bool
 
-func (__ OfErrorRangeFunc) LoopItem(i int, d error) bool {
+func (__ OfErrorLoopFunc) LoopItem(i int, d error) bool {
 	return __(i, d)
 }
 
@@ -527,9 +527,9 @@ type OfFloat32Looper interface {
 type OfFloat32Mapper interface {
 	MapItem(i int, d float32) float32
 }
-type OfFloat32RangeFunc func(i int, d float32) bool
+type OfFloat32LoopFunc func(i int, d float32) bool
 
-func (__ OfFloat32RangeFunc) LoopItem(i int, d float32) bool {
+func (__ OfFloat32LoopFunc) LoopItem(i int, d float32) bool {
 	return __(i, d)
 }
 
@@ -628,9 +628,9 @@ type OfFloat64Looper interface {
 type OfFloat64Mapper interface {
 	MapItem(i int, d float64) float64
 }
-type OfFloat64RangeFunc func(i int, d float64) bool
+type OfFloat64LoopFunc func(i int, d float64) bool
 
-func (__ OfFloat64RangeFunc) LoopItem(i int, d float64) bool {
+func (__ OfFloat64LoopFunc) LoopItem(i int, d float64) bool {
 	return __(i, d)
 }
 
@@ -729,9 +729,9 @@ type OfIntLooper interface {
 type OfIntMapper interface {
 	MapItem(i int, d int) int
 }
-type OfIntRangeFunc func(i int, d int) bool
+type OfIntLoopFunc func(i int, d int) bool
 
-func (__ OfIntRangeFunc) LoopItem(i int, d int) bool {
+func (__ OfIntLoopFunc) LoopItem(i int, d int) bool {
 	return __(i, d)
 }
 
@@ -830,9 +830,9 @@ type OfInt16Looper interface {
 type OfInt16Mapper interface {
 	MapItem(i int, d int16) int16
 }
-type OfInt16RangeFunc func(i int, d int16) bool
+type OfInt16LoopFunc func(i int, d int16) bool
 
-func (__ OfInt16RangeFunc) LoopItem(i int, d int16) bool {
+func (__ OfInt16LoopFunc) LoopItem(i int, d int16) bool {
 	return __(i, d)
 }
 
@@ -931,9 +931,9 @@ type OfInt32Looper interface {
 type OfInt32Mapper interface {
 	MapItem(i int, d int32) int32
 }
-type OfInt32RangeFunc func(i int, d int32) bool
+type OfInt32LoopFunc func(i int, d int32) bool
 
-func (__ OfInt32RangeFunc) LoopItem(i int, d int32) bool {
+func (__ OfInt32LoopFunc) LoopItem(i int, d int32) bool {
 	return __(i, d)
 }
 
@@ -1032,9 +1032,9 @@ type OfInt64Looper interface {
 type OfInt64Mapper interface {
 	MapItem(i int, d int64) int64
 }
-type OfInt64RangeFunc func(i int, d int64) bool
+type OfInt64LoopFunc func(i int, d int64) bool
 
-func (__ OfInt64RangeFunc) LoopItem(i int, d int64) bool {
+func (__ OfInt64LoopFunc) LoopItem(i int, d int64) bool {
 	return __(i, d)
 }
 
@@ -1133,9 +1133,9 @@ type OfInt8Looper interface {
 type OfInt8Mapper interface {
 	MapItem(i int, d int8) int8
 }
-type OfInt8RangeFunc func(i int, d int8) bool
+type OfInt8LoopFunc func(i int, d int8) bool
 
-func (__ OfInt8RangeFunc) LoopItem(i int, d int8) bool {
+func (__ OfInt8LoopFunc) LoopItem(i int, d int8) bool {
 	return __(i, d)
 }
 
@@ -1234,9 +1234,9 @@ type OfRuneLooper interface {
 type OfRuneMapper interface {
 	MapItem(i int, d rune) rune
 }
-type OfRuneRangeFunc func(i int, d rune) bool
+type OfRuneLoopFunc func(i int, d rune) bool
 
-func (__ OfRuneRangeFunc) LoopItem(i int, d rune) bool {
+func (__ OfRuneLoopFunc) LoopItem(i int, d rune) bool {
 	return __(i, d)
 }
 
@@ -1335,9 +1335,9 @@ type OfStringLooper interface {
 type OfStringMapper interface {
 	MapItem(i int, d string) string
 }
-type OfStringRangeFunc func(i int, d string) bool
+type OfStringLoopFunc func(i int, d string) bool
 
-func (__ OfStringRangeFunc) LoopItem(i int, d string) bool {
+func (__ OfStringLoopFunc) LoopItem(i int, d string) bool {
 	return __(i, d)
 }
 
@@ -1436,9 +1436,9 @@ type OfUintLooper interface {
 type OfUintMapper interface {
 	MapItem(i int, d uint) uint
 }
-type OfUintRangeFunc func(i int, d uint) bool
+type OfUintLoopFunc func(i int, d uint) bool
 
-func (__ OfUintRangeFunc) LoopItem(i int, d uint) bool {
+func (__ OfUintLoopFunc) LoopItem(i int, d uint) bool {
 	return __(i, d)
 }
 
@@ -1537,9 +1537,9 @@ type OfUint16Looper interface {
 type OfUint16Mapper interface {
 	MapItem(i int, d uint16) uint16
 }
-type OfUint16RangeFunc func(i int, d uint16) bool
+type OfUint16LoopFunc func(i int, d uint16) bool
 
-func (__ OfUint16RangeFunc) LoopItem(i int, d uint16) bool {
+func (__ OfUint16LoopFunc) LoopItem(i int, d uint16) bool {
 	return __(i, d)
 }
 
@@ -1638,9 +1638,9 @@ type OfUint32Looper interface {
 type OfUint32Mapper interface {
 	MapItem(i int, d uint32) uint32
 }
-type OfUint32RangeFunc func(i int, d uint32) bool
+type OfUint32LoopFunc func(i int, d uint32) bool
 
-func (__ OfUint32RangeFunc) LoopItem(i int, d uint32) bool {
+func (__ OfUint32LoopFunc) LoopItem(i int, d uint32) bool {
 	return __(i, d)
 }
 
@@ -1739,9 +1739,9 @@ type OfUint64Looper interface {
 type OfUint64Mapper interface {
 	MapItem(i int, d uint64) uint64
 }
-type OfUint64RangeFunc func(i int, d uint64) bool
+type OfUint64LoopFunc func(i int, d uint64) bool
 
-func (__ OfUint64RangeFunc) LoopItem(i int, d uint64) bool {
+func (__ OfUint64LoopFunc) LoopItem(i int, d uint64) bool {
 	return __(i, d)
 }
 
@@ -1840,9 +1840,9 @@ type OfUint8Looper interface {
 type OfUint8Mapper interface {
 	MapItem(i int, d uint8) uint8
 }
-type OfUint8RangeFunc func(i int, d uint8) bool
+type OfUint8LoopFunc func(i int, d uint8) bool
 
-func (__ OfUint8RangeFunc) LoopItem(i int, d uint8) bool {
+func (__ OfUint8LoopFunc) LoopItem(i int, d uint8) bool {
 	return __(i, d)
 }
 
@@ -1941,9 +1941,9 @@ type OfUintptrLooper interface {
 type OfUintptrMapper interface {
 	MapItem(i int, d uintptr) uintptr
 }
-type OfUintptrRangeFunc func(i int, d uintptr) bool
+type OfUintptrLoopFunc func(i int, d uintptr) bool
 
-func (__ OfUintptrRangeFunc) LoopItem(i int, d uintptr) bool {
+func (__ OfUintptrLoopFunc) LoopItem(i int, d uintptr) bool {
 	return __(i, d)
 }
 
