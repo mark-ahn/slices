@@ -4,10 +4,6 @@
 
 package slices
 
-type OfBoolIterIf interface {
-	Range(f func(i int, d bool) bool)
-	Map(f func(i int, d bool) bool) OfBoolMutIf
-}
 type OfBoolIf interface {
 	Get(int) bool
 	Len() int
@@ -16,9 +12,31 @@ type OfBoolMutIf interface {
 	OfBoolIf
 	Set(int, bool) bool
 }
-
 type OfBoolAsIterIf interface {
 	AsIter() OfBoolIterIf
+}
+
+type OfBoolRanger interface {
+	LoopItem(i int, d bool) bool
+}
+type OfBoolMapper interface {
+	MapItem(i int, d bool) bool
+}
+type OfBoolRangeFunc func(i int, d bool) bool
+
+func (__ OfBoolRangeFunc) LoopItem(i int, d bool) bool {
+	return __(i, d)
+}
+
+type OfBoolMapFunc func(i int, d bool) bool
+
+func (__ OfBoolMapFunc) MapItem(i int, d bool) bool {
+	return __(i, d)
+}
+
+type OfBoolIterIf interface {
+	Range(fntr OfBoolRanger)
+	Map(fntr OfBoolMapper) OfBoolMutIf
 }
 
 func OfBoolInto(__ OfBoolIf) []bool {
@@ -59,6 +77,7 @@ func (__ OfBool) AsIter() OfBoolIterIf {
 
 type _OfBool = OfBool
 type OfBoolSt struct {
+	// do not want to export but want to use embedding method
 	_OfBool
 }
 
@@ -71,25 +90,21 @@ func NewOfBoolSt(i int) *OfBoolSt {
 
 type OfBoolIter []bool
 
-func (__ OfBoolIter) Range(f func(i int, d bool) bool) {
+func (__ OfBoolIter) Range(fntr OfBoolRanger) {
 	for i := range __ {
-		if !f(i, __[i]) {
+		if !fntr.LoopItem(i, __[i]) {
 			break
 		}
 	}
 }
-func (__ OfBoolIter) Map(f func(i int, d bool) bool) OfBoolMutIf {
+func (__ OfBoolIter) Map(fntr OfBoolMapper) OfBoolMutIf {
 	rval := make([]bool, len(__))
 	for i := range __ {
-		rval[i] = f(i, __[i])
+		rval[i] = fntr.MapItem(i, __[i])
 	}
 	return OfBool(rval)
 }
 
-type OfByteIterIf interface {
-	Range(f func(i int, d byte) bool)
-	Map(f func(i int, d byte) byte) OfByteMutIf
-}
 type OfByteIf interface {
 	Get(int) byte
 	Len() int
@@ -98,9 +113,31 @@ type OfByteMutIf interface {
 	OfByteIf
 	Set(int, byte) byte
 }
-
 type OfByteAsIterIf interface {
 	AsIter() OfByteIterIf
+}
+
+type OfByteRanger interface {
+	LoopItem(i int, d byte) bool
+}
+type OfByteMapper interface {
+	MapItem(i int, d byte) byte
+}
+type OfByteRangeFunc func(i int, d byte) bool
+
+func (__ OfByteRangeFunc) LoopItem(i int, d byte) bool {
+	return __(i, d)
+}
+
+type OfByteMapFunc func(i int, d byte) byte
+
+func (__ OfByteMapFunc) MapItem(i int, d byte) byte {
+	return __(i, d)
+}
+
+type OfByteIterIf interface {
+	Range(fntr OfByteRanger)
+	Map(fntr OfByteMapper) OfByteMutIf
 }
 
 func OfByteInto(__ OfByteIf) []byte {
@@ -141,6 +178,7 @@ func (__ OfByte) AsIter() OfByteIterIf {
 
 type _OfByte = OfByte
 type OfByteSt struct {
+	// do not want to export but want to use embedding method
 	_OfByte
 }
 
@@ -153,25 +191,21 @@ func NewOfByteSt(i int) *OfByteSt {
 
 type OfByteIter []byte
 
-func (__ OfByteIter) Range(f func(i int, d byte) bool) {
+func (__ OfByteIter) Range(fntr OfByteRanger) {
 	for i := range __ {
-		if !f(i, __[i]) {
+		if !fntr.LoopItem(i, __[i]) {
 			break
 		}
 	}
 }
-func (__ OfByteIter) Map(f func(i int, d byte) byte) OfByteMutIf {
+func (__ OfByteIter) Map(fntr OfByteMapper) OfByteMutIf {
 	rval := make([]byte, len(__))
 	for i := range __ {
-		rval[i] = f(i, __[i])
+		rval[i] = fntr.MapItem(i, __[i])
 	}
 	return OfByte(rval)
 }
 
-type OfComplex128IterIf interface {
-	Range(f func(i int, d complex128) bool)
-	Map(f func(i int, d complex128) complex128) OfComplex128MutIf
-}
 type OfComplex128If interface {
 	Get(int) complex128
 	Len() int
@@ -180,9 +214,31 @@ type OfComplex128MutIf interface {
 	OfComplex128If
 	Set(int, complex128) complex128
 }
-
 type OfComplex128AsIterIf interface {
 	AsIter() OfComplex128IterIf
+}
+
+type OfComplex128Ranger interface {
+	LoopItem(i int, d complex128) bool
+}
+type OfComplex128Mapper interface {
+	MapItem(i int, d complex128) complex128
+}
+type OfComplex128RangeFunc func(i int, d complex128) bool
+
+func (__ OfComplex128RangeFunc) LoopItem(i int, d complex128) bool {
+	return __(i, d)
+}
+
+type OfComplex128MapFunc func(i int, d complex128) complex128
+
+func (__ OfComplex128MapFunc) MapItem(i int, d complex128) complex128 {
+	return __(i, d)
+}
+
+type OfComplex128IterIf interface {
+	Range(fntr OfComplex128Ranger)
+	Map(fntr OfComplex128Mapper) OfComplex128MutIf
 }
 
 func OfComplex128Into(__ OfComplex128If) []complex128 {
@@ -223,6 +279,7 @@ func (__ OfComplex128) AsIter() OfComplex128IterIf {
 
 type _OfComplex128 = OfComplex128
 type OfComplex128St struct {
+	// do not want to export but want to use embedding method
 	_OfComplex128
 }
 
@@ -235,25 +292,21 @@ func NewOfComplex128St(i int) *OfComplex128St {
 
 type OfComplex128Iter []complex128
 
-func (__ OfComplex128Iter) Range(f func(i int, d complex128) bool) {
+func (__ OfComplex128Iter) Range(fntr OfComplex128Ranger) {
 	for i := range __ {
-		if !f(i, __[i]) {
+		if !fntr.LoopItem(i, __[i]) {
 			break
 		}
 	}
 }
-func (__ OfComplex128Iter) Map(f func(i int, d complex128) complex128) OfComplex128MutIf {
+func (__ OfComplex128Iter) Map(fntr OfComplex128Mapper) OfComplex128MutIf {
 	rval := make([]complex128, len(__))
 	for i := range __ {
-		rval[i] = f(i, __[i])
+		rval[i] = fntr.MapItem(i, __[i])
 	}
 	return OfComplex128(rval)
 }
 
-type OfComplex64IterIf interface {
-	Range(f func(i int, d complex64) bool)
-	Map(f func(i int, d complex64) complex64) OfComplex64MutIf
-}
 type OfComplex64If interface {
 	Get(int) complex64
 	Len() int
@@ -262,9 +315,31 @@ type OfComplex64MutIf interface {
 	OfComplex64If
 	Set(int, complex64) complex64
 }
-
 type OfComplex64AsIterIf interface {
 	AsIter() OfComplex64IterIf
+}
+
+type OfComplex64Ranger interface {
+	LoopItem(i int, d complex64) bool
+}
+type OfComplex64Mapper interface {
+	MapItem(i int, d complex64) complex64
+}
+type OfComplex64RangeFunc func(i int, d complex64) bool
+
+func (__ OfComplex64RangeFunc) LoopItem(i int, d complex64) bool {
+	return __(i, d)
+}
+
+type OfComplex64MapFunc func(i int, d complex64) complex64
+
+func (__ OfComplex64MapFunc) MapItem(i int, d complex64) complex64 {
+	return __(i, d)
+}
+
+type OfComplex64IterIf interface {
+	Range(fntr OfComplex64Ranger)
+	Map(fntr OfComplex64Mapper) OfComplex64MutIf
 }
 
 func OfComplex64Into(__ OfComplex64If) []complex64 {
@@ -305,6 +380,7 @@ func (__ OfComplex64) AsIter() OfComplex64IterIf {
 
 type _OfComplex64 = OfComplex64
 type OfComplex64St struct {
+	// do not want to export but want to use embedding method
 	_OfComplex64
 }
 
@@ -317,25 +393,21 @@ func NewOfComplex64St(i int) *OfComplex64St {
 
 type OfComplex64Iter []complex64
 
-func (__ OfComplex64Iter) Range(f func(i int, d complex64) bool) {
+func (__ OfComplex64Iter) Range(fntr OfComplex64Ranger) {
 	for i := range __ {
-		if !f(i, __[i]) {
+		if !fntr.LoopItem(i, __[i]) {
 			break
 		}
 	}
 }
-func (__ OfComplex64Iter) Map(f func(i int, d complex64) complex64) OfComplex64MutIf {
+func (__ OfComplex64Iter) Map(fntr OfComplex64Mapper) OfComplex64MutIf {
 	rval := make([]complex64, len(__))
 	for i := range __ {
-		rval[i] = f(i, __[i])
+		rval[i] = fntr.MapItem(i, __[i])
 	}
 	return OfComplex64(rval)
 }
 
-type OfErrorIterIf interface {
-	Range(f func(i int, d error) bool)
-	Map(f func(i int, d error) error) OfErrorMutIf
-}
 type OfErrorIf interface {
 	Get(int) error
 	Len() int
@@ -344,9 +416,31 @@ type OfErrorMutIf interface {
 	OfErrorIf
 	Set(int, error) error
 }
-
 type OfErrorAsIterIf interface {
 	AsIter() OfErrorIterIf
+}
+
+type OfErrorRanger interface {
+	LoopItem(i int, d error) bool
+}
+type OfErrorMapper interface {
+	MapItem(i int, d error) error
+}
+type OfErrorRangeFunc func(i int, d error) bool
+
+func (__ OfErrorRangeFunc) LoopItem(i int, d error) bool {
+	return __(i, d)
+}
+
+type OfErrorMapFunc func(i int, d error) error
+
+func (__ OfErrorMapFunc) MapItem(i int, d error) error {
+	return __(i, d)
+}
+
+type OfErrorIterIf interface {
+	Range(fntr OfErrorRanger)
+	Map(fntr OfErrorMapper) OfErrorMutIf
 }
 
 func OfErrorInto(__ OfErrorIf) []error {
@@ -387,6 +481,7 @@ func (__ OfError) AsIter() OfErrorIterIf {
 
 type _OfError = OfError
 type OfErrorSt struct {
+	// do not want to export but want to use embedding method
 	_OfError
 }
 
@@ -399,25 +494,21 @@ func NewOfErrorSt(i int) *OfErrorSt {
 
 type OfErrorIter []error
 
-func (__ OfErrorIter) Range(f func(i int, d error) bool) {
+func (__ OfErrorIter) Range(fntr OfErrorRanger) {
 	for i := range __ {
-		if !f(i, __[i]) {
+		if !fntr.LoopItem(i, __[i]) {
 			break
 		}
 	}
 }
-func (__ OfErrorIter) Map(f func(i int, d error) error) OfErrorMutIf {
+func (__ OfErrorIter) Map(fntr OfErrorMapper) OfErrorMutIf {
 	rval := make([]error, len(__))
 	for i := range __ {
-		rval[i] = f(i, __[i])
+		rval[i] = fntr.MapItem(i, __[i])
 	}
 	return OfError(rval)
 }
 
-type OfFloat32IterIf interface {
-	Range(f func(i int, d float32) bool)
-	Map(f func(i int, d float32) float32) OfFloat32MutIf
-}
 type OfFloat32If interface {
 	Get(int) float32
 	Len() int
@@ -426,9 +517,31 @@ type OfFloat32MutIf interface {
 	OfFloat32If
 	Set(int, float32) float32
 }
-
 type OfFloat32AsIterIf interface {
 	AsIter() OfFloat32IterIf
+}
+
+type OfFloat32Ranger interface {
+	LoopItem(i int, d float32) bool
+}
+type OfFloat32Mapper interface {
+	MapItem(i int, d float32) float32
+}
+type OfFloat32RangeFunc func(i int, d float32) bool
+
+func (__ OfFloat32RangeFunc) LoopItem(i int, d float32) bool {
+	return __(i, d)
+}
+
+type OfFloat32MapFunc func(i int, d float32) float32
+
+func (__ OfFloat32MapFunc) MapItem(i int, d float32) float32 {
+	return __(i, d)
+}
+
+type OfFloat32IterIf interface {
+	Range(fntr OfFloat32Ranger)
+	Map(fntr OfFloat32Mapper) OfFloat32MutIf
 }
 
 func OfFloat32Into(__ OfFloat32If) []float32 {
@@ -469,6 +582,7 @@ func (__ OfFloat32) AsIter() OfFloat32IterIf {
 
 type _OfFloat32 = OfFloat32
 type OfFloat32St struct {
+	// do not want to export but want to use embedding method
 	_OfFloat32
 }
 
@@ -481,25 +595,21 @@ func NewOfFloat32St(i int) *OfFloat32St {
 
 type OfFloat32Iter []float32
 
-func (__ OfFloat32Iter) Range(f func(i int, d float32) bool) {
+func (__ OfFloat32Iter) Range(fntr OfFloat32Ranger) {
 	for i := range __ {
-		if !f(i, __[i]) {
+		if !fntr.LoopItem(i, __[i]) {
 			break
 		}
 	}
 }
-func (__ OfFloat32Iter) Map(f func(i int, d float32) float32) OfFloat32MutIf {
+func (__ OfFloat32Iter) Map(fntr OfFloat32Mapper) OfFloat32MutIf {
 	rval := make([]float32, len(__))
 	for i := range __ {
-		rval[i] = f(i, __[i])
+		rval[i] = fntr.MapItem(i, __[i])
 	}
 	return OfFloat32(rval)
 }
 
-type OfFloat64IterIf interface {
-	Range(f func(i int, d float64) bool)
-	Map(f func(i int, d float64) float64) OfFloat64MutIf
-}
 type OfFloat64If interface {
 	Get(int) float64
 	Len() int
@@ -508,9 +618,31 @@ type OfFloat64MutIf interface {
 	OfFloat64If
 	Set(int, float64) float64
 }
-
 type OfFloat64AsIterIf interface {
 	AsIter() OfFloat64IterIf
+}
+
+type OfFloat64Ranger interface {
+	LoopItem(i int, d float64) bool
+}
+type OfFloat64Mapper interface {
+	MapItem(i int, d float64) float64
+}
+type OfFloat64RangeFunc func(i int, d float64) bool
+
+func (__ OfFloat64RangeFunc) LoopItem(i int, d float64) bool {
+	return __(i, d)
+}
+
+type OfFloat64MapFunc func(i int, d float64) float64
+
+func (__ OfFloat64MapFunc) MapItem(i int, d float64) float64 {
+	return __(i, d)
+}
+
+type OfFloat64IterIf interface {
+	Range(fntr OfFloat64Ranger)
+	Map(fntr OfFloat64Mapper) OfFloat64MutIf
 }
 
 func OfFloat64Into(__ OfFloat64If) []float64 {
@@ -551,6 +683,7 @@ func (__ OfFloat64) AsIter() OfFloat64IterIf {
 
 type _OfFloat64 = OfFloat64
 type OfFloat64St struct {
+	// do not want to export but want to use embedding method
 	_OfFloat64
 }
 
@@ -563,25 +696,21 @@ func NewOfFloat64St(i int) *OfFloat64St {
 
 type OfFloat64Iter []float64
 
-func (__ OfFloat64Iter) Range(f func(i int, d float64) bool) {
+func (__ OfFloat64Iter) Range(fntr OfFloat64Ranger) {
 	for i := range __ {
-		if !f(i, __[i]) {
+		if !fntr.LoopItem(i, __[i]) {
 			break
 		}
 	}
 }
-func (__ OfFloat64Iter) Map(f func(i int, d float64) float64) OfFloat64MutIf {
+func (__ OfFloat64Iter) Map(fntr OfFloat64Mapper) OfFloat64MutIf {
 	rval := make([]float64, len(__))
 	for i := range __ {
-		rval[i] = f(i, __[i])
+		rval[i] = fntr.MapItem(i, __[i])
 	}
 	return OfFloat64(rval)
 }
 
-type OfIntIterIf interface {
-	Range(f func(i int, d int) bool)
-	Map(f func(i int, d int) int) OfIntMutIf
-}
 type OfIntIf interface {
 	Get(int) int
 	Len() int
@@ -590,9 +719,31 @@ type OfIntMutIf interface {
 	OfIntIf
 	Set(int, int) int
 }
-
 type OfIntAsIterIf interface {
 	AsIter() OfIntIterIf
+}
+
+type OfIntRanger interface {
+	LoopItem(i int, d int) bool
+}
+type OfIntMapper interface {
+	MapItem(i int, d int) int
+}
+type OfIntRangeFunc func(i int, d int) bool
+
+func (__ OfIntRangeFunc) LoopItem(i int, d int) bool {
+	return __(i, d)
+}
+
+type OfIntMapFunc func(i int, d int) int
+
+func (__ OfIntMapFunc) MapItem(i int, d int) int {
+	return __(i, d)
+}
+
+type OfIntIterIf interface {
+	Range(fntr OfIntRanger)
+	Map(fntr OfIntMapper) OfIntMutIf
 }
 
 func OfIntInto(__ OfIntIf) []int {
@@ -633,6 +784,7 @@ func (__ OfInt) AsIter() OfIntIterIf {
 
 type _OfInt = OfInt
 type OfIntSt struct {
+	// do not want to export but want to use embedding method
 	_OfInt
 }
 
@@ -645,25 +797,21 @@ func NewOfIntSt(i int) *OfIntSt {
 
 type OfIntIter []int
 
-func (__ OfIntIter) Range(f func(i int, d int) bool) {
+func (__ OfIntIter) Range(fntr OfIntRanger) {
 	for i := range __ {
-		if !f(i, __[i]) {
+		if !fntr.LoopItem(i, __[i]) {
 			break
 		}
 	}
 }
-func (__ OfIntIter) Map(f func(i int, d int) int) OfIntMutIf {
+func (__ OfIntIter) Map(fntr OfIntMapper) OfIntMutIf {
 	rval := make([]int, len(__))
 	for i := range __ {
-		rval[i] = f(i, __[i])
+		rval[i] = fntr.MapItem(i, __[i])
 	}
 	return OfInt(rval)
 }
 
-type OfInt16IterIf interface {
-	Range(f func(i int, d int16) bool)
-	Map(f func(i int, d int16) int16) OfInt16MutIf
-}
 type OfInt16If interface {
 	Get(int) int16
 	Len() int
@@ -672,9 +820,31 @@ type OfInt16MutIf interface {
 	OfInt16If
 	Set(int, int16) int16
 }
-
 type OfInt16AsIterIf interface {
 	AsIter() OfInt16IterIf
+}
+
+type OfInt16Ranger interface {
+	LoopItem(i int, d int16) bool
+}
+type OfInt16Mapper interface {
+	MapItem(i int, d int16) int16
+}
+type OfInt16RangeFunc func(i int, d int16) bool
+
+func (__ OfInt16RangeFunc) LoopItem(i int, d int16) bool {
+	return __(i, d)
+}
+
+type OfInt16MapFunc func(i int, d int16) int16
+
+func (__ OfInt16MapFunc) MapItem(i int, d int16) int16 {
+	return __(i, d)
+}
+
+type OfInt16IterIf interface {
+	Range(fntr OfInt16Ranger)
+	Map(fntr OfInt16Mapper) OfInt16MutIf
 }
 
 func OfInt16Into(__ OfInt16If) []int16 {
@@ -715,6 +885,7 @@ func (__ OfInt16) AsIter() OfInt16IterIf {
 
 type _OfInt16 = OfInt16
 type OfInt16St struct {
+	// do not want to export but want to use embedding method
 	_OfInt16
 }
 
@@ -727,25 +898,21 @@ func NewOfInt16St(i int) *OfInt16St {
 
 type OfInt16Iter []int16
 
-func (__ OfInt16Iter) Range(f func(i int, d int16) bool) {
+func (__ OfInt16Iter) Range(fntr OfInt16Ranger) {
 	for i := range __ {
-		if !f(i, __[i]) {
+		if !fntr.LoopItem(i, __[i]) {
 			break
 		}
 	}
 }
-func (__ OfInt16Iter) Map(f func(i int, d int16) int16) OfInt16MutIf {
+func (__ OfInt16Iter) Map(fntr OfInt16Mapper) OfInt16MutIf {
 	rval := make([]int16, len(__))
 	for i := range __ {
-		rval[i] = f(i, __[i])
+		rval[i] = fntr.MapItem(i, __[i])
 	}
 	return OfInt16(rval)
 }
 
-type OfInt32IterIf interface {
-	Range(f func(i int, d int32) bool)
-	Map(f func(i int, d int32) int32) OfInt32MutIf
-}
 type OfInt32If interface {
 	Get(int) int32
 	Len() int
@@ -754,9 +921,31 @@ type OfInt32MutIf interface {
 	OfInt32If
 	Set(int, int32) int32
 }
-
 type OfInt32AsIterIf interface {
 	AsIter() OfInt32IterIf
+}
+
+type OfInt32Ranger interface {
+	LoopItem(i int, d int32) bool
+}
+type OfInt32Mapper interface {
+	MapItem(i int, d int32) int32
+}
+type OfInt32RangeFunc func(i int, d int32) bool
+
+func (__ OfInt32RangeFunc) LoopItem(i int, d int32) bool {
+	return __(i, d)
+}
+
+type OfInt32MapFunc func(i int, d int32) int32
+
+func (__ OfInt32MapFunc) MapItem(i int, d int32) int32 {
+	return __(i, d)
+}
+
+type OfInt32IterIf interface {
+	Range(fntr OfInt32Ranger)
+	Map(fntr OfInt32Mapper) OfInt32MutIf
 }
 
 func OfInt32Into(__ OfInt32If) []int32 {
@@ -797,6 +986,7 @@ func (__ OfInt32) AsIter() OfInt32IterIf {
 
 type _OfInt32 = OfInt32
 type OfInt32St struct {
+	// do not want to export but want to use embedding method
 	_OfInt32
 }
 
@@ -809,25 +999,21 @@ func NewOfInt32St(i int) *OfInt32St {
 
 type OfInt32Iter []int32
 
-func (__ OfInt32Iter) Range(f func(i int, d int32) bool) {
+func (__ OfInt32Iter) Range(fntr OfInt32Ranger) {
 	for i := range __ {
-		if !f(i, __[i]) {
+		if !fntr.LoopItem(i, __[i]) {
 			break
 		}
 	}
 }
-func (__ OfInt32Iter) Map(f func(i int, d int32) int32) OfInt32MutIf {
+func (__ OfInt32Iter) Map(fntr OfInt32Mapper) OfInt32MutIf {
 	rval := make([]int32, len(__))
 	for i := range __ {
-		rval[i] = f(i, __[i])
+		rval[i] = fntr.MapItem(i, __[i])
 	}
 	return OfInt32(rval)
 }
 
-type OfInt64IterIf interface {
-	Range(f func(i int, d int64) bool)
-	Map(f func(i int, d int64) int64) OfInt64MutIf
-}
 type OfInt64If interface {
 	Get(int) int64
 	Len() int
@@ -836,9 +1022,31 @@ type OfInt64MutIf interface {
 	OfInt64If
 	Set(int, int64) int64
 }
-
 type OfInt64AsIterIf interface {
 	AsIter() OfInt64IterIf
+}
+
+type OfInt64Ranger interface {
+	LoopItem(i int, d int64) bool
+}
+type OfInt64Mapper interface {
+	MapItem(i int, d int64) int64
+}
+type OfInt64RangeFunc func(i int, d int64) bool
+
+func (__ OfInt64RangeFunc) LoopItem(i int, d int64) bool {
+	return __(i, d)
+}
+
+type OfInt64MapFunc func(i int, d int64) int64
+
+func (__ OfInt64MapFunc) MapItem(i int, d int64) int64 {
+	return __(i, d)
+}
+
+type OfInt64IterIf interface {
+	Range(fntr OfInt64Ranger)
+	Map(fntr OfInt64Mapper) OfInt64MutIf
 }
 
 func OfInt64Into(__ OfInt64If) []int64 {
@@ -879,6 +1087,7 @@ func (__ OfInt64) AsIter() OfInt64IterIf {
 
 type _OfInt64 = OfInt64
 type OfInt64St struct {
+	// do not want to export but want to use embedding method
 	_OfInt64
 }
 
@@ -891,25 +1100,21 @@ func NewOfInt64St(i int) *OfInt64St {
 
 type OfInt64Iter []int64
 
-func (__ OfInt64Iter) Range(f func(i int, d int64) bool) {
+func (__ OfInt64Iter) Range(fntr OfInt64Ranger) {
 	for i := range __ {
-		if !f(i, __[i]) {
+		if !fntr.LoopItem(i, __[i]) {
 			break
 		}
 	}
 }
-func (__ OfInt64Iter) Map(f func(i int, d int64) int64) OfInt64MutIf {
+func (__ OfInt64Iter) Map(fntr OfInt64Mapper) OfInt64MutIf {
 	rval := make([]int64, len(__))
 	for i := range __ {
-		rval[i] = f(i, __[i])
+		rval[i] = fntr.MapItem(i, __[i])
 	}
 	return OfInt64(rval)
 }
 
-type OfInt8IterIf interface {
-	Range(f func(i int, d int8) bool)
-	Map(f func(i int, d int8) int8) OfInt8MutIf
-}
 type OfInt8If interface {
 	Get(int) int8
 	Len() int
@@ -918,9 +1123,31 @@ type OfInt8MutIf interface {
 	OfInt8If
 	Set(int, int8) int8
 }
-
 type OfInt8AsIterIf interface {
 	AsIter() OfInt8IterIf
+}
+
+type OfInt8Ranger interface {
+	LoopItem(i int, d int8) bool
+}
+type OfInt8Mapper interface {
+	MapItem(i int, d int8) int8
+}
+type OfInt8RangeFunc func(i int, d int8) bool
+
+func (__ OfInt8RangeFunc) LoopItem(i int, d int8) bool {
+	return __(i, d)
+}
+
+type OfInt8MapFunc func(i int, d int8) int8
+
+func (__ OfInt8MapFunc) MapItem(i int, d int8) int8 {
+	return __(i, d)
+}
+
+type OfInt8IterIf interface {
+	Range(fntr OfInt8Ranger)
+	Map(fntr OfInt8Mapper) OfInt8MutIf
 }
 
 func OfInt8Into(__ OfInt8If) []int8 {
@@ -961,6 +1188,7 @@ func (__ OfInt8) AsIter() OfInt8IterIf {
 
 type _OfInt8 = OfInt8
 type OfInt8St struct {
+	// do not want to export but want to use embedding method
 	_OfInt8
 }
 
@@ -973,25 +1201,21 @@ func NewOfInt8St(i int) *OfInt8St {
 
 type OfInt8Iter []int8
 
-func (__ OfInt8Iter) Range(f func(i int, d int8) bool) {
+func (__ OfInt8Iter) Range(fntr OfInt8Ranger) {
 	for i := range __ {
-		if !f(i, __[i]) {
+		if !fntr.LoopItem(i, __[i]) {
 			break
 		}
 	}
 }
-func (__ OfInt8Iter) Map(f func(i int, d int8) int8) OfInt8MutIf {
+func (__ OfInt8Iter) Map(fntr OfInt8Mapper) OfInt8MutIf {
 	rval := make([]int8, len(__))
 	for i := range __ {
-		rval[i] = f(i, __[i])
+		rval[i] = fntr.MapItem(i, __[i])
 	}
 	return OfInt8(rval)
 }
 
-type OfRuneIterIf interface {
-	Range(f func(i int, d rune) bool)
-	Map(f func(i int, d rune) rune) OfRuneMutIf
-}
 type OfRuneIf interface {
 	Get(int) rune
 	Len() int
@@ -1000,9 +1224,31 @@ type OfRuneMutIf interface {
 	OfRuneIf
 	Set(int, rune) rune
 }
-
 type OfRuneAsIterIf interface {
 	AsIter() OfRuneIterIf
+}
+
+type OfRuneRanger interface {
+	LoopItem(i int, d rune) bool
+}
+type OfRuneMapper interface {
+	MapItem(i int, d rune) rune
+}
+type OfRuneRangeFunc func(i int, d rune) bool
+
+func (__ OfRuneRangeFunc) LoopItem(i int, d rune) bool {
+	return __(i, d)
+}
+
+type OfRuneMapFunc func(i int, d rune) rune
+
+func (__ OfRuneMapFunc) MapItem(i int, d rune) rune {
+	return __(i, d)
+}
+
+type OfRuneIterIf interface {
+	Range(fntr OfRuneRanger)
+	Map(fntr OfRuneMapper) OfRuneMutIf
 }
 
 func OfRuneInto(__ OfRuneIf) []rune {
@@ -1043,6 +1289,7 @@ func (__ OfRune) AsIter() OfRuneIterIf {
 
 type _OfRune = OfRune
 type OfRuneSt struct {
+	// do not want to export but want to use embedding method
 	_OfRune
 }
 
@@ -1055,25 +1302,21 @@ func NewOfRuneSt(i int) *OfRuneSt {
 
 type OfRuneIter []rune
 
-func (__ OfRuneIter) Range(f func(i int, d rune) bool) {
+func (__ OfRuneIter) Range(fntr OfRuneRanger) {
 	for i := range __ {
-		if !f(i, __[i]) {
+		if !fntr.LoopItem(i, __[i]) {
 			break
 		}
 	}
 }
-func (__ OfRuneIter) Map(f func(i int, d rune) rune) OfRuneMutIf {
+func (__ OfRuneIter) Map(fntr OfRuneMapper) OfRuneMutIf {
 	rval := make([]rune, len(__))
 	for i := range __ {
-		rval[i] = f(i, __[i])
+		rval[i] = fntr.MapItem(i, __[i])
 	}
 	return OfRune(rval)
 }
 
-type OfStringIterIf interface {
-	Range(f func(i int, d string) bool)
-	Map(f func(i int, d string) string) OfStringMutIf
-}
 type OfStringIf interface {
 	Get(int) string
 	Len() int
@@ -1082,9 +1325,31 @@ type OfStringMutIf interface {
 	OfStringIf
 	Set(int, string) string
 }
-
 type OfStringAsIterIf interface {
 	AsIter() OfStringIterIf
+}
+
+type OfStringRanger interface {
+	LoopItem(i int, d string) bool
+}
+type OfStringMapper interface {
+	MapItem(i int, d string) string
+}
+type OfStringRangeFunc func(i int, d string) bool
+
+func (__ OfStringRangeFunc) LoopItem(i int, d string) bool {
+	return __(i, d)
+}
+
+type OfStringMapFunc func(i int, d string) string
+
+func (__ OfStringMapFunc) MapItem(i int, d string) string {
+	return __(i, d)
+}
+
+type OfStringIterIf interface {
+	Range(fntr OfStringRanger)
+	Map(fntr OfStringMapper) OfStringMutIf
 }
 
 func OfStringInto(__ OfStringIf) []string {
@@ -1125,6 +1390,7 @@ func (__ OfString) AsIter() OfStringIterIf {
 
 type _OfString = OfString
 type OfStringSt struct {
+	// do not want to export but want to use embedding method
 	_OfString
 }
 
@@ -1137,25 +1403,21 @@ func NewOfStringSt(i int) *OfStringSt {
 
 type OfStringIter []string
 
-func (__ OfStringIter) Range(f func(i int, d string) bool) {
+func (__ OfStringIter) Range(fntr OfStringRanger) {
 	for i := range __ {
-		if !f(i, __[i]) {
+		if !fntr.LoopItem(i, __[i]) {
 			break
 		}
 	}
 }
-func (__ OfStringIter) Map(f func(i int, d string) string) OfStringMutIf {
+func (__ OfStringIter) Map(fntr OfStringMapper) OfStringMutIf {
 	rval := make([]string, len(__))
 	for i := range __ {
-		rval[i] = f(i, __[i])
+		rval[i] = fntr.MapItem(i, __[i])
 	}
 	return OfString(rval)
 }
 
-type OfUintIterIf interface {
-	Range(f func(i int, d uint) bool)
-	Map(f func(i int, d uint) uint) OfUintMutIf
-}
 type OfUintIf interface {
 	Get(int) uint
 	Len() int
@@ -1164,9 +1426,31 @@ type OfUintMutIf interface {
 	OfUintIf
 	Set(int, uint) uint
 }
-
 type OfUintAsIterIf interface {
 	AsIter() OfUintIterIf
+}
+
+type OfUintRanger interface {
+	LoopItem(i int, d uint) bool
+}
+type OfUintMapper interface {
+	MapItem(i int, d uint) uint
+}
+type OfUintRangeFunc func(i int, d uint) bool
+
+func (__ OfUintRangeFunc) LoopItem(i int, d uint) bool {
+	return __(i, d)
+}
+
+type OfUintMapFunc func(i int, d uint) uint
+
+func (__ OfUintMapFunc) MapItem(i int, d uint) uint {
+	return __(i, d)
+}
+
+type OfUintIterIf interface {
+	Range(fntr OfUintRanger)
+	Map(fntr OfUintMapper) OfUintMutIf
 }
 
 func OfUintInto(__ OfUintIf) []uint {
@@ -1207,6 +1491,7 @@ func (__ OfUint) AsIter() OfUintIterIf {
 
 type _OfUint = OfUint
 type OfUintSt struct {
+	// do not want to export but want to use embedding method
 	_OfUint
 }
 
@@ -1219,25 +1504,21 @@ func NewOfUintSt(i int) *OfUintSt {
 
 type OfUintIter []uint
 
-func (__ OfUintIter) Range(f func(i int, d uint) bool) {
+func (__ OfUintIter) Range(fntr OfUintRanger) {
 	for i := range __ {
-		if !f(i, __[i]) {
+		if !fntr.LoopItem(i, __[i]) {
 			break
 		}
 	}
 }
-func (__ OfUintIter) Map(f func(i int, d uint) uint) OfUintMutIf {
+func (__ OfUintIter) Map(fntr OfUintMapper) OfUintMutIf {
 	rval := make([]uint, len(__))
 	for i := range __ {
-		rval[i] = f(i, __[i])
+		rval[i] = fntr.MapItem(i, __[i])
 	}
 	return OfUint(rval)
 }
 
-type OfUint16IterIf interface {
-	Range(f func(i int, d uint16) bool)
-	Map(f func(i int, d uint16) uint16) OfUint16MutIf
-}
 type OfUint16If interface {
 	Get(int) uint16
 	Len() int
@@ -1246,9 +1527,31 @@ type OfUint16MutIf interface {
 	OfUint16If
 	Set(int, uint16) uint16
 }
-
 type OfUint16AsIterIf interface {
 	AsIter() OfUint16IterIf
+}
+
+type OfUint16Ranger interface {
+	LoopItem(i int, d uint16) bool
+}
+type OfUint16Mapper interface {
+	MapItem(i int, d uint16) uint16
+}
+type OfUint16RangeFunc func(i int, d uint16) bool
+
+func (__ OfUint16RangeFunc) LoopItem(i int, d uint16) bool {
+	return __(i, d)
+}
+
+type OfUint16MapFunc func(i int, d uint16) uint16
+
+func (__ OfUint16MapFunc) MapItem(i int, d uint16) uint16 {
+	return __(i, d)
+}
+
+type OfUint16IterIf interface {
+	Range(fntr OfUint16Ranger)
+	Map(fntr OfUint16Mapper) OfUint16MutIf
 }
 
 func OfUint16Into(__ OfUint16If) []uint16 {
@@ -1289,6 +1592,7 @@ func (__ OfUint16) AsIter() OfUint16IterIf {
 
 type _OfUint16 = OfUint16
 type OfUint16St struct {
+	// do not want to export but want to use embedding method
 	_OfUint16
 }
 
@@ -1301,25 +1605,21 @@ func NewOfUint16St(i int) *OfUint16St {
 
 type OfUint16Iter []uint16
 
-func (__ OfUint16Iter) Range(f func(i int, d uint16) bool) {
+func (__ OfUint16Iter) Range(fntr OfUint16Ranger) {
 	for i := range __ {
-		if !f(i, __[i]) {
+		if !fntr.LoopItem(i, __[i]) {
 			break
 		}
 	}
 }
-func (__ OfUint16Iter) Map(f func(i int, d uint16) uint16) OfUint16MutIf {
+func (__ OfUint16Iter) Map(fntr OfUint16Mapper) OfUint16MutIf {
 	rval := make([]uint16, len(__))
 	for i := range __ {
-		rval[i] = f(i, __[i])
+		rval[i] = fntr.MapItem(i, __[i])
 	}
 	return OfUint16(rval)
 }
 
-type OfUint32IterIf interface {
-	Range(f func(i int, d uint32) bool)
-	Map(f func(i int, d uint32) uint32) OfUint32MutIf
-}
 type OfUint32If interface {
 	Get(int) uint32
 	Len() int
@@ -1328,9 +1628,31 @@ type OfUint32MutIf interface {
 	OfUint32If
 	Set(int, uint32) uint32
 }
-
 type OfUint32AsIterIf interface {
 	AsIter() OfUint32IterIf
+}
+
+type OfUint32Ranger interface {
+	LoopItem(i int, d uint32) bool
+}
+type OfUint32Mapper interface {
+	MapItem(i int, d uint32) uint32
+}
+type OfUint32RangeFunc func(i int, d uint32) bool
+
+func (__ OfUint32RangeFunc) LoopItem(i int, d uint32) bool {
+	return __(i, d)
+}
+
+type OfUint32MapFunc func(i int, d uint32) uint32
+
+func (__ OfUint32MapFunc) MapItem(i int, d uint32) uint32 {
+	return __(i, d)
+}
+
+type OfUint32IterIf interface {
+	Range(fntr OfUint32Ranger)
+	Map(fntr OfUint32Mapper) OfUint32MutIf
 }
 
 func OfUint32Into(__ OfUint32If) []uint32 {
@@ -1371,6 +1693,7 @@ func (__ OfUint32) AsIter() OfUint32IterIf {
 
 type _OfUint32 = OfUint32
 type OfUint32St struct {
+	// do not want to export but want to use embedding method
 	_OfUint32
 }
 
@@ -1383,25 +1706,21 @@ func NewOfUint32St(i int) *OfUint32St {
 
 type OfUint32Iter []uint32
 
-func (__ OfUint32Iter) Range(f func(i int, d uint32) bool) {
+func (__ OfUint32Iter) Range(fntr OfUint32Ranger) {
 	for i := range __ {
-		if !f(i, __[i]) {
+		if !fntr.LoopItem(i, __[i]) {
 			break
 		}
 	}
 }
-func (__ OfUint32Iter) Map(f func(i int, d uint32) uint32) OfUint32MutIf {
+func (__ OfUint32Iter) Map(fntr OfUint32Mapper) OfUint32MutIf {
 	rval := make([]uint32, len(__))
 	for i := range __ {
-		rval[i] = f(i, __[i])
+		rval[i] = fntr.MapItem(i, __[i])
 	}
 	return OfUint32(rval)
 }
 
-type OfUint64IterIf interface {
-	Range(f func(i int, d uint64) bool)
-	Map(f func(i int, d uint64) uint64) OfUint64MutIf
-}
 type OfUint64If interface {
 	Get(int) uint64
 	Len() int
@@ -1410,9 +1729,31 @@ type OfUint64MutIf interface {
 	OfUint64If
 	Set(int, uint64) uint64
 }
-
 type OfUint64AsIterIf interface {
 	AsIter() OfUint64IterIf
+}
+
+type OfUint64Ranger interface {
+	LoopItem(i int, d uint64) bool
+}
+type OfUint64Mapper interface {
+	MapItem(i int, d uint64) uint64
+}
+type OfUint64RangeFunc func(i int, d uint64) bool
+
+func (__ OfUint64RangeFunc) LoopItem(i int, d uint64) bool {
+	return __(i, d)
+}
+
+type OfUint64MapFunc func(i int, d uint64) uint64
+
+func (__ OfUint64MapFunc) MapItem(i int, d uint64) uint64 {
+	return __(i, d)
+}
+
+type OfUint64IterIf interface {
+	Range(fntr OfUint64Ranger)
+	Map(fntr OfUint64Mapper) OfUint64MutIf
 }
 
 func OfUint64Into(__ OfUint64If) []uint64 {
@@ -1453,6 +1794,7 @@ func (__ OfUint64) AsIter() OfUint64IterIf {
 
 type _OfUint64 = OfUint64
 type OfUint64St struct {
+	// do not want to export but want to use embedding method
 	_OfUint64
 }
 
@@ -1465,25 +1807,21 @@ func NewOfUint64St(i int) *OfUint64St {
 
 type OfUint64Iter []uint64
 
-func (__ OfUint64Iter) Range(f func(i int, d uint64) bool) {
+func (__ OfUint64Iter) Range(fntr OfUint64Ranger) {
 	for i := range __ {
-		if !f(i, __[i]) {
+		if !fntr.LoopItem(i, __[i]) {
 			break
 		}
 	}
 }
-func (__ OfUint64Iter) Map(f func(i int, d uint64) uint64) OfUint64MutIf {
+func (__ OfUint64Iter) Map(fntr OfUint64Mapper) OfUint64MutIf {
 	rval := make([]uint64, len(__))
 	for i := range __ {
-		rval[i] = f(i, __[i])
+		rval[i] = fntr.MapItem(i, __[i])
 	}
 	return OfUint64(rval)
 }
 
-type OfUint8IterIf interface {
-	Range(f func(i int, d uint8) bool)
-	Map(f func(i int, d uint8) uint8) OfUint8MutIf
-}
 type OfUint8If interface {
 	Get(int) uint8
 	Len() int
@@ -1492,9 +1830,31 @@ type OfUint8MutIf interface {
 	OfUint8If
 	Set(int, uint8) uint8
 }
-
 type OfUint8AsIterIf interface {
 	AsIter() OfUint8IterIf
+}
+
+type OfUint8Ranger interface {
+	LoopItem(i int, d uint8) bool
+}
+type OfUint8Mapper interface {
+	MapItem(i int, d uint8) uint8
+}
+type OfUint8RangeFunc func(i int, d uint8) bool
+
+func (__ OfUint8RangeFunc) LoopItem(i int, d uint8) bool {
+	return __(i, d)
+}
+
+type OfUint8MapFunc func(i int, d uint8) uint8
+
+func (__ OfUint8MapFunc) MapItem(i int, d uint8) uint8 {
+	return __(i, d)
+}
+
+type OfUint8IterIf interface {
+	Range(fntr OfUint8Ranger)
+	Map(fntr OfUint8Mapper) OfUint8MutIf
 }
 
 func OfUint8Into(__ OfUint8If) []uint8 {
@@ -1535,6 +1895,7 @@ func (__ OfUint8) AsIter() OfUint8IterIf {
 
 type _OfUint8 = OfUint8
 type OfUint8St struct {
+	// do not want to export but want to use embedding method
 	_OfUint8
 }
 
@@ -1547,25 +1908,21 @@ func NewOfUint8St(i int) *OfUint8St {
 
 type OfUint8Iter []uint8
 
-func (__ OfUint8Iter) Range(f func(i int, d uint8) bool) {
+func (__ OfUint8Iter) Range(fntr OfUint8Ranger) {
 	for i := range __ {
-		if !f(i, __[i]) {
+		if !fntr.LoopItem(i, __[i]) {
 			break
 		}
 	}
 }
-func (__ OfUint8Iter) Map(f func(i int, d uint8) uint8) OfUint8MutIf {
+func (__ OfUint8Iter) Map(fntr OfUint8Mapper) OfUint8MutIf {
 	rval := make([]uint8, len(__))
 	for i := range __ {
-		rval[i] = f(i, __[i])
+		rval[i] = fntr.MapItem(i, __[i])
 	}
 	return OfUint8(rval)
 }
 
-type OfUintptrIterIf interface {
-	Range(f func(i int, d uintptr) bool)
-	Map(f func(i int, d uintptr) uintptr) OfUintptrMutIf
-}
 type OfUintptrIf interface {
 	Get(int) uintptr
 	Len() int
@@ -1574,9 +1931,31 @@ type OfUintptrMutIf interface {
 	OfUintptrIf
 	Set(int, uintptr) uintptr
 }
-
 type OfUintptrAsIterIf interface {
 	AsIter() OfUintptrIterIf
+}
+
+type OfUintptrRanger interface {
+	LoopItem(i int, d uintptr) bool
+}
+type OfUintptrMapper interface {
+	MapItem(i int, d uintptr) uintptr
+}
+type OfUintptrRangeFunc func(i int, d uintptr) bool
+
+func (__ OfUintptrRangeFunc) LoopItem(i int, d uintptr) bool {
+	return __(i, d)
+}
+
+type OfUintptrMapFunc func(i int, d uintptr) uintptr
+
+func (__ OfUintptrMapFunc) MapItem(i int, d uintptr) uintptr {
+	return __(i, d)
+}
+
+type OfUintptrIterIf interface {
+	Range(fntr OfUintptrRanger)
+	Map(fntr OfUintptrMapper) OfUintptrMutIf
 }
 
 func OfUintptrInto(__ OfUintptrIf) []uintptr {
@@ -1617,6 +1996,7 @@ func (__ OfUintptr) AsIter() OfUintptrIterIf {
 
 type _OfUintptr = OfUintptr
 type OfUintptrSt struct {
+	// do not want to export but want to use embedding method
 	_OfUintptr
 }
 
@@ -1629,17 +2009,17 @@ func NewOfUintptrSt(i int) *OfUintptrSt {
 
 type OfUintptrIter []uintptr
 
-func (__ OfUintptrIter) Range(f func(i int, d uintptr) bool) {
+func (__ OfUintptrIter) Range(fntr OfUintptrRanger) {
 	for i := range __ {
-		if !f(i, __[i]) {
+		if !fntr.LoopItem(i, __[i]) {
 			break
 		}
 	}
 }
-func (__ OfUintptrIter) Map(f func(i int, d uintptr) uintptr) OfUintptrMutIf {
+func (__ OfUintptrIter) Map(fntr OfUintptrMapper) OfUintptrMutIf {
 	rval := make([]uintptr, len(__))
 	for i := range __ {
-		rval[i] = f(i, __[i])
+		rval[i] = fntr.MapItem(i, __[i])
 	}
 	return OfUintptr(rval)
 }

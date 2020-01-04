@@ -16,9 +16,27 @@ type _Prefix_SomeAsIterIf interface {
 	AsIter() _Prefix_SomeIterIf
 }
 
+type _Prefix_SomeRanger interface {
+	LoopItem(i int, d Some) bool
+}
+type _Prefix_SomeMapper interface {
+	MapItem(i int, d Some) Some
+}
+type _Prefix_SomeRangeFunc func(i int, d Some) bool
+
+func (__ _Prefix_SomeRangeFunc) LoopItem(i int, d Some) bool {
+	return __(i, d)
+}
+
+type _Prefix_SomeMapFunc func(i int, d Some) Some
+
+func (__ _Prefix_SomeMapFunc) MapItem(i int, d Some) Some {
+	return __(i, d)
+}
+
 type _Prefix_SomeIterIf interface {
-	Range(f func(i int, d Some) bool)
-	Map(f func(i int, d Some) Some) _Prefix_SomeMutIf
+	Range(fntr _Prefix_SomeRanger)
+	Map(fntr _Prefix_SomeMapper) _Prefix_SomeMutIf
 }
 
 func _Prefix_SomeInto(__ _Prefix_SomeIf) []Some {
@@ -72,17 +90,17 @@ func New_Prefix_SomeSt(i int) *_Prefix_SomeSt {
 
 type _Prefix_SomeIter []Some
 
-func (__ _Prefix_SomeIter) Range(f func(i int, d Some) bool) {
+func (__ _Prefix_SomeIter) Range(fntr _Prefix_SomeRanger) {
 	for i := range __ {
-		if !f(i, __[i]) {
+		if !fntr.LoopItem(i, __[i]) {
 			break
 		}
 	}
 }
-func (__ _Prefix_SomeIter) Map(f func(i int, d Some) Some) _Prefix_SomeMutIf {
+func (__ _Prefix_SomeIter) Map(fntr _Prefix_SomeMapper) _Prefix_SomeMutIf {
 	rval := make([]Some, len(__))
 	for i := range __ {
-		rval[i] = f(i, __[i])
+		rval[i] = fntr.MapItem(i, __[i])
 	}
 	return _Prefix_Some(rval)
 }

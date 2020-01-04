@@ -52,10 +52,10 @@ func TestTSt(t *testing.T) {
 
 	ss.Set(3, "30")
 
-	ss.AsIter().Range(func(_ int, d string) bool {
+	ss.AsIter().Range(slices.OfStringRangeFunc(func(_ int, d string) bool {
 		fmt.Println(d)
 		return true
-	})
+	}))
 
 	if "30" != ss.Get(3) {
 		t.Errorf("expect %v, got %v", "30", ss.Get(3))
@@ -68,16 +68,16 @@ func TestSum(t *testing.T) {
 	})
 
 	sum := 0
-	is.Range(func(_ int, d int) bool {
+	is.Range(slices.OfIntRangeFunc(func(_ int, d int) bool {
 		sum += d
 		return true
-	})
+	}))
 	if sum != 15 {
 		t.Errorf("expect %v, got %v", 15, sum)
 	}
 
-	res := is.Map(func(_ int, d int) int { return d * 2 })
-	expect := slices.OfIntIter([]int{2, 4, 6, 8, 10}).Map(func(_ int, d int) int { return d })
+	res := is.Map(slices.OfIntMapFunc(func(_ int, d int) int { return d * 2 }))
+	expect := slices.OfIntIter([]int{2, 4, 6, 8, 10}).Map(slices.OfIntMapFunc(func(_ int, d int) int { return d }))
 	if !reflect.DeepEqual(expect, res) {
 		t.Errorf("expect %v:%T, got %v:%T", expect, expect, res, res)
 	}
