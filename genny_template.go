@@ -1,9 +1,5 @@
 package slices
 
-import "github.com/cheekybits/genny/generic"
-
-type Some generic.Type
-
 type _Prefix_SomeIf interface {
 	Get(int) Some
 	Len() int
