@@ -6,14 +6,15 @@ package slices
 
 type _Float32 struct{}
 
-func (_ _Float32) Range(start, end int) []float32 {
+func (_ _Float32) Range(start, end, step float32) []float32 {
 	l := end - start
 	if l < 0 {
 		l = 0
 	}
-	res := make([]float32, l)
-	for i := 0; i < l; i += 1 {
-		res[i] = float32(start + i)
+	res := make([]float32, 0, int(l/step))
+	var i float32
+	for i = 0; i < l; i += step {
+		res = append(res, start+i)
 	}
 	return res
 }
@@ -22,14 +23,15 @@ var Float32T _Float32
 
 type _Float64 struct{}
 
-func (_ _Float64) Range(start, end int) []float64 {
+func (_ _Float64) Range(start, end, step float64) []float64 {
 	l := end - start
 	if l < 0 {
 		l = 0
 	}
-	res := make([]float64, l)
-	for i := 0; i < l; i += 1 {
-		res[i] = float64(start + i)
+	res := make([]float64, 0, int(l/step))
+	var i float64
+	for i = 0; i < l; i += step {
+		res = append(res, start+i)
 	}
 	return res
 }
@@ -38,14 +40,15 @@ var Float64T _Float64
 
 type _Int struct{}
 
-func (_ _Int) Range(start, end int) []int {
+func (_ _Int) Range(start, end, step int) []int {
 	l := end - start
 	if l < 0 {
 		l = 0
 	}
-	res := make([]int, l)
-	for i := 0; i < l; i += 1 {
-		res[i] = int(start + i)
+	res := make([]int, 0, int(l/step))
+	var i int
+	for i = 0; i < l; i += step {
+		res = append(res, start+i)
 	}
 	return res
 }
@@ -54,14 +57,15 @@ var IntT _Int
 
 type _Int16 struct{}
 
-func (_ _Int16) Range(start, end int) []int16 {
+func (_ _Int16) Range(start, end, step int16) []int16 {
 	l := end - start
 	if l < 0 {
 		l = 0
 	}
-	res := make([]int16, l)
-	for i := 0; i < l; i += 1 {
-		res[i] = int16(start + i)
+	res := make([]int16, 0, int(l/step))
+	var i int16
+	for i = 0; i < l; i += step {
+		res = append(res, start+i)
 	}
 	return res
 }
@@ -70,14 +74,15 @@ var Int16T _Int16
 
 type _Int32 struct{}
 
-func (_ _Int32) Range(start, end int) []int32 {
+func (_ _Int32) Range(start, end, step int32) []int32 {
 	l := end - start
 	if l < 0 {
 		l = 0
 	}
-	res := make([]int32, l)
-	for i := 0; i < l; i += 1 {
-		res[i] = int32(start + i)
+	res := make([]int32, 0, int(l/step))
+	var i int32
+	for i = 0; i < l; i += step {
+		res = append(res, start+i)
 	}
 	return res
 }
@@ -86,14 +91,15 @@ var Int32T _Int32
 
 type _Int64 struct{}
 
-func (_ _Int64) Range(start, end int) []int64 {
+func (_ _Int64) Range(start, end, step int64) []int64 {
 	l := end - start
 	if l < 0 {
 		l = 0
 	}
-	res := make([]int64, l)
-	for i := 0; i < l; i += 1 {
-		res[i] = int64(start + i)
+	res := make([]int64, 0, int(l/step))
+	var i int64
+	for i = 0; i < l; i += step {
+		res = append(res, start+i)
 	}
 	return res
 }
@@ -102,14 +108,15 @@ var Int64T _Int64
 
 type _Int8 struct{}
 
-func (_ _Int8) Range(start, end int) []int8 {
+func (_ _Int8) Range(start, end, step int8) []int8 {
 	l := end - start
 	if l < 0 {
 		l = 0
 	}
-	res := make([]int8, l)
-	for i := 0; i < l; i += 1 {
-		res[i] = int8(start + i)
+	res := make([]int8, 0, int(l/step))
+	var i int8
+	for i = 0; i < l; i += step {
+		res = append(res, start+i)
 	}
 	return res
 }
@@ -118,14 +125,15 @@ var Int8T _Int8
 
 type _Uint struct{}
 
-func (_ _Uint) Range(start, end int) []uint {
+func (_ _Uint) Range(start, end, step uint) []uint {
 	l := end - start
 	if l < 0 {
 		l = 0
 	}
-	res := make([]uint, l)
-	for i := 0; i < l; i += 1 {
-		res[i] = uint(start + i)
+	res := make([]uint, 0, int(l/step))
+	var i uint
+	for i = 0; i < l; i += step {
+		res = append(res, start+i)
 	}
 	return res
 }
@@ -134,14 +142,15 @@ var UintT _Uint
 
 type _Uint16 struct{}
 
-func (_ _Uint16) Range(start, end int) []uint16 {
+func (_ _Uint16) Range(start, end, step uint16) []uint16 {
 	l := end - start
 	if l < 0 {
 		l = 0
 	}
-	res := make([]uint16, l)
-	for i := 0; i < l; i += 1 {
-		res[i] = uint16(start + i)
+	res := make([]uint16, 0, int(l/step))
+	var i uint16
+	for i = 0; i < l; i += step {
+		res = append(res, start+i)
 	}
 	return res
 }
@@ -150,14 +159,15 @@ var Uint16T _Uint16
 
 type _Uint32 struct{}
 
-func (_ _Uint32) Range(start, end int) []uint32 {
+func (_ _Uint32) Range(start, end, step uint32) []uint32 {
 	l := end - start
 	if l < 0 {
 		l = 0
 	}
-	res := make([]uint32, l)
-	for i := 0; i < l; i += 1 {
-		res[i] = uint32(start + i)
+	res := make([]uint32, 0, int(l/step))
+	var i uint32
+	for i = 0; i < l; i += step {
+		res = append(res, start+i)
 	}
 	return res
 }
@@ -166,14 +176,15 @@ var Uint32T _Uint32
 
 type _Uint64 struct{}
 
-func (_ _Uint64) Range(start, end int) []uint64 {
+func (_ _Uint64) Range(start, end, step uint64) []uint64 {
 	l := end - start
 	if l < 0 {
 		l = 0
 	}
-	res := make([]uint64, l)
-	for i := 0; i < l; i += 1 {
-		res[i] = uint64(start + i)
+	res := make([]uint64, 0, int(l/step))
+	var i uint64
+	for i = 0; i < l; i += step {
+		res = append(res, start+i)
 	}
 	return res
 }
@@ -182,14 +193,15 @@ var Uint64T _Uint64
 
 type _Uint8 struct{}
 
-func (_ _Uint8) Range(start, end int) []uint8 {
+func (_ _Uint8) Range(start, end, step uint8) []uint8 {
 	l := end - start
 	if l < 0 {
 		l = 0
 	}
-	res := make([]uint8, l)
-	for i := 0; i < l; i += 1 {
-		res[i] = uint8(start + i)
+	res := make([]uint8, 0, int(l/step))
+	var i uint8
+	for i = 0; i < l; i += step {
+		res = append(res, start+i)
 	}
 	return res
 }

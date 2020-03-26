@@ -1,17 +1,18 @@
 package slices
 
-type _Some struct{}
+type _Num struct{}
 
-func (_ _Some) Range(start, end int) []Some {
+func (_ _Num) Range(start, end, step Num) []Num {
 	l := end - start
 	if l < 0 {
 		l = 0
 	}
-	res := make([]Some, l)
-	for i := 0; i < l; i += 1 {
-		res[i] = Some(start + i)
+	res := make([]Num, 0, int(l/step))
+	var i Num
+	for i = 0; i < l; i += step {
+		res = append(res, start+i)
 	}
 	return res
 }
 
-var SomeT _Some
+var NumT _Num

@@ -8,6 +8,6 @@ import (
 )
 
 func TestRange(t *testing.T) {
-	list := slices.Uint16T.Range(20, 50)
+	list := slices.Uint16T.Range(20, 51, 3)
 	fmt.Println(list)
 }
