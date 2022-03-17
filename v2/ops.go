@@ -1,18 +1,20 @@
 package slices
 
-type numbers interface {
-	int | int8 | int16 | int32 | int64 |
-		uint | uint8 | uint16 | uint32 | uint64 |
-		float32 | float64
+import (
+	"golang.org/x/exp/constraints"
+)
+
+type Number interface {
+	constraints.Integer | constraints.Float
 }
 
-func Range[Num numbers](start, end, step Num) []Num {
+func Range[N Number](start, end, step N) []N {
 	l := end - start
 	if l < 0 {
 		l = 0
 	}
-	res := make([]Num, 0, int(l/step))
-	var i Num
+	res := make([]N, 0, int(l/step))
+	var i N
 	for i = 0; i < l; i += step {
 		res = append(res, start+i)
 	}
